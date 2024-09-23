@@ -1,0 +1,19 @@
+/** Setup **/
+@import 'setup/variables';
+@import 'setup/typography';
+@import 'setup/base';
+
+/** Content **/
+@import 'cmps/content/Content';
+
+/** Header **/
+@import 'cmps/header/Header';
+
+/** Sidebar **/
+@import 'cmps/sidebar/Sidebar';
+
+/** Footer **/
+@import 'cmps/footer/Footer';
+
+/** Main Page **/
+@import 'pages/main-page/MainPage';

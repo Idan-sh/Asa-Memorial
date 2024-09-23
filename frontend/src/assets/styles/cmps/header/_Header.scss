@@ -10,3 +10,20 @@
   border-radius: 10px;
   height: 80%;
 }
+
+.header-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-inline: 2rem;
+
+  .main-title {
+    font-size: 260%;
+    font-weight: 800;
+  }
+
+  .secondary-title {
+    font-size: 160%;
+    font-weight: 400;
+  }
+}

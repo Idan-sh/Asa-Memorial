@@ -1,2 +1,10 @@
 .content-container {
+  background-color: $secondaryBgColor;
+  color: $mainFontColor;
+  direction: rtl;
+  padding: 4rem;
+
+  .content-life-story {
+    font-size: 18px;
+  }
 }

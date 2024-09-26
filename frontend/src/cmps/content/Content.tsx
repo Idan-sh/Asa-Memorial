@@ -7,9 +7,21 @@ export default function Content() {
 
       <Slideshow />
       <h2 className="content-years-title">1900-2010</h2>
-      <div className="content-life-story-container">
-        <h2 className="content-life-story-title">סיפור חייו</h2>
-        <p className="content-life-story">
+      <div className="content-remembering-section">
+        <h1>
+          זוכרים את אסא
+          <br />
+          בן יהודית תמר ואמנון
+        </h1>
+        <h2>
+          אתר זה נוצר לזכרו
+          <br />
+          האב האוהב, החבר הטוב ...
+        </h2>
+      </div>
+      <div className="content-life-story">
+        <h2>סיפור חייו</h2>
+        <p>
           בנם של יהודית ואמנון. נולד ביום כ"א באייר תשכ"ד (3.5.1964) בלוס
           אנג'לס, ארצות הברית. אח צעיר לגיורא.
           <br />

@@ -17,22 +17,45 @@
     margin: 1rem;
   }
 
-  .content-life-story-container {
+  .content-remembering-section {
+    display: flex;
+    flex-direction: column;
+    background-color: darken($mainBgColor, 4);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    gap: 1rem;
+
+    h1 {
+      font-size: 140%;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 140%;
+      font-weight: 800;
+      margin: 0;
+    }
+  }
+
+  .content-life-story {
     display: flex;
     flex-direction: column;
     margin-top: 2rem;
     align-items: center;
     gap: 1rem;
-  }
 
-  .content-life-story-title {
-    font-size: 150%;
-    margin: 0;
-  }
-
-  .content-life-story {
-    font-size: 18px;
-    margin: 0;
-    text-align: center;
+    h2 {
+      font-size: 150%;
+      margin: 0;
+    }
+    p {
+      font-size: 18px;
+      margin: 0;
+      text-align: center;
+    }
   }
 }

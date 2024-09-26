@@ -1,8 +1,19 @@
 .content-container {
-  background-color: $secondaryBgColor;
+  display: flex;
+  flex-direction: column;
+  background-color: $mainBgColor;
   color: $mainFontColor;
-  direction: rtl;
-  padding-inline: 14rem;
+  width: min-content;
+  align-self: center;
+
+  .content-sentence-title {
+    align-self: center;
+    font-weight: 800;
+  }
+
+  .content-life-story-container {
+    margin-top: 3rem;
+  }
 
   .content-life-story {
     font-size: 18px;

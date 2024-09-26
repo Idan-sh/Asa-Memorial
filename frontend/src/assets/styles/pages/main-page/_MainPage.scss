@@ -2,17 +2,4 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 100%;
-}
-
-@media screen and (max-width: 768px) {
-  .main-page-container {
-    grid-template-areas:
-      'header'
-      'sidebar'
-      'main'
-      'footer';
-    grid-template-columns: 1fr; // Stack everything in a single column
-    grid-template-rows: auto; // Auto rows to adapt to content size
-  }
 }

@@ -4,26 +4,23 @@
   align-items: center;
   background-color: $headerBgColor;
   height: fit-content;
-  padding-block: 1rem;
+  padding-block: 0.6rem;
   color: $secondaryFontColor;
-}
-
-.profile-picture-img {
-  border-radius: 10px;
-  height: 10rem;
+  cursor: pointer;
 }
 
 .header-title-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 4px;
 
   .header-title {
-    font-size: 100%;
+    font-size: 90%;
     font-weight: 500;
   }
 
   .header-icon {
-    height: 50px;
+    height: 40px;
   }
 }

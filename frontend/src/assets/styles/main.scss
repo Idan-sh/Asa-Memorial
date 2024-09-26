@@ -4,10 +4,14 @@
 @import 'setup/base';
 
 /** Content **/
+@import 'cmps/content/Slideshow';
 @import 'cmps/content/Content';
 
 /** Header **/
 @import 'cmps/header/Header';
+
+/** Menu **/
+@import 'cmps/menu/Menu';
 
 /** Footer **/
 @import 'cmps/footer/Footer';

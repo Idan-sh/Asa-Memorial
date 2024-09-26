@@ -6,8 +6,9 @@ export default function Content() {
       <h2 className="content-sentence-title">"placeholder sentence"</h2>
 
       <Slideshow />
+      <h2 className="content-years-title">1900-2010</h2>
       <div className="content-life-story-container">
-        <h2>סיפור חייו</h2>
+        <h2 className="content-life-story-title">סיפור חייו</h2>
         <p className="content-life-story">
           בנם של יהודית ואמנון. נולד ביום כ"א באייר תשכ"ד (3.5.1964) בלוס
           אנג'לס, ארצות הברית. אח צעיר לגיורא.

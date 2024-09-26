@@ -1,6 +1,9 @@
 .memory-item-container {
-  background-color: #f0f0f0; // Example background color
+  background-color: darken($mainBgColor, 4);
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.2);
+
   padding: 10px;
   border-radius: 8px;
   text-align: center;
+  height: 400px;
 }

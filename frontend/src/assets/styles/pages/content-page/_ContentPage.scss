@@ -1,0 +1,15 @@
+.content-page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  background-color: $mainBgColor;
+  color: $mainFontColor;
+  width: min-content;
+  align-self: center;
+  margin-top: 2rem;
+}

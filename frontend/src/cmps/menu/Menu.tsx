@@ -4,7 +4,7 @@ export default function Menu() {
   const navigate = useNavigate();
 
   const goToMainPage = () => navigate('/');
-  const goToGaleryPage = () => navigate('/galery');
+  const goToGaleryPage = () => navigate('/gallery');
   const goToMemoriesPage = () => navigate('/memories');
   return (
     <div className="menu-container">

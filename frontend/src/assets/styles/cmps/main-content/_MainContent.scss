@@ -1,14 +1,9 @@
 .content-container {
-  display: flex;
-  flex-direction: column;
-  background-color: $mainBgColor;
-  color: $mainFontColor;
-  width: min-content;
-  align-self: center;
-
   .content-sentence-title {
     align-self: center;
     font-weight: 800;
+    margin: 0;
+    margin-bottom: 1rem;
   }
 
   .content-years-title {

@@ -3,9 +3,9 @@
 @import 'setup/typography';
 @import 'setup/base';
 
-/** Content **/
-@import 'cmps/content/Slideshow';
-@import 'cmps/content/Content';
+/** Main Content **/
+@import 'cmps/main-content/Slideshow';
+@import 'cmps/main-content/MainContent';
 
 /** Header **/
 @import 'cmps/header/Header';
@@ -16,5 +16,5 @@
 /** Footer **/
 @import 'cmps/footer/Footer';
 
-/** Main Page **/
-@import 'pages/main-page/MainPage';
+/** Content Page **/
+@import 'pages/content-page/ContentPage';

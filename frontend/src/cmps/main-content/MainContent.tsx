@@ -1,6 +1,6 @@
 import Slideshow from './Slideshow';
 
-export default function Content() {
+export default function MainContent() {
   return (
     <div className="content-container">
       <h2 className="content-sentence-title">"placeholder sentence"</h2>

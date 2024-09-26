@@ -3,10 +3,6 @@
 @import 'setup/typography';
 @import 'setup/base';
 
-/** Main Content **/
-@import 'cmps/main-content/Slideshow';
-@import 'cmps/main-content/MainContent';
-
 /** Header **/
 @import 'cmps/header/Header';
 
@@ -15,6 +11,14 @@
 
 /** Footer **/
 @import 'cmps/footer/Footer';
+
+/** Main Content **/
+@import 'cmps/content/main-content/Slideshow';
+@import 'cmps/content/main-content/MainContent';
+
+/** Memories Content **/
+@import 'cmps/content/memories-content/MemoriesContent';
+@import 'cmps/content/memories-content/MemoryItem';
 
 /** Content Page **/
 @import 'pages/content-page/ContentPage';

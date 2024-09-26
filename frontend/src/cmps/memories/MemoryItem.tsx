@@ -1,3 +1,3 @@
 export default function MemoryItem() {
-  return <div>MemoryItem</div>;
+  return <div className="memory-item-container">MemoryItem</div>;
 }

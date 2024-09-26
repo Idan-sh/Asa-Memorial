@@ -1,3 +1,3 @@
 export default function Memories() {
-  return <div className="content-container">Memories</div>;
+  return <div className="memories-content-container">Memories</div>;
 }

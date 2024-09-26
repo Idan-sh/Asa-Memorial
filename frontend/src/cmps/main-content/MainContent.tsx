@@ -2,12 +2,12 @@ import Slideshow from './Slideshow';
 
 export default function MainContent() {
   return (
-    <div className="content-container">
-      <h2 className="content-sentence-title">"placeholder sentence"</h2>
+    <div className="main-content-container">
+      <h2 className="main-content-sentence-title">"placeholder sentence"</h2>
 
       <Slideshow />
-      <h2 className="content-years-title">1900-2010</h2>
-      <div className="content-remembering-section">
+      <h2 className="main-content-years-title">1900-2010</h2>
+      <div className="main-content-remembering-section">
         <h1>
           זוכרים את אסא
           <br />
@@ -19,7 +19,7 @@ export default function MainContent() {
           האב האוהב, החבר הטוב ...
         </h2>
       </div>
-      <div className="content-life-story">
+      <div className="main-content-life-story">
         <h2>סיפור חייו</h2>
         <p>
           בנם של יהודית ואמנון. נולד ביום כ"א באייר תשכ"ד (3.5.1964) בלוס

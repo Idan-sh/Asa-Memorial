@@ -1,22 +1,23 @@
-.content-container {
-  .content-sentence-title {
-    align-self: center;
+.main-content-container {
+  .main-content-sentence-title {
+    display: flex;
+    justify-content: center;
     font-weight: 800;
     margin: 0;
     margin-bottom: 1rem;
   }
 
-  .content-years-title {
-    align-self: center;
+  .main-content-years-title {
+    display: flex;
+    justify-content: center;
     font-size: 220%;
     margin: 1rem;
   }
 
-  .content-remembering-section {
+  .main-content-remembering-section {
     display: flex;
     flex-direction: column;
     background-color: darken($mainBgColor, 4);
-    display: flex;
     justify-content: center;
     text-align: center;
     padding: 2rem;
@@ -36,7 +37,7 @@
     }
   }
 
-  .content-life-story {
+  .main-content-life-story {
     display: flex;
     flex-direction: column;
     margin-top: 2rem;

@@ -13,9 +13,11 @@ export default function ContentPage({ content }: ContentPageProps) {
     <div className="content-page-container">
       <Header />
       <Menu />
-      {content === 'main' && <MainContent />}
-      {content === 'gallery' && <Gallery />}
-      {content === 'memories' && <Memories />}
+      <div className="content-container">
+        {content === 'main' && <MainContent />}
+        {content === 'gallery' && <Gallery />}
+        {content === 'memories' && <Memories />}
+      </div>
       <Footer />
     </div>
   );

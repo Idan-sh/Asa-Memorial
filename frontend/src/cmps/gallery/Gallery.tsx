@@ -1,3 +1,3 @@
 export default function Gallery() {
-  return <div className="content-container">Gallery</div>;
+  return <div className="gallery-content-container">Gallery</div>;
 }

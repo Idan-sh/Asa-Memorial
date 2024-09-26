@@ -15,8 +15,9 @@
 body {
   margin: 0;
   font-family: $mainFont;
-  font-weight: 400;
+  font-weight: 300;
   font-size: $mainFontSize;
+  line-height: 1.5em;
 }
 
 @media only screen and (max-width: 768px) {

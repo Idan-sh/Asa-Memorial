@@ -1,7 +1,7 @@
 /* Global Variables to use throughout the various SCSS files of the project */
 
 // ** Fonts **
-$mainFont: almoni-neue, sans-serif;
+$mainFont: 'almoni-neue', sans-serif;
 $secondaryFont: 'Unica One', sans-serif;
 $errorFont: 'Arvo', serif;
 
@@ -16,6 +16,7 @@ $errorColor: rgb(117, 26, 26);
 // ** Font Colors **
 $mainFontColor: black;
 $secondaryFontColor: white;
+$heighligtFontColor: rgb(23, 100, 97);
 
 // ** Background Colors **
 $mainBgColor: white;

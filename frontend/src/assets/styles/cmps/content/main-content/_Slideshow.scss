@@ -20,3 +20,19 @@
     object-fit: cover;
   }
 }
+
+.react-slideshow-container .default-nav:focus {
+  background: rgba(255, 255, 255, 0.6) !important;
+}
+
+.react-slideshow-container .default-nav:hover {
+  background: white !important;
+}
+
+.react-slideshow-container .nav:last-of-type {
+  right: 10px !important;
+}
+
+.react-slideshow-container .nav:first-of-type {
+  left: 10px !important;
+}

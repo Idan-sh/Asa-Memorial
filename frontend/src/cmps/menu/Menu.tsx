@@ -9,7 +9,7 @@ export default function Menu() {
   return (
     <div className="menu-container">
       <h3 onClick={goToMainPage}>דף הבית</h3>
-      <h3 onClick={goToGaleryPage}>גלרייה</h3>
+      <h3 onClick={goToGaleryPage}>גלריה</h3>
       <h3 onClick={goToMemoriesPage}>הקדשות וזכרונות</h3>
     </div>
   );

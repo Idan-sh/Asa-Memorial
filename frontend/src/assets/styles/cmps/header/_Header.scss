@@ -7,6 +7,12 @@
   padding-block: 0.6rem;
   color: $secondaryFontColor;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    justify-content: left;
+    padding-left: 1rem;
+    padding-block: 1rem;
+  }
 }
 
 .header-title-container {
@@ -22,5 +28,13 @@
 
   .header-icon {
     height: 40px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: row-reverse;
+
+    .header-icon {
+      height: 30px;
+    }
   }
 }

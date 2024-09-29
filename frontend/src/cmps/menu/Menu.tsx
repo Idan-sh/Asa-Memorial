@@ -6,6 +6,7 @@ export default function Menu() {
   const goToMainPage = () => navigate('/');
   const goToGaleryPage = () => navigate('/gallery');
   const goToMemoriesPage = () => navigate('/memories');
+
   return (
     <div className="menu-container">
       <h3 onClick={goToMainPage}>דף הבית</h3>

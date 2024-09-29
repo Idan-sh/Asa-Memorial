@@ -1,4 +1,4 @@
-import flameIcon from '/imgs/flame-icon.png';
+import flameIcon from '/icons/flame-icon.png';
 
 export default function MemoryItem() {
   return (

@@ -1,24 +1,53 @@
-.menu-container {
-  display: flex;
-  width: 100%;
-  height: fit-content;
-  background-color: darken($mainBgColor, 6);
-  color: $mainFontColor;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+.menu-options-container {
+  &.desktop {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    background-color: darken($mainBgColor, 6);
+    color: $mainFontColor;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 
-  h3 {
-    padding: 1rem;
-    padding-block: 1.4rem;
-    margin: 0;
-    font-weight: 400;
-    font-size: $menuFontSize;
-    cursor: pointer;
+    h3 {
+      padding: 1rem;
+      padding-block: 1.4rem;
+      margin: 0;
+      font-weight: 400;
+      font-size: $menuFontSize;
+      cursor: pointer;
 
-    &:hover {
-      background-color: darken($mainBgColor, 10);
+      &:hover {
+        background-color: darken($mainBgColor, 10);
+      }
+    }
+  }
+
+  &.mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    background-color: darken($mainBgColor, 6);
+    color: $mainFontColor;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+
+    h3 {
+      padding-block: 1.4rem;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      font-weight: 400;
+      font-size: $menuFontSize;
+      cursor: pointer;
+
+      &:hover {
+        background-color: darken($mainBgColor, 10);
+      }
     }
   }
 }

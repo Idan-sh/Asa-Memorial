@@ -15,7 +15,9 @@ export default function Header() {
     setIsMenuVisible(!isMobile);
   }, [isMobile]);
 
-  const toggleMenu = () => setIsMenuVisible(!isMenuVisible);
+  const toggleMenu = () => {
+    if (isMobile) setIsMenuVisible(!isMenuVisible);
+  };
 
   return (
     <div className="header-container">

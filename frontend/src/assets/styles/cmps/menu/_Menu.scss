@@ -1,4 +1,7 @@
 .menu-options-container {
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+
   &.desktop {
     display: flex;
     width: 100%;
@@ -25,6 +28,8 @@
   }
 
   &.mobile {
+    max-height: 0;
+
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -35,6 +40,10 @@
     justify-content: center;
     box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.2);
     z-index: 1;
+
+    &.open {
+      max-height: 200px;
+    }
 
     h3 {
       padding-block: 1.4rem;

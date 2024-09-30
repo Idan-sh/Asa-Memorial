@@ -3,17 +3,13 @@ import flameIcon from '/icons/flame-icon.png';
 import menuIcon from '/icons/menu-bar.png';
 import { useScreenSize } from '../../context/ScreenSizeProvider';
 import Menu from '../menu/Menu';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function Header() {
   const navigate = useNavigate();
   const { isMobile } = useScreenSize();
 
-  const [isMenuVisible, setIsMenuVisible] = useState(!isMobile);
-
-  useEffect(() => {
-    setIsMenuVisible(!isMobile);
-  }, [isMobile]);
+  const [isMenuVisible, setIsMenuVisible] = useState(() => !isMobile);
 
   const toggleMenu = () => {
     if (isMobile) setIsMenuVisible(!isMenuVisible);
@@ -32,7 +28,7 @@ export default function Header() {
           <div className="header-title">אסא גיל-עד ז״ל</div>
         </div>
       </div>
-      {isMenuVisible && <Menu onOptionClick={toggleMenu} />}
+      <Menu onOptionClick={toggleMenu} isMenuVisible={isMenuVisible} />
     </div>
   );
 }

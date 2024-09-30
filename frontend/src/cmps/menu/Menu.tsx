@@ -3,8 +3,9 @@ import { useScreenSize } from '../../context/ScreenSizeProvider';
 
 interface MenuProps {
   onOptionClick: () => void;
+  isMenuVisible: boolean;
 }
-export default function Menu({ onOptionClick }: MenuProps) {
+export default function Menu({ onOptionClick, isMenuVisible }: MenuProps) {
   const navigate = useNavigate();
   const { isMobile } = useScreenSize();
 
@@ -15,7 +16,7 @@ export default function Menu({ onOptionClick }: MenuProps) {
   return (
     <div className={'menu-container'}>
       <div
-        className={`menu-options-container ${isMobile ? 'mobile' : 'desktop'}`}
+        className={`menu-options-container ${isMobile ? 'mobile' : 'desktop'} ${isMenuVisible ? 'open' : ''}`}
         onClick={onOptionClick}
       >
         <h3 onClick={goToMainPage}>דף הבית</h3>

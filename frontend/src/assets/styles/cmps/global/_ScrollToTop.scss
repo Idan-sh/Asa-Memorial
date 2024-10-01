@@ -1,0 +1,46 @@
+.scroll-to-top-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+
+  .scroll-to-top-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    color: #fff;
+    font-size: 2rem;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition:
+      opacity 0.3s ease,
+      background-color 0.3s ease;
+    opacity: 0.7;
+
+    opacity: 0; // Initially hidden
+    transition:
+      opacity 0.5s ease-in-out,
+      visibility 0.5s ease-in-out,
+      background-color 0.3s ease;
+    visibility: hidden;
+
+    img {
+      height: 26px;
+      filter: brightness(0) invert(1);
+    }
+
+    &:hover {
+      background-color: #555;
+      opacity: 1;
+    }
+
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

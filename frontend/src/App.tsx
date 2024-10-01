@@ -1,6 +1,7 @@
 import './assets/styles/main.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ContentPage from './pages/ContentPage';
+import ScrollToTop from './cmps/global/ScrollToTop';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Route path="/gallery" element={<ContentPage content="gallery" />} />
         <Route path="/memories" element={<ContentPage content="memories" />} />
       </Routes>
+      <ScrollToTop />
     </BrowserRouter>
   );
 }

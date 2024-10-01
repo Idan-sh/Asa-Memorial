@@ -3,6 +3,9 @@
 @import 'setup/typography';
 @import 'setup/base';
 
+/** Global **/
+@import 'cmps/global/ScrollToTop';
+
 /** Header **/
 @import 'cmps/header/Header';
 

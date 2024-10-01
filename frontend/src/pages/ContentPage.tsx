@@ -19,9 +19,8 @@ export default function ContentPage({ content }: ContentPageProps) {
             <Memories />
           </div>
         )}
-
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,10 @@
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $headerBgColor;
+  height: fit-content;
+  padding-block: 1.2rem;
+  color: $secondaryFontColor;
+  font-weight: 600;
+}

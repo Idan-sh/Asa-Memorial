@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #333;
+    background-color: darken($btnColor, 10);
     color: #fff;
     font-size: 2rem;
     border: none;
@@ -34,8 +34,7 @@
     }
 
     &:hover {
-      background-color: #555;
-      opacity: 1;
+      background-color: lighten($btnColor, 0);
     }
 
     &.visible {

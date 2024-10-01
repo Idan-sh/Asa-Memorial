@@ -14,9 +14,14 @@ export default function ContentPage({ content }: ContentPageProps) {
       <div className="content-container">
         {content === 'main' && <MainContent />}
         {content === 'gallery' && <Gallery />}
-        {content === 'memories' && <Memories />}
+        {(content === 'memories' || content === 'main') && (
+          <div className="content-page-memories">
+            <Memories />
+          </div>
+        )}
+
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 .main-content-container {
   height: 100%;
   width: 100%;
+  margin-top: 2rem;
 
   .main-content-sentence-title {
     display: flex;
@@ -48,6 +49,7 @@
     margin-inline: 4rem;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 5rem;
 
     h2 {
       font-size: 150%;

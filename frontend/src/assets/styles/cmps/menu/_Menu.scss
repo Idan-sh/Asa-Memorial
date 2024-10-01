@@ -1,6 +1,7 @@
 .menu-options-container {
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
+  position: sticky;
 
   &.desktop {
     display: flex;

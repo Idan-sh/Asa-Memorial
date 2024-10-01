@@ -1,6 +1,6 @@
 export default function RememberingSection() {
   return (
-    <div>
+    <div className="remembering-section-container">
       <h1>
         זוכרים את אסא
         <br />

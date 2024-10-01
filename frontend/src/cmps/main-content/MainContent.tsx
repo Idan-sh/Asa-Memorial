@@ -9,9 +9,7 @@ export default function MainContent() {
 
       <Slideshow />
       <h2 className="main-content-years-title">1900-2010</h2>
-      <div className="main-content-remembering-section">
-        <RememberingSection />
-      </div>
+      <RememberingSection />
       <div className="main-content-life-story">
         <h2>סיפור חייו</h2>
         <LifeStory />

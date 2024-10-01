@@ -1,0 +1,23 @@
+.remembering-section-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+  background-color: darken($mainBgColor, 4);
+  border-radius: 5px;
+  padding: 2rem;
+  margin-top: 2rem;
+
+  h1 {
+    font-size: 120%;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 120%;
+    font-weight: 800;
+    margin: 0;
+  }
+}

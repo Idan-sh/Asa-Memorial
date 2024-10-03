@@ -3,9 +3,10 @@ import MainContent from '../cmps/main-content/MainContent';
 import Footer from '../cmps/footer/Footer';
 import Gallery from '../cmps/gallery/Gallery';
 import Memories from '../cmps/memories/MemoriesContent';
+import AddMemoryForm from '../cmps/memories/AddMemoryForm';
 
 interface ContentPageProps {
-  content: 'main' | 'gallery' | 'memories';
+  content: 'main' | 'gallery' | 'memories' | 'add-memory';
 }
 export default function ContentPage({ content }: ContentPageProps) {
   return (
@@ -19,6 +20,7 @@ export default function ContentPage({ content }: ContentPageProps) {
             <Memories />
           </div>
         )}
+        {content === 'add-memory' && <AddMemoryForm />}
       </div>
       <Footer />
     </div>

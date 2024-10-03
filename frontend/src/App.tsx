@@ -10,6 +10,10 @@ function App() {
         <Route path="/" element={<ContentPage content="main" />} />
         <Route path="/gallery" element={<ContentPage content="gallery" />} />
         <Route path="/memories" element={<ContentPage content="memories" />} />
+        <Route
+          path="/add-memory"
+          element={<ContentPage content="add-memory" />}
+        />
       </Routes>
       <ScrollToTop />
     </BrowserRouter>

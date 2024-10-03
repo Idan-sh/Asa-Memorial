@@ -1,6 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import MemoryItem from './MemoryItem';
 
 export default function MemoriesContent() {
+  const navigate = useNavigate();
+  const goToAddMemoryForm = () => navigate('/add-memory');
+
   return (
     <div className="memories-content-container">
       <h2>זכרונות והקדשות</h2>
@@ -11,7 +15,7 @@ export default function MemoriesContent() {
         <MemoryItem />
       </div>
       <div className="memories-content-add-memory-container">
-        <button>Create a memory</button>
+        <button onClick={goToAddMemoryForm}>Create a memory</button>
       </div>
     </div>
   );

@@ -94,6 +94,17 @@
       }
     }
 
+    .add-memory-form-submit-container {
+      display: flex;
+      justify-content: center;
+
+      button {
+        font-size: $mainFontSize;
+        padding-block: 10px;
+        padding-inline: 100px;
+      }
+    }
+
     .hidden {
       visibility: hidden;
     }

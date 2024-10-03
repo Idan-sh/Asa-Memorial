@@ -20,7 +20,7 @@ type RelationCategory = keyof typeof relationOptions;
 
 export default function AddMemoryForm() {
   const messageTextareaRef = useRef<HTMLTextAreaElement>(null);
-  const maxMessageCharacters = 10;
+  const maxMessageCharacters = 4000;
   const [messageCharCount, setMessageCharCount] = useState(0);
 
   const [selectedCategory, setSelectedCategory] = useState<
@@ -192,7 +192,10 @@ export default function AddMemoryForm() {
             {maxMessageCharacters - messageCharCount}
           </div>
         </div>
-        <div className="add-memory-form-pictures"></div>
+        <div className="add-memory-form-pictures-upload-container"></div>
+        <div className="add-memory-form-submit-container">
+          <button type="submit">שלח</button>
+        </div>
       </form>
     </div>
   );

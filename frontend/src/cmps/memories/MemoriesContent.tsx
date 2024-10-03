@@ -10,6 +10,9 @@ export default function MemoriesContent() {
         <MemoryItem />
         <MemoryItem />
       </div>
+      <div className="memories-content-add-memory-container">
+        <button>Create a memory</button>
+      </div>
     </div>
   );
 }

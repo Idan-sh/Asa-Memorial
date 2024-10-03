@@ -33,7 +33,6 @@
     textarea {
       resize: none;
       min-height: 60px;
-      max-height: 1000px;
       width: 100%;
     }
 
@@ -44,7 +43,22 @@
     }
 
     .add-memory-form-message-container {
+      position: relative;
       width: 100%;
+
+      .add-memory-form-message-textarea {
+        position: relative;
+      }
+
+      .add-memory-form-message-textarea-counter {
+        position: absolute;
+        bottom: 10px;
+        left: 14px;
+        font-size: 0.8rem;
+        color: gray;
+        text-align: right;
+        pointer-events: none;
+      }
     }
   }
 }

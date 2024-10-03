@@ -1,7 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function AddMemoryForm() {
   const messageTextareaRef = useRef<HTMLTextAreaElement>(null);
+  const maxMessageCharacters = 10;
+  const [messageCharCount, setMessageCharCount] = useState(0);
 
   const handleMessageInput = () => {
     const textarea = messageTextareaRef.current;
@@ -20,6 +22,8 @@ export default function AddMemoryForm() {
       } else {
         textarea.style.height = `${scrollHeight}px`; // Otherwise, set it based on scrollHeight
       }
+
+      setMessageCharCount(textarea.value.length); // Update the character count
     }
   };
 
@@ -29,14 +33,47 @@ export default function AddMemoryForm() {
     const textarea = messageTextareaRef.current;
 
     if (textarea) {
-      const maxHeight = parseInt(
-        window.getComputedStyle(textarea).maxHeight,
-        10
-      );
+      const currentLength = textarea.value.length;
 
-      // If textarea reached max height, prevent new line input (Enter key)
-      if (textarea.scrollHeight >= maxHeight && event.key === 'Enter') {
-        event.preventDefault(); // Prevent the new line
+      // Allow control keys such as Backspace, Delete, Arrow keys
+      const allowedKeys = [
+        'Backspace',
+        'Delete',
+        'ArrowLeft',
+        'ArrowRight',
+        'ArrowUp',
+        'ArrowDown',
+      ];
+
+      // If character limit is reached and the key pressed is not allowed, prevent further input
+      if (
+        currentLength >= maxMessageCharacters &&
+        !allowedKeys.includes(event.key)
+      ) {
+        event.preventDefault(); // Prevent further input
+      }
+    }
+  };
+
+  const handleMessagePaste = (
+    event: React.ClipboardEvent<HTMLTextAreaElement>
+  ) => {
+    const textarea = messageTextareaRef.current;
+
+    if (textarea) {
+      const pastedText = event.clipboardData.getData('text'); // Get pasted text
+      const currLen = textarea.value.length;
+      const charsLeft = maxMessageCharacters - currLen;
+
+      // If the pasted text would exceed the character limit
+      if (pastedText.length > charsLeft) {
+        event.preventDefault(); // Prevent default paste behavior
+
+        // Only paste as many characters as allowed
+        const textToPaste = pastedText.slice(0, charsLeft);
+        textarea.value += textToPaste;
+        setMessageCharCount(textarea.value.length); // Update character count
+        handleMessageInput(); // Adjust height after paste
       }
     }
   };
@@ -74,7 +111,11 @@ export default function AddMemoryForm() {
             ref={messageTextareaRef}
             onInput={handleMessageInput}
             onKeyDown={handleMessageKeyDown}
+            onPaste={handleMessagePaste}
           />
+          <div className="add-memory-form-message-textarea-counter">
+            {maxMessageCharacters - messageCharCount}
+          </div>
         </div>
         <div className="add-memory-form-pictures"></div>
       </form>

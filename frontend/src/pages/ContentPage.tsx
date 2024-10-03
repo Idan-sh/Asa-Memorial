@@ -2,7 +2,7 @@ import Header from '../cmps/header/Header';
 import MainContent from '../cmps/main-content/MainContent';
 import Footer from '../cmps/footer/Footer';
 import Gallery from '../cmps/gallery/Gallery';
-import Memories from '../cmps/memories/Memories';
+import Memories from '../cmps/memories/MemoriesContent';
 
 interface ContentPageProps {
   content: 'main' | 'gallery' | 'memories';

@@ -1,6 +1,6 @@
 import MemoryItem from './MemoryItem';
 
-export default function Memories() {
+export default function MemoriesContent() {
   return (
     <div className="memories-content-container">
       <h2>זכרונות והקדשות</h2>

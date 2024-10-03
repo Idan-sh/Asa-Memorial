@@ -20,6 +20,8 @@ type RelationCategory = keyof typeof relationOptions;
 
 export default function AddMemoryForm() {
   const messageTextareaRef = useRef<HTMLTextAreaElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const maxMessageCharacters = 4000;
   const [messageCharCount, setMessageCharCount] = useState(0);
 
@@ -27,6 +29,9 @@ export default function AddMemoryForm() {
     RelationCategory | ''
   >('');
   const [selectedRelation, setSelectedRelation] = useState('');
+
+  const [uploadedImages, setUploadedImages] = useState<File[]>([]);
+  const [dragging, setDragging] = useState(false);
 
   const handleMessageInput = () => {
     const textarea = messageTextareaRef.current;
@@ -114,6 +119,31 @@ export default function AddMemoryForm() {
     setSelectedRelation(event.target.value);
   };
 
+  const handleFileDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setDragging(false);
+    const files = Array.from(event.dataTransfer.files);
+    setUploadedImages((prevImages) => [...prevImages, ...files]);
+  };
+
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setDragging(false);
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(event.target.files || []);
+    setUploadedImages((prevImages) => [...prevImages, ...files]);
+  };
+
+  const handleRemoveImage = (index: number) => {
+    setUploadedImages((prevImages) => prevImages.filter((_, i) => i !== index));
+  };
+
   useEffect(() => {
     handleMessageInput(); // Adjust the height based on the initial content
   }, []);
@@ -122,6 +152,7 @@ export default function AddMemoryForm() {
     <div className="add-memory-container">
       <h2>זיכרון חדש</h2>
       <form className="add-memory-form">
+        {/* Names input */}
         <div className="add-memory-form-names-container">
           <input
             className="add-memory-form-first-name-input"
@@ -139,6 +170,8 @@ export default function AddMemoryForm() {
             placeholder="שם משפחה (אופציונאלי)"
           />
         </div>
+
+        {/* Relation input */}
         <div className="add-memory-form-relation-container">
           <h3 className="add-memory-form-relation-title">מערכת יחסים:</h3>
 
@@ -179,6 +212,8 @@ export default function AddMemoryForm() {
             </select>
           </div>
         </div>
+
+        {/* Message input */}
         <div className="add-memory-form-message-container">
           <textarea
             className="add-memory-form-message-textarea"
@@ -192,7 +227,46 @@ export default function AddMemoryForm() {
             {maxMessageCharacters - messageCharCount}
           </div>
         </div>
-        <div className="add-memory-form-pictures-upload-container"></div>
+
+        {/* Image Upload Box */}
+        <div
+          className={`add-memory-form-pictures-upload-container ${dragging ? 'dragging' : ''}`}
+          onDrop={handleFileDrop}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onClick={() => fileInputRef.current?.click()}
+        >
+          <p>
+            {dragging
+              ? 'שחרר כדי להעלות תמונות'
+              : 'גרור ושחרר תמונות כאן או לחץ להעלאה'}
+          </p>
+          <input
+            ref={fileInputRef}
+            type="file"
+            multiple
+            accept="image/*"
+            onChange={handleFileChange}
+            style={{ display: 'none' }}
+          />
+        </div>
+
+        {/* Display uploaded images */}
+        <div className="uploaded-images-preview">
+          {uploadedImages.map((file, index) => (
+            <div key={index} className="image-preview">
+              <button
+                type="button"
+                className="remove-image-button"
+                onClick={() => handleRemoveImage(index)}
+              >
+                ×
+              </button>
+              <img src={URL.createObjectURL(file)} alt={`Uploaded ${index}`} />
+            </div>
+          ))}
+        </div>
+
         <div className="add-memory-form-submit-container">
           <button type="submit">שלח</button>
         </div>

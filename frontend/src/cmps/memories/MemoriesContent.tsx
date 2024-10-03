@@ -1,7 +1,11 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import MemoryItem from './MemoryItem';
 
-export default function MemoriesContent() {
+interface MemoriesContentProps {
+  limit?: number;
+}
+
+export default function MemoriesContent({ limit }: MemoriesContentProps) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -14,6 +18,7 @@ export default function MemoriesContent() {
     <div className="memories-content-container">
       <h2>זכרונות והקדשות</h2>
       <div className="memories-content-items">
+        {/* Need to limit the number of memory items, according to a props variable (which will be optional) */}
         <MemoryItem />
         <MemoryItem />
         <MemoryItem />

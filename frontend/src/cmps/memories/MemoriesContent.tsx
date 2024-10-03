@@ -1,9 +1,14 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import MemoryItem from './MemoryItem';
 
 export default function MemoriesContent() {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const goToAddMemoryForm = () => navigate('/add-memory');
+  const goToMemoriesContent = () => navigate('/memories');
+
+  const isMainContent = location.pathname !== '/memories';
 
   return (
     <div className="memories-content-container">
@@ -15,7 +20,11 @@ export default function MemoriesContent() {
         <MemoryItem />
       </div>
       <div className="memories-content-add-memory-container">
-        <button onClick={goToAddMemoryForm}>הוסף הקדשה / זיכרון</button>
+        <button
+          onClick={isMainContent ? goToMemoriesContent : goToAddMemoryForm}
+        >
+          {isMainContent ? 'ראה עוד זכרונות והקדשות' : 'הוסף הקדשה / זיכרון'}
+        </button>
       </div>
     </div>
   );

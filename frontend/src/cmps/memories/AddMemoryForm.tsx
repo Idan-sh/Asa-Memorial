@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useScreenSize } from '../../context/ScreenSizeProvider';
 
 const relationOptions = {
   family: [
@@ -23,6 +24,10 @@ export default function AddMemoryForm() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const maxMessageCharacters = 4000;
+  const maxImageUploads = 5;
+
+  const { isMobile } = useScreenSize();
+
   const [messageCharCount, setMessageCharCount] = useState(0);
 
   const [selectedCategory, setSelectedCategory] = useState<
@@ -137,7 +142,12 @@ export default function AddMemoryForm() {
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || []);
-    setUploadedImages((prevImages) => [...prevImages, ...files]);
+
+    if (uploadedImages.length + files.length <= maxImageUploads) {
+      setUploadedImages((prevImages) => [...prevImages, ...files]);
+    } else {
+      alert(`ניתן להעלות לכל היותר ${maxImageUploads} תמונות`);
+    }
   };
 
   const handleRemoveImage = (index: number) => {
@@ -239,7 +249,9 @@ export default function AddMemoryForm() {
           <p>
             {dragging
               ? 'שחרר כדי להעלות תמונות'
-              : 'גרור ושחרר תמונות כאן או לחץ להעלאה'}
+              : isMobile
+                ? 'לחץ להעלאה'
+                : 'גרור ושחרר תמונות כאן או לחץ להעלאה'}
           </p>
           <input
             ref={fileInputRef}

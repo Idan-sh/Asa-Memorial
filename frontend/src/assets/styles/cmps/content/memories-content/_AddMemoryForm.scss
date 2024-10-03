@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    gap: 1.5rem;
+    gap: 1.4rem;
     width: 100%;
 
     input,
@@ -19,14 +19,13 @@
       font-family: $mainFont;
       font-size: 0.9 * $mainFontSize;
       color: $mainFontColor;
-      background-color: darken($mainBgColor, 10);
+      background-color: darken($mainBgColor, 4);
       border-radius: 2px;
       padding-inline: 14px;
       padding-block: 10px;
       margin: 0;
       width: 100%;
-      border-color: rgb(133, 133, 133);
-      border-width: 1px;
+      border: 1px solid #aaa;
       box-sizing: border-box;
     }
 
@@ -110,6 +109,7 @@
       text-align: center;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      justify-content: center;
 
       &.dragging {
         background-color: darken($mainBgColor, 8);
@@ -124,7 +124,6 @@
     .uploaded-images-preview {
       display: flex;
       gap: 10px;
-      justify-content: center;
       flex-wrap: wrap;
 
       .image-preview {

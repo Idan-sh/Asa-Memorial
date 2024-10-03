@@ -47,10 +47,10 @@
     }
 
     .add-memory-form-relation-container {
-      position: relative;
       display: flex;
       justify-content: space-between;
       font-weight: 400;
+      width: 100%;
 
       @media (max-width: 768px) {
         flex-direction: column;
@@ -58,8 +58,23 @@
       }
     }
 
+    .add-memory-form-relation-selections {
+      display: flex;
+      gap: 2rem;
+      margin-left: 50%;
+
+      @media (max-width: 768px) {
+        margin: 0;
+        transform: none;
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
     h3 {
       margin: 0;
+      min-width: fit-content;
+      margin-left: 2rem;
     }
 
     label {

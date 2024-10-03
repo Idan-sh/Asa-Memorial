@@ -184,42 +184,43 @@ export default function AddMemoryForm() {
         {/* Relation input */}
         <div className="add-memory-form-relation-container">
           <h3 className="add-memory-form-relation-title">מערכת יחסים:</h3>
+          <div className="add-memory-form-relation-selections">
+            {/* General category dropdown */}
+            <div className="add-memory-form-relation-category">
+              <label htmlFor="category-select">קטגוריה:</label>
+              <select
+                id="category-select"
+                value={selectedCategory}
+                onChange={handleCategoryChange}
+              >
+                <option value="">בחר קטגוריה...</option>
+                <option value="family">משפחה</option>
+                <option value="friend">חברים</option>
+                <option value="acquaintance">מכרים</option>
+              </select>
+            </div>
 
-          {/* General category dropdown */}
-          <div className="add-memory-form-relation-category">
-            <label htmlFor="category-select">קטגוריה:</label>
-            <select
-              id="category-select"
-              value={selectedCategory}
-              onChange={handleCategoryChange}
+            {/* Specific relation dropdown based on the selected category */}
+            <div
+              className={`add-memory-form-relation-specific ${
+                selectedCategory === '' ? 'hidden' : ''
+              }`}
             >
-              <option value="">בחר קטגוריה...</option>
-              <option value="family">משפחה</option>
-              <option value="friend">חברים</option>
-              <option value="acquaintance">מכרים</option>
-            </select>
-          </div>
-
-          {/* Specific relation dropdown based on the selected category */}
-          <div
-            className={`add-memory-form-relation-specific ${
-              selectedCategory === '' ? 'hidden' : ''
-            }`}
-          >
-            <label htmlFor="relation-select">מערכת יחסים:</label>
-            <select
-              id="relation-select"
-              value={selectedRelation}
-              onChange={handleRelationChange}
-            >
-              <option value="">בחר מערכת יחסים...</option>
-              {selectedCategory &&
-                relationOptions[selectedCategory]?.map((relation) => (
-                  <option key={relation} value={relation}>
-                    {relation}
-                  </option>
-                ))}
-            </select>
+              <label htmlFor="relation-select">מערכת יחסים:</label>
+              <select
+                id="relation-select"
+                value={selectedRelation}
+                onChange={handleRelationChange}
+              >
+                <option value="">בחר מערכת יחסים...</option>
+                {selectedCategory &&
+                  relationOptions[selectedCategory]?.map((relation) => (
+                    <option key={relation} value={relation}>
+                      {relation}
+                    </option>
+                  ))}
+              </select>
+            </div>
           </div>
         </div>
 

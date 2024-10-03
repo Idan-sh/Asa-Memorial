@@ -1,9 +1,32 @@
 import { useEffect, useRef, useState } from 'react';
 
+const relationOptions = {
+  family: [
+    'אבא',
+    'אמא',
+    'בן',
+    'בת',
+    'בן דוד',
+    'בת דוד',
+    'דוד',
+    'דודה',
+    'אחיין',
+    'אחיינית',
+  ],
+  friend: ['חבר', 'חברה', 'חבר לרכיבות', 'חברה לרכיבות'],
+  acquaintance: ['שותף לעבודה', 'שכן'],
+};
+type RelationCategory = keyof typeof relationOptions;
+
 export default function AddMemoryForm() {
   const messageTextareaRef = useRef<HTMLTextAreaElement>(null);
   const maxMessageCharacters = 10;
   const [messageCharCount, setMessageCharCount] = useState(0);
+
+  const [selectedCategory, setSelectedCategory] = useState<
+    RelationCategory | ''
+  >('');
+  const [selectedRelation, setSelectedRelation] = useState('');
 
   const handleMessageInput = () => {
     const textarea = messageTextareaRef.current;
@@ -78,6 +101,19 @@ export default function AddMemoryForm() {
     }
   };
 
+  const handleCategoryChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setSelectedCategory(event.target.value as RelationCategory);
+    setSelectedRelation(''); // Reset relation when category changes
+  };
+
+  const handleRelationChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setSelectedRelation(event.target.value);
+  };
+
   useEffect(() => {
     handleMessageInput(); // Adjust the height based on the initial content
   }, []);
@@ -100,10 +136,49 @@ export default function AddMemoryForm() {
           <input
             className="add-memory-form-last-name-input"
             type="text"
-            placeholder="שם משפחה"
+            placeholder="שם משפחה (אופציונאלי)"
           />
         </div>
-        <div className="add-memory-form-relation"></div>
+        <div className="add-memory-form-relation-container">
+          <h3 className="add-memory-form-relation-title">מערכת יחסים:</h3>
+
+          {/* General category dropdown */}
+          <div className="add-memory-form-relation-category">
+            <label htmlFor="category-select">קטגוריה:</label>
+            <select
+              id="category-select"
+              value={selectedCategory}
+              onChange={handleCategoryChange}
+            >
+              <option value="">בחר קטגוריה...</option>
+              <option value="family">משפחה</option>
+              <option value="friend">חברים</option>
+              <option value="acquaintance">מכרים</option>
+            </select>
+          </div>
+
+          {/* Specific relation dropdown based on the selected category */}
+          <div
+            className={`add-memory-form-relation-specific ${
+              selectedCategory === '' ? 'hidden' : ''
+            }`}
+          >
+            <label htmlFor="relation-select">מערכת יחסים:</label>
+            <select
+              id="relation-select"
+              value={selectedRelation}
+              onChange={handleRelationChange}
+            >
+              <option value="">בחר מערכת יחסים...</option>
+              {selectedCategory &&
+                relationOptions[selectedCategory]?.map((relation) => (
+                  <option key={relation} value={relation}>
+                    {relation}
+                  </option>
+                ))}
+            </select>
+          </div>
+        </div>
         <div className="add-memory-form-message-container">
           <textarea
             className="add-memory-form-message-textarea"

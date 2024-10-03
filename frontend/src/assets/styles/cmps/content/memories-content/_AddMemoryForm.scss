@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    gap: 10px;
+    gap: 20px;
     width: 100%;
 
     input,
@@ -42,6 +42,39 @@
       gap: 20px;
     }
 
+    .add-memory-form-relation-container {
+      position: relative;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      font-weight: 400;
+    }
+
+    h3 {
+      top: 50%; /* Position it 50% from the top */
+      transform: translateY(-50%); /* Center it vertically */
+      right: 0;
+      margin: 0;
+      position: absolute;
+    }
+
+    select {
+      padding: 5px;
+    }
+
+    #category-select {
+      margin-right: 10px;
+    }
+
+    #relation-select {
+      margin-right: 10px;
+    }
+    @media (max-width: 768px) {
+      h3 {
+        position: relative;
+      }
+    }
+
     .add-memory-form-message-container {
       position: relative;
       width: 100%;
@@ -59,6 +92,10 @@
         text-align: right;
         pointer-events: none;
       }
+    }
+
+    .hidden {
+      visibility: hidden;
     }
   }
 }

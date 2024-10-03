@@ -81,3 +81,4 @@ temp/
 *.sublime-workspace
 /.vscode/
 .idea/
+.DS_Store

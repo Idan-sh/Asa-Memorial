@@ -15,7 +15,7 @@ export default function MemoriesContent() {
         <MemoryItem />
       </div>
       <div className="memories-content-add-memory-container">
-        <button onClick={goToAddMemoryForm}>Create a memory</button>
+        <button onClick={goToAddMemoryForm}>הוסף הקדשה / זיכרון</button>
       </div>
     </div>
   );

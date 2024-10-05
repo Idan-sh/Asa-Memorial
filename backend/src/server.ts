@@ -68,7 +68,7 @@ app.get('/api/memories', async (req, res) => {
     }
 
     const result = await pool.query(query, values);
-    res.status(200).json({success:true, data: result.rows});
+    res.status(200).json({success:true, memories: result.rows});
   } catch (err) {
     console.error('Error fetching memories from the database', err);
     res.status(500).json({ success: false, message: 'Database error' });

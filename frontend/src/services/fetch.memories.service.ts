@@ -10,13 +10,13 @@ interface fetchMemoriesResult {
 
 export async function fetchMemories(limit?: number) : Promise<fetchMemoriesResult>{
     try {
-        const response = await axios.get<MemoryItemData[]>(fetchMemoriesUrl, {
-            params: limit,
+        const response = await axios.get<fetchMemoriesResult>(fetchMemoriesUrl, {
+            params: { limit },
             headers: {
                 "Content-Type": "application/json",
             }
         });
-        return {success: true, memories: response.data};
+        return {success: true, memories: response.data.memories};
     } catch (err) {
         const errorMessage = axios.isAxiosError(err) && err.response
         ? `Error: ${err.response.statusText}`

@@ -1,7 +1,7 @@
 export interface MemoryItemData {
     id: string;
-    firstName: string;
-    lastName: string;
+    first_name: string;
+    last_name: string;
     nickname: string;
     relation: string;
     message: string;

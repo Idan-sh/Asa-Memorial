@@ -19,7 +19,7 @@
       font-family: $mainFont;
       font-size: 0.9 * $mainFontSize;
       color: $mainFontColor;
-      background-color: darken($mainBgColor, 4);
+      background-color: $seconaryBgColor;
       border-radius: 2px;
       padding-inline: 14px;
       padding-block: 10px;

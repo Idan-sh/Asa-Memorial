@@ -4,11 +4,15 @@ import Footer from '../cmps/footer/Footer';
 import Gallery from '../cmps/gallery/Gallery';
 import Memories from '../cmps/memories/MemoriesContent';
 import AddMemoryForm from '../cmps/memories/AddMemoryForm';
+import FullMemoryContent from '../cmps/memories/FullMemoryContent';
+import { useParams } from 'react-router-dom';
 
 interface ContentPageProps {
-  content: 'main' | 'gallery' | 'memories' | 'add-memory';
+  content: 'main' | 'gallery' | 'memories' | 'add-memory' | 'memory';
 }
 export default function ContentPage({ content }: ContentPageProps) {
+  const { memoryId } = useParams();
+
   return (
     <div className="content-page-container">
       <Header />
@@ -21,6 +25,7 @@ export default function ContentPage({ content }: ContentPageProps) {
           </div>
         )}
         {content === 'add-memory' && <AddMemoryForm />}
+        {content === 'memory' && <FullMemoryContent memoryId={memoryId} />}
       </div>
       <Footer />
     </div>

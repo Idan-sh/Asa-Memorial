@@ -14,6 +14,10 @@ function App() {
           path="/add-memory"
           element={<ContentPage content="add-memory" />}
         />
+        <Route
+          path="/memory/:memoryId"
+          element={<ContentPage content="memory" />}
+        />
       </Routes>
       <ScrollToTop />
     </BrowserRouter>

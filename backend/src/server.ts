@@ -54,6 +54,27 @@ app.post('/api/add-memory', async (req, res) => {
   }
 });
 
+app.get('/api/memories', async (req, res) => {
+  const {limit} = req.query;
+
+  try {
+    let query = 'SELECT * FROM memories';
+    const values = [];
+
+    // If a limit is specified, ensure it's a number and return that number of random memories
+    if (typeof limit === 'string' && !isNaN(parseInt(limit, 10))) {
+      query += ' ORDER BY RANDOM() LIMIT $1';
+      values.push(parseInt(limit, 10));
+    }
+
+    const result = await pool.query(query, values);
+    res.status(200).json({success:true, data: result.rows});
+  } catch (err) {
+    console.error('Error fetching memories from the database', err);
+    res.status(500).json({ success: false, message: 'Database error' });
+  }
+})
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

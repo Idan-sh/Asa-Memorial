@@ -4,9 +4,11 @@ import { MemoryItemData } from '../../models/MemoryItem.model';
 import { fetchMemories } from '../../services/fetch.memories.service';
 import MemoryItem from './MemoryItem';
 
-export default function MemoriesContent() {
-  const limitOfMemoriesToDisplay = 6;
+interface MemoriesContentProps {
+  limit?: number;
+}
 
+export default function MemoriesContent({ limit }: MemoriesContentProps) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -27,7 +29,7 @@ export default function MemoriesContent() {
     try {
       setIsLoading(true);
       console.log('fetching memories from server.');
-      const result = await fetchMemories(limitOfMemoriesToDisplay);
+      const result = await fetchMemories(limit);
 
       if (result.success) {
         setMemories(result.memories || []);

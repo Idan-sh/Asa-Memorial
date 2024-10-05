@@ -17,13 +17,14 @@ export default function ContentPage({ content }: ContentPageProps) {
     <div className="content-page-container">
       <Header />
       <div className="content-container">
-        {content === 'main' && <MainContent />}
-        {content === 'gallery' && <Gallery />}
-        {(content === 'memories' || content === 'main') && (
-          <div className="content-page-memories">
-            <Memories />
-          </div>
+        {content === 'main' && (
+          <>
+            <MainContent />
+            <Memories limit={6} />
+          </>
         )}
+        {content === 'gallery' && <Gallery />}
+        {content === 'memories' && <Memories />}
         {content === 'add-memory' && <AddMemoryForm />}
         {content === 'memory' && <FullMemoryContent memoryId={memoryId} />}
       </div>

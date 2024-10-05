@@ -1,25 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { useScreenSize } from '../../context/ScreenSizeProvider';
-
-const relationOptions = {
-  family: [
-    'אבא',
-    'אמא',
-    'בן',
-    'בת',
-    'בן דוד',
-    'בת דוד',
-    'דוד',
-    'דודה',
-    'אחיין',
-    'אחיינית',
-  ],
-  friend: ['חבר', 'חברה', 'חבר לרכיבות', 'חברה לרכיבות'],
-  acquaintance: ['שותף לעבודה', 'שכן'],
-};
-type RelationCategory = keyof typeof relationOptions;
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AddMemoryItemData } from '../../models/AddMemoryItemData.model';
+import { RelationCategory, relationOptions } from '../../models/Relation.model';
+import { handleSubmit } from '../../services/add.memory.service';
 
 export default function AddMemoryForm() {
+  const navigate = useNavigate();
+
+  const goToMemories = () => navigate('/memories');
+
   const messageTextareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -37,6 +28,25 @@ export default function AddMemoryForm() {
 
   const [uploadedImages, setUploadedImages] = useState<File[]>([]);
   const [dragging, setDragging] = useState(false);
+
+  // Track form input values
+  const [formData, setFormData] = useState<AddMemoryItemData>({
+    firstName: '',
+    lastName: '',
+    nickname: '',
+    relation: '',
+    message: '',
+  });
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
 
   const handleMessageInput = () => {
     const textarea = messageTextareaRef.current;
@@ -122,6 +132,10 @@ export default function AddMemoryForm() {
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     setSelectedRelation(event.target.value);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      relation: event.target.value,
+    }));
   };
 
   const handleFileDrop = (event: React.DragEvent<HTMLDivElement>) => {
@@ -154,6 +168,15 @@ export default function AddMemoryForm() {
     setUploadedImages((prevImages) => prevImages.filter((_, i) => i !== index));
   };
 
+  const handleOnSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const result = await handleSubmit(formData);
+    console.log(result);
+
+    goToMemories();
+  };
+
   useEffect(() => {
     handleMessageInput(); // Adjust the height based on the initial content
   }, []);
@@ -161,23 +184,29 @@ export default function AddMemoryForm() {
   return (
     <div className="add-memory-container">
       <h2>זיכרון חדש</h2>
-      <form className="add-memory-form">
+      <form onSubmit={handleOnSubmit} className="add-memory-form">
         {/* Names input */}
         <div className="add-memory-form-names-container">
           <input
             className="add-memory-form-first-name-input"
             type="text"
             placeholder="שם פרטי"
+            name="firstName"
+            onChange={handleInputChange}
           />
           <input
             className="add-memory-form-nickname-input"
             type="text"
             placeholder="כינוי (אופציונאלי)"
+            name="nickname"
+            onChange={handleInputChange}
           />
           <input
             className="add-memory-form-last-name-input"
             type="text"
             placeholder="שם משפחה (אופציונאלי)"
+            name="lastName"
+            onChange={handleInputChange}
           />
         </div>
 
@@ -233,6 +262,8 @@ export default function AddMemoryForm() {
             onInput={handleMessageInput}
             onKeyDown={handleMessageKeyDown}
             onPaste={handleMessagePaste}
+            name="message"
+            onChange={handleInputChange}
           />
           <div className="add-memory-form-message-textarea-counter">
             {maxMessageCharacters - messageCharCount}

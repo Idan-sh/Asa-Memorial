@@ -23,7 +23,9 @@ pool.connect((err) => {
 });
 
 // Enable CORS and JSON parsing
-app.use(cors()); 
+app.use(cors({
+  origin: 'http://localhost:5173', // Allow the frontend origin
+}));
 app.use(express.json());
 
 // Test route

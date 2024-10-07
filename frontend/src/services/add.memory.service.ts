@@ -38,17 +38,9 @@ export async function handleSubmit(formData: AddMemoryItemData, displayErrorMess
 function validateMemoryForm(formData: AddMemoryItemData): { isValid: boolean; errors: string; } {
     let errors: string[] = [];
 
-    if (!isNameOrNicknameDefined(formData)) {
-        errors.push("יש למלא שם פרטי או כינוי.");
-    }
-
-    if (!isRelationDefined(formData.relation)) {
-        errors.push("יש למלא מערכת יחסים.");
-    }
-
-    if (!isMessageDefined(formData.message)) {
-        errors.push("יש למלא תיאור.");
-    }
+    validateNames(formData, errors);
+    validateRelation(formData.relation, errors);
+    validateMessage(formData.message, errors);
 
     return {
         isValid: errors.length === 0,
@@ -56,14 +48,26 @@ function validateMemoryForm(formData: AddMemoryItemData): { isValid: boolean; er
     }
 }
 
-function isNameOrNicknameDefined(formData: AddMemoryItemData) {
-    return formData.firstName.trim() !== '' || formData.nickname.trim() !== '';
+function validateNames(formData: AddMemoryItemData, errors: string[]) {
+    if (formData.firstName.trim() === '' && formData.nickname.trim() === '') {
+        errors.push("יש למלא שם פרטי או כינוי.");
+    } else if (formData.firstName.trim() !== '' && formData.firstName.trim().length < 2) {
+        errors.push("על השם להיות באורך של לפחות שני תווים.");
+    } else if (formData.nickname.trim().length < 2) {
+        errors.push("על הכינוי להיות באורך של לפחות שני תווים.");
+    }
 }
 
-function isRelationDefined(relation: string) {
-    return relation.trim() !== '';
+function validateRelation(relation: string, errors: string[]) {
+    if (relation.trim() === '') {
+        errors.push("יש למלא מערכת יחסים.");
+    }
 }
 
-function isMessageDefined(message: string) {
-    return message.trim() !== '';
+function validateMessage(message: string, errors: string[]) {
+    if (message.trim() === '') {
+        errors.push("יש למלא תיאור.");
+    } else if (message.length < 10) {
+        errors.push("על התיאור להיות באורך של לפחות 10 תווים.");
+    }
 }

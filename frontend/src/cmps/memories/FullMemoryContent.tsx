@@ -1,13 +1,16 @@
-import { useCallback, useEffect, useState } from 'react';
-import flameIcon from '/icons/flame-icon.png';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { MemoryItemData } from '../../models/MemoryItem.model';
 import { useParams } from 'react-router-dom';
 import { fetchMemory } from '../../services/fetch.memories.service';
+import { Player } from '@lordicon/react';
+import CandleAnimated from '../../assets/animations/candle-animated.json';
 
 export default function FullMemoryContent() {
   const { memoryId } = useParams();
   const [memory, setMemory] = useState<MemoryItemData>();
+  const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string>();
+  const playerRef = useRef<Player>(null);
 
   useEffect(() => {
     updateMemory();
@@ -24,6 +27,7 @@ export default function FullMemoryContent() {
 
       if (result.success) {
         setMemory(result.memory);
+        setIsLoading(false);
       } else {
         setErrorMessage('Failed to fetch memory with ID ' + memoryId + '.');
       }
@@ -38,8 +42,20 @@ export default function FullMemoryContent() {
     }
   }, []);
 
+  const onMemoryItemMouseOver = () => {
+    playerRef.current?.play();
+  };
+
+  const onMemoryItemMouseOut = () => {
+    playerRef.current?.pause();
+  };
+
   if (errorMessage) {
     return <div className="full-memory-container">{errorMessage}</div>;
+  }
+
+  if (isLoading) {
+    return <div></div>;
   }
 
   if (memory === undefined) {
@@ -48,18 +64,23 @@ export default function FullMemoryContent() {
     );
   }
 
-  if (memoryId === undefined) {
-    return <div>Error fetching memory ID...</div>;
-  }
-
   const name =
     memory.nickname || `${memory.first_name} ${memory.last_name}`.trim();
   const relation = memory.relation ?? 'No relation provided';
   const message = memory.message ?? 'No message available';
 
   return (
-    <div className="full-memory-container">
-      <img className="full-memory__icon" src={flameIcon} />
+    <div
+      className="full-memory-container"
+      onMouseOut={onMemoryItemMouseOut}
+      onMouseOver={onMemoryItemMouseOver}
+    >
+      <Player
+        size={120}
+        ref={playerRef}
+        icon={CandleAnimated}
+        onComplete={() => playerRef.current?.playFromBeginning()}
+      />{' '}
       <div className="full-memory__name">{name}</div>
       <div className="full-memory__relation">{relation}</div>
       <div className="full-memory__message">{message}</div>

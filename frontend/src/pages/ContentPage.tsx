@@ -5,10 +5,16 @@ import Gallery from '../cmps/gallery/Gallery';
 import Memories from '../cmps/memories/MemoriesContent';
 import AddMemoryForm from '../cmps/memories/AddMemoryForm';
 import FullMemoryContent from '../cmps/memories/FullMemoryContent';
-import { useParams } from 'react-router-dom';
+import ContentNotFound from '../cmps/content-not-found/ContentNotFound';
 
 interface ContentPageProps {
-  content: 'main' | 'gallery' | 'memories' | 'add-memory' | 'memory';
+  content:
+    | 'main'
+    | 'gallery'
+    | 'memories'
+    | 'add-memory'
+    | 'memory'
+    | 'not-found';
 }
 export default function ContentPage({ content }: ContentPageProps) {
   return (
@@ -25,6 +31,7 @@ export default function ContentPage({ content }: ContentPageProps) {
         {content === 'memories' && <Memories />}
         {content === 'add-memory' && <AddMemoryForm />}
         {content === 'memory' && <FullMemoryContent />}
+        {content === 'not-found' && <ContentNotFound />}
       </div>
       <Footer />
     </div>

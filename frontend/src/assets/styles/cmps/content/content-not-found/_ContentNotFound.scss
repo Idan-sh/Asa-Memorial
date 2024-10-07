@@ -1,0 +1,19 @@
+.content-not-found-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  align-items: center;
+
+  p {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 120%;
+  }
+
+  button {
+    padding-block: 6px;
+    padding-inline: 16px;
+    cursor: pointer;
+  }
+}

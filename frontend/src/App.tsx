@@ -7,6 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/*" element={<ContentPage content="not-found" />} />
         <Route path="/" element={<ContentPage content="main" />} />
         <Route path="/gallery" element={<ContentPage content="gallery" />} />
         <Route path="/memories" element={<ContentPage content="memories" />} />

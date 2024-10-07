@@ -80,7 +80,7 @@ export default function FullMemoryContent() {
         ref={playerRef}
         icon={CandleAnimated}
         onComplete={() => playerRef.current?.playFromBeginning()}
-      />{' '}
+      />
       <div className="full-memory__name">{name}</div>
       <div className="full-memory__relation">{relation}</div>
       <div className="full-memory__message">{message}</div>

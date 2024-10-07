@@ -7,9 +7,9 @@ export default function Slideshow() {
 
   return (
     <div className="slideshow-container">
-      <Fade duration={3000}>
+      <Fade duration={2000}>
         {imagesArray.map((image) => (
-          <div className="each-slide">
+          <div className="each-slide" key={image}>
             <img src={image} />
           </div>
         ))}

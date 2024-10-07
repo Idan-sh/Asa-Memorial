@@ -11,8 +11,6 @@ interface ContentPageProps {
   content: 'main' | 'gallery' | 'memories' | 'add-memory' | 'memory';
 }
 export default function ContentPage({ content }: ContentPageProps) {
-  const { memoryId } = useParams();
-
   return (
     <div className="content-page-container">
       <Header />
@@ -26,7 +24,7 @@ export default function ContentPage({ content }: ContentPageProps) {
         {content === 'gallery' && <Gallery />}
         {content === 'memories' && <Memories />}
         {content === 'add-memory' && <AddMemoryForm />}
-        {content === 'memory' && <FullMemoryContent memoryId={memoryId} />}
+        {content === 'memory' && <FullMemoryContent />}
       </div>
       <Footer />
     </div>

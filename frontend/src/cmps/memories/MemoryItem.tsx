@@ -14,7 +14,7 @@ export default function MemoryItem({
   message,
 }: MemoryItemProps) {
   const navigate = useNavigate();
-  const goToFullMemory = () => navigate('/memory/' + id);
+  const goToFullMemory = () => navigate('/memories/' + id);
 
   return (
     <div className="memory-item-container">

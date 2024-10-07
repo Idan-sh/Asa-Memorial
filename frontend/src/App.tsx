@@ -15,7 +15,7 @@ function App() {
           element={<ContentPage content="add-memory" />}
         />
         <Route
-          path="/memory/:memoryId"
+          path="/memories/:memoryId"
           element={<ContentPage content="memory" />}
         />
       </Routes>

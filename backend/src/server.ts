@@ -73,7 +73,26 @@ app.get('/api/memories', async (req, res) => {
     console.error('Error fetching memories from the database', err);
     res.status(500).json({ success: false, message: 'Database error' });
   }
-})
+});
+
+app.get('/api/memories/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const query = 'SELECT * FROM memories WHERE id = $1';
+    const values = [id];
+    const result = await pool.query(query, values);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ success: false, message: 'Memory not found' });
+    }
+
+    res.status(200).json({ success: true, memory: result.rows[0] });
+  } catch (err) {
+    console.error('Error fetching memory from the database', err);
+    res.status(500).json({ success: false, message: 'Database error' });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -1,0 +1,37 @@
+.error-popup-container {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.error-popup-container p {
+  white-space: pre-wrap; /* Preserve line breaks and wrap text */
+  animation: textColorChange 2s forwards;
+}
+
+.error-popup-container .error-popup-close-button {
+  background: none;
+  border: none;
+  font-size: 30px;
+  font-weight: normal;
+  cursor: pointer;
+  animation: textColorChange 3s forwards;
+  min-height: fit-content;
+  padding: 0%;
+}
+
+@keyframes textColorChange {
+  0% {
+    color: $mainFontColor;
+  }
+  25%,
+  50%,
+  75% {
+    color: $errorFontColor;
+  }
+  100% {
+    color: $mainFontColor;
+  }
+}

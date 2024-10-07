@@ -5,11 +5,15 @@ import { useNavigate } from 'react-router-dom';
 import { AddMemoryItemData } from '../../models/AddMemoryItemData.model';
 import { RelationCategory, relationOptions } from '../../models/Relation.model';
 import { handleSubmit } from '../../services/add.memory.service';
+import ErrorPopup from '../global/ErrorPopup';
 
 export default function AddMemoryForm() {
   const navigate = useNavigate();
 
   const goToMemories = () => navigate('/memories');
+
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [isErrorVisible, setIsErrorVisible] = useState(false);
 
   const messageTextareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -37,6 +41,19 @@ export default function AddMemoryForm() {
     relation: '',
     message: '',
   });
+
+  const closeErrorPopup = () => {
+    setIsErrorVisible(false);
+  };
+
+  const displayErrorPopup = (message: string) => {
+    setErrorMessage(message);
+    setIsErrorVisible(true);
+
+    setTimeout(() => {
+      closeErrorPopup();
+    }, 5000); // Hide after 5 seconds
+  };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -171,10 +188,12 @@ export default function AddMemoryForm() {
   const handleOnSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    const result = await handleSubmit(formData);
+    const result = await handleSubmit(formData, displayErrorPopup);
     console.log(result);
 
-    goToMemories();
+    if (result.success) {
+      goToMemories();
+    }
   };
 
   useEffect(() => {
@@ -314,6 +333,13 @@ export default function AddMemoryForm() {
         <div className="add-memory-form-submit-container">
           <button type="submit">שלח</button>
         </div>
+
+        {isErrorVisible && (
+          <ErrorPopup
+            message={errorMessage}
+            closeErrorPopup={closeErrorPopup}
+          />
+        )}
       </form>
     </div>
   );

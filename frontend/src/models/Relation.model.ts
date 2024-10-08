@@ -1,7 +1,5 @@
 export const relationOptions = {
     family: [
-      'אבא',
-      'אמא',
       'בן',
       'בת',
       'בן דוד',
@@ -12,6 +10,6 @@ export const relationOptions = {
       'אחיינית',
     ],
     friend: ['חבר', 'חברה', 'חבר לרכיבות', 'חברה לרכיבות'],
-    acquaintance: ['שותף לעבודה', 'שכן'],
+    acquaintance: ['מכר', 'שותף לעבודה', 'שותפה לעבודה', 'שכן', 'שכנה'],
   };
   export type RelationCategory = keyof typeof relationOptions;

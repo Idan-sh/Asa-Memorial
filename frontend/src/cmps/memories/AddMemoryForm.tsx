@@ -52,7 +52,7 @@ export default function AddMemoryForm() {
 
     setTimeout(() => {
       closeErrorPopup();
-    }, 5000); // Hide after 5 seconds
+    }, 20000); // Hide after 20 seconds
   };
 
   const handleInputChange = (

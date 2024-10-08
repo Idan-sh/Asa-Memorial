@@ -8,7 +8,7 @@ export default function MainContent() {
     <div className="main-content-container">
       <h2 className="main-content-sentence-title">"placeholder sentence"</h2>
       <Slideshow />
-      <h2 className="main-content-years-title">1900-2010</h2>
+      <h2 className="main-content-years-title">1964-2021</h2>
       <RememberingSection />
 
       <div className="main-content-life-story">

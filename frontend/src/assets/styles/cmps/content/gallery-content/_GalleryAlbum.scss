@@ -20,6 +20,10 @@
 
   cursor: pointer;
 
+  &:hover {
+    opacity: 0.9;
+  }
+
   h1 {
     font-size: 110%;
     font-weight: 500;
@@ -36,5 +40,6 @@
     max-width: 100%;
     height: auto;
     object-fit: cover;
+    aspect-ratio: 1;
   }
 }

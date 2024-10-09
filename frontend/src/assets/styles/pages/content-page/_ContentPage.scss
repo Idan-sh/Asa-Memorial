@@ -12,10 +12,7 @@
   background-color: $mainBgColor;
   color: $mainFontColor;
   align-items: center;
-  margin-inline: 10rem;
   flex-grow: 1;
-
-  @media (max-width: 768px) {
-    margin-inline: 2rem;
-  }
+  width: 100%;
+  overflow: hidden;
 }

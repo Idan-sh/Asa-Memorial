@@ -1,7 +1,11 @@
 .main-content-container {
+  display: flex;
+  flex-direction: column;
+
   height: 100%;
-  width: 100%;
   margin-top: 2rem;
+  margin-inline: 15%;
+  max-width: 80%;
 
   .main-content-sentence-title {
     display: flex;
@@ -48,5 +52,10 @@
     gap: 2rem;
     justify-content: center;
     margin-bottom: 6rem;
+  }
+
+  @media (max-width: 768px) {
+    margin-inline: 1rem;
+    max-width: 90%;
   }
 }

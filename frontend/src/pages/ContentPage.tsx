@@ -6,6 +6,7 @@ import Memories from '../cmps/memories/MemoriesContent';
 import AddMemoryForm from '../cmps/memories/AddMemoryForm';
 import FullMemoryContent from '../cmps/memories/FullMemoryContent';
 import ContentNotFound from '../cmps/content-not-found/ContentNotFound';
+import Album from '../cmps/gallery/Album';
 
 interface ContentPageProps {
   content:
@@ -14,7 +15,8 @@ interface ContentPageProps {
     | 'memories'
     | 'add-memory'
     | 'memory'
-    | 'not-found';
+    | 'not-found'
+    | 'album';
 }
 export default function ContentPage({ content }: ContentPageProps) {
   return (
@@ -32,6 +34,7 @@ export default function ContentPage({ content }: ContentPageProps) {
         {content === 'add-memory' && <AddMemoryForm />}
         {content === 'memory' && <FullMemoryContent />}
         {content === 'not-found' && <ContentNotFound />}
+        {content === 'album' && <Album />}
       </div>
       <Footer />
     </div>

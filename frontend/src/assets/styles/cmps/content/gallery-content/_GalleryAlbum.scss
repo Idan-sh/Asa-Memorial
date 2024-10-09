@@ -1,0 +1,40 @@
+.gallery-album-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+
+  background-color: darken($mainBgColor, 1);
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.2);
+
+  text-align: center;
+
+  width: fit-content;
+  max-width: 100%;
+  height: fit-content;
+  border-radius: 8px;
+
+  padding: 0;
+  margin: 0;
+
+  cursor: pointer;
+
+  h1 {
+    font-size: 110%;
+    font-weight: 500;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    text-align: center;
+
+    margin-block: 6px;
+    margin-inline: 6px;
+  }
+
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}

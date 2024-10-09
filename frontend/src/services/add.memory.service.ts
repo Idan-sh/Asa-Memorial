@@ -53,7 +53,7 @@ function validateNames(formData: AddMemoryItemData, errors: string[]) {
         errors.push("יש למלא שם פרטי או כינוי.");
     } else if (formData.firstName.trim() !== '' && formData.firstName.trim().length < 2) {
         errors.push("על השם להיות באורך של לפחות שני תווים.");
-    } else if (formData.nickname.trim().length < 2) {
+    } else if (formData.nickname.trim() !== '' && formData.nickname.trim().length < 2) {
         errors.push("על הכינוי להיות באורך של לפחות שני תווים.");
     }
 }

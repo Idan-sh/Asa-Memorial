@@ -158,8 +158,24 @@ export default function AddMemoryForm() {
   const handleFileDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     setDragging(false);
+
     const files = Array.from(event.dataTransfer.files);
-    setUploadedImages((prevImages) => [...prevImages, ...files]);
+    addImages(files);
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(event.target.files || []);
+    addImages(files);
+  };
+
+  const addImages = (newFiles: File[]) => {
+    const totalImages = uploadedImages.length + newFiles.length;
+
+    if (totalImages > maxImageUploads) {
+      alert(`ניתן להעלות לכל היותר ${maxImageUploads} תמונות`);
+    } else {
+      setUploadedImages((prevImages) => [...prevImages, ...newFiles]);
+    }
   };
 
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
@@ -169,16 +185,6 @@ export default function AddMemoryForm() {
 
   const handleDragLeave = () => {
     setDragging(false);
-  };
-
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(event.target.files || []);
-
-    if (uploadedImages.length + files.length <= maxImageUploads) {
-      setUploadedImages((prevImages) => [...prevImages, ...files]);
-    } else {
-      alert(`ניתן להעלות לכל היותר ${maxImageUploads} תמונות`);
-    }
   };
 
   const handleRemoveImage = (index: number) => {

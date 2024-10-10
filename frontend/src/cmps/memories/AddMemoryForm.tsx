@@ -195,10 +195,12 @@ export default function AddMemoryForm() {
     event.preventDefault();
 
     const result = await handleSubmit(formData, displayErrorPopup);
-    console.log(result);
 
     if (result.success) {
+      // TODO: add popup that the message was sent successfully
       goToMemories();
+    } else {
+      // TODO: add popup that the message failed to send with error message
     }
   };
 
@@ -208,7 +210,7 @@ export default function AddMemoryForm() {
 
   return (
     <div className="add-memory-container">
-      <h2>זיכרון חדש</h2>
+      <h2>הוספת זיכרון חדש</h2>
       <form onSubmit={handleOnSubmit} className="add-memory-form">
         {/* Names input */}
         <div className="add-memory-form-names-container">
@@ -337,7 +339,7 @@ export default function AddMemoryForm() {
         </div>
 
         <div className="add-memory-form-submit-container">
-          <button type="submit">שלח</button>
+          <button type="submit">שלח בקשה</button>
         </div>
 
         {isErrorVisible && (

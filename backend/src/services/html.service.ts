@@ -50,7 +50,7 @@ export function generateHtmlResponse(title: string, message: string, success: bo
 
 export function generateHtmlEmail(memoryItemData: MemoryItemData, approveUrl: string, rejectUrl: string) {
   return `
-      <div style="font-family: Arial, sans-serif; max-width: 90%; margin: 0 auto; border: 1px solid #dddddd; border-radius: 6px; overflow: hidden; direction: rtl;">
+      <div style="font-family: Arial, sans-serif; border: 1px solid #dddddd; border-radius: 6px; overflow: hidden; direction: rtl;">
         <div style="background-color: #f7f7f7; padding: 20px; text-align: center;">
           <h1 style="margin: 0; color: #333;">זיכרון חדש - לזכרו של אסא</h1>
         </div>
@@ -88,10 +88,10 @@ export function generateHtmlEmail(memoryItemData: MemoryItemData, approveUrl: st
             <a href="${approveUrl}" style="padding: 12px 24px; background-color: #28a745; color: white; text-decoration: none; font-weight: bold; border-radius: 5px; margin-left: 10px;">אשר</a>
             <a href="${rejectUrl}" style="padding: 12px 24px; background-color: #dc3545; color: white; text-decoration: none; font-weight: bold; border-radius: 5px; margin-right: 10px;">דחה</a>
           </div>
-        </div>;
+        </div>
         <div style="background-color: #f7f7f7; padding: 10px; text-align: center; font-size: 12px; color: #777;">
           <p>הודעה זו נשלח אוטומטית על ידי מערכת הודעות אוטומטית, אין להשיב להודעה זו.</p>
         </div>
       </div>
-    `
+    `;
 }

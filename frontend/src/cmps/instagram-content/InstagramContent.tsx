@@ -10,9 +10,8 @@ export default function InstagramContent() {
         className="lightwidget-widget"
         style={{
           width: '100%',
-          height: 'auto',
+          height: '400px',
           border: '0',
-          overflow: 'hidden',
         }}
       ></iframe>
     </div>

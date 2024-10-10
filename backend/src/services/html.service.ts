@@ -52,10 +52,10 @@ export function generateHtmlEmail(memoryItemData: MemoryItemData, approveUrl: st
   return `
       <div style="font-family: Arial, sans-serif; border: 1px solid #dddddd; border-radius: 6px; overflow: hidden; direction: rtl;">
         <div style="background-color: #f7f7f7; padding: 20px; text-align: center;">
-          <h1 style="margin: 0; color: #333;">זיכרון חדש - לזכרו של אסא</h1>
+          <h1 style="margin: 0; color: #333;">זיכרון חדש לזכרו של אסא</h1>
         </div>
         <div style="padding: 20px;">
-          <p style="font-size: 16px; color: #555;">זיכרון חדש הועלה. אנא עבור על הפרטים ואשר/דחה בעזרת הכפתורים מטה.</p>
+          <p style="font-size: 16px; color: #555;">זיכרון חדש הועלה. אנא עברי על הפרטים ואשרי/דחי בעזרת הכפתורים מטה.</p>
 
           <table style="width: 100%; border-collapse: collapse; margin-top: 10px; table-layout: fixed;">
             <colgroup>

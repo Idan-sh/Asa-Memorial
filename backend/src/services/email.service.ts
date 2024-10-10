@@ -35,7 +35,7 @@ export async function sendEmailToAdmins(memoryItemData: MemoryItemData) {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: process.env.ADMIN_EMAILS,
-    subject: 'זיכרון חדש לבדיקה - לזכרו של אסא',
+    subject: 'זיכרון חדש לבדיקה לזכרו של אסא',
     html: generateHtmlEmail(memoryItemData, approveUrl, rejectUrl)
   };
 

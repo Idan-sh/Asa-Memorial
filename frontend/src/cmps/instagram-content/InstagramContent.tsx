@@ -4,8 +4,7 @@ export default function InstagramContent() {
       <h2>רגעים של אסא</h2>
       <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
       <iframe
-        src="//lightwidget.com/widgets/3c99b0cd530b51d297beb0e0b8ed4ace.html"
-        scrolling="no"
+        src="//lightwidget.com/widgets/84377f181f38528da163a9039797e949.html"
         allowTransparency
         className="lightwidget-widget"
         style={{

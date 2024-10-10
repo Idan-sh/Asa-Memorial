@@ -7,6 +7,7 @@ import AddMemoryForm from '../cmps/memories/AddMemoryForm';
 import FullMemoryContent from '../cmps/memories/FullMemoryContent';
 import ContentNotFound from '../cmps/content-not-found/ContentNotFound';
 import Album from '../cmps/gallery/Album';
+import InstagramContent from '../cmps/instagram-content/InstagramContent';
 
 interface ContentPageProps {
   content:
@@ -27,6 +28,7 @@ export default function ContentPage({ content }: ContentPageProps) {
           <>
             <MainContent />
             <Memories limit={6} />
+            <InstagramContent />
           </>
         )}
         {content === 'gallery' && <Gallery />}

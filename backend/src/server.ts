@@ -2,12 +2,18 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { Pool } from 'pg';
+import { sendEmailToAdmins } from './services/email.service';
+import { generateHtmlResponse } from './services/html.service';
+import { checkAuthorization } from './services/authorize.service';
 
 // Initialize environment variables
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
+const FRONTEND_PORT = process.env.FRONTEND_PORT;
+const SERVER_DOMAIN = process.env.SERVER_DOMAIN;
+const SECRET_KEY = process.env.SECRET_KEY;
 
 // PostgreSQL client setup
 const pool = new Pool({
@@ -24,7 +30,7 @@ pool.connect((err) => {
 
 // Enable CORS and JSON parsing
 app.use(cors({
-  origin: 'http://localhost:5173', // Allow the frontend origin
+  origin: `${SERVER_DOMAIN}:${FRONTEND_PORT}`, // Allow the frontend origin
 }));
 app.use(express.json());
 
@@ -39,13 +45,16 @@ app.post('/api/add-memory', async (req, res) => {
 
   try {
     const query = `
-      INSERT INTO memories (first_name, nickname, last_name, relation, message)
+      INSERT INTO pending_memories (first_name, nickname, last_name, relation, message)
       VALUES ($1, $2, $3, $4, $5)
       RETURNING *;
     `;
 
     const values = [firstName, nickname, lastName, relation, message];
     const result = await pool.query(query, values);
+
+    // Send an email to admins to review the memory
+    sendEmailToAdmins(result.rows[0]);
 
     res.status(201).json({ success: true, data: result.rows[0] });
   } catch (err) {
@@ -92,6 +101,47 @@ app.get('/api/memories/:id', async (req, res) => {
     console.error('Error fetching memory from the database', err);
     res.status(500).json({ success: false, message: 'Database error' });
   }
+});
+
+app.get('/api/approve-memory/:id', async (req, res) => {
+  const memoryId = await checkAuthorization(req, res, SECRET_KEY, pool);
+  if (!memoryId) return; // Stop execution if authorization failed
+
+  // Move memory from pending_memories to memories
+  const query = `
+    WITH moved_memory AS (
+      DELETE FROM pending_memories WHERE id = $1 RETURNING *
+    )
+    INSERT INTO memories (id, first_name, nickname, last_name, relation, message)
+    SELECT id, first_name, nickname, last_name, relation, message FROM moved_memory
+    RETURNING *;
+  `;
+
+  pool.query(query, [memoryId], (err, result) => {
+    if (err) {
+      console.error('Error approving memory', err);
+      return res.status(500).send(generateHtmlResponse('Error', 'Failed to approve memory.', false));
+    }
+
+    res.send(generateHtmlResponse('Memory Approved', 'The memory has been successfully approved.', true));
+  });
+});
+
+app.get('/api/reject-memory/:id', async (req, res) => {
+  const memoryId =  await checkAuthorization(req, res, SECRET_KEY, pool);
+  if (!memoryId) return; // Stop execution if authorization failed
+
+  // Delete the memory from pending_memories
+  const query = 'DELETE FROM pending_memories WHERE id = $1';
+
+  pool.query(query, [memoryId], (err) => {
+    if (err) {
+      console.error('Error rejecting memory', err);
+      return res.status(500).send(generateHtmlResponse('Error', 'Failed to reject memory.', false));
+    }
+
+    res.send(generateHtmlResponse('Memory Rejected', 'The memory has been successfully rejected.', true));
+  });
 });
 
 app.listen(PORT, () => {

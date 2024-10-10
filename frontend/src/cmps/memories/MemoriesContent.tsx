@@ -56,12 +56,6 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
     return <div className="memories-content-container">{errorMessage}</div>;
   }
 
-  if (memories.length === 0) {
-    return (
-      <div className="memories-content-container">No memories available...</div>
-    );
-  }
-
   return (
     <div className="memories-content-container">
       <h2>זכרונות והקדשות</h2>

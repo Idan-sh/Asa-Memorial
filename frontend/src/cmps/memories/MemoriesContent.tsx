@@ -58,7 +58,7 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
 
   return (
     <div className="memories-content-container">
-      <h2>זכרונות והקדשות</h2>
+      <h2>הקדשות וזכרונות</h2>
       <div className="memories-content-items">
         {/* Need to limit the number of memory items, according to a props variable (which will be optional) */}
         {memories.map((memory) => {

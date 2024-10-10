@@ -34,9 +34,15 @@
 
   &__message {
     margin: 0;
-    margin-top: 1rem;
+    margin-block: 1rem;
     height: 200px;
     font-size: 14px;
+
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    line-clamp: 8;
+    -webkit-box-orient: vertical;
   }
 }
 

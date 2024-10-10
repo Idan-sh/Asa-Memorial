@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { MemoryItemData } from '../../models/MemoryItem.model';
 import { fetchMemories } from '../../services/fetch.memories.service';
 import MemoryItem from './MemoryItem';
+import Popup from '../popup/Popup';
 
 interface MemoriesContentProps {
   limit?: number;
@@ -20,6 +21,16 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
   const [memories, setMemories] = useState<MemoryItemData[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>();
   const [isLoading, setIsLoading] = useState(true);
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
+
+  useEffect(() => {
+    if (location.state?.success) {
+      setPopupMessage(location.state.message);
+      setShowPopup(true);
+    }
+  }, [location.state]);
 
   useEffect(() => {
     updateMemories();
@@ -59,6 +70,7 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
   return (
     <div className="memories-content-container">
       <h2>הקדשות וזכרונות</h2>
+
       <div className="memories-content-items">
         {/* Need to limit the number of memory items, according to a props variable (which will be optional) */}
         {memories.map((memory) => {
@@ -79,6 +91,7 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
           );
         })}
       </div>
+
       <div className="memories-content-add-memory-container">
         <button
           onClick={isMainContent ? goToMemoriesContent : goToAddMemoryForm}
@@ -86,6 +99,14 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
           {isMainContent ? 'ראה עוד זכרונות והקדשות' : 'הוסף הקדשה / זיכרון'}
         </button>
       </div>
+
+      {showPopup && (
+        <Popup
+          title="הבקשה נשלחה בהצלחה"
+          message={popupMessage}
+          success={true}
+        />
+      )}
     </div>
   );
 }

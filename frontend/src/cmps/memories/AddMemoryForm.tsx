@@ -6,14 +6,17 @@ import { AddMemoryItemData } from '../../models/AddMemoryItemData.model';
 import { RelationCategory, relationOptions } from '../../models/Relation.model';
 import { handleSubmit } from '../../services/add.memory.service';
 import ErrorPopup from '../global/ErrorPopup';
+import Popup from '../popup/Popup';
 
 export default function AddMemoryForm() {
   const navigate = useNavigate();
 
-  const goToMemories = () => navigate('/memories');
-
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [isErrorVisible, setIsErrorVisible] = useState(false);
+
+  // State to control when the success popup is shown
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState<string>('');
 
   const messageTextareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -197,10 +200,15 @@ export default function AddMemoryForm() {
     const result = await handleSubmit(formData, displayErrorPopup);
 
     if (result.success) {
-      // TODO: add popup that the message was sent successfully
-      goToMemories();
+      navigate('/memories', {
+        state: {
+          success: true,
+          message: 'הזיכרון שלך נשלח בהצלחה! הזיכרון כעת ממתין לאישור.',
+        },
+      });
     } else {
-      // TODO: add popup that the message failed to send with error message
+      setPopupMessage('הבקשה נכשלה, אנא נסה שוב.');
+      setShowPopup(true);
     }
   };
 
@@ -342,6 +350,9 @@ export default function AddMemoryForm() {
           <button type="submit">שלח בקשה</button>
         </div>
 
+        {showPopup && (
+          <Popup title={'הבקשה נכשלה'} message={popupMessage} success={false} />
+        )}
         {isErrorVisible && (
           <ErrorPopup
             message={errorMessage}

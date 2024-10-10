@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface PopupProps {
   title: string;
@@ -8,15 +9,17 @@ interface PopupProps {
 
 export default function Popup({ title, message, success = false }: PopupProps) {
   const [showPopup, setShowPopup] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Show the popup when the component mounts
     setShowPopup(true);
 
-    // Hide the popup after 10 seconds
+    // Hide the popup after delay
     const timer = setTimeout(() => {
       setShowPopup(false);
-    }, 5000000);
+      navigate('', { replace: true });
+    }, 8000);
 
     // Cleanup the timer
     return () => clearTimeout(timer);

@@ -44,9 +44,10 @@
 
 .popup-message {
   font-size: 1rem;
-  color: #ecf0f1; /* Light message text */
-  line-height: 1.5; /* Improves readability */
+  color: #ecf0f1;
+  line-height: 1.5;
   text-align: center;
+  white-space: pre-wrap;
 }
 
 @media (max-width: 768px) {
@@ -59,8 +60,8 @@
 
   .popup-message {
     font-size: 0.9rem;
-    color: #ecf0f1; /* Light message text */
-    line-height: 1.3; /* Improves readability */
+    color: #ecf0f1;
+    line-height: 1.3;
     text-align: center;
   }
 }

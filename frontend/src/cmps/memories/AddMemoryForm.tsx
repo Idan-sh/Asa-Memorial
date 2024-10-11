@@ -5,18 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { AddMemoryItemData } from '../../models/AddMemoryItemData.model';
 import { RelationCategory, relationOptions } from '../../models/Relation.model';
 import { handleSubmit } from '../../services/add.memory.service';
-import ErrorPopup from '../global/ErrorPopup';
 import Popup from '../popup/Popup';
 
 export default function AddMemoryForm() {
   const navigate = useNavigate();
 
-  const [errorMessage, setErrorMessage] = useState<string>('');
-  const [isErrorVisible, setIsErrorVisible] = useState(false);
-
   // State to control when the success popup is shown
   const [showPopup, setShowPopup] = useState(false);
-  const [popupMessage, setPopupMessage] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const messageTextareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -45,10 +41,6 @@ export default function AddMemoryForm() {
     message: '',
   });
 
-  const closeErrorPopup = () => {
-    setIsErrorVisible(false);
-  };
-
   const closePopup = () => {
     setTimeout(() => {
       setShowPopup(false);
@@ -57,11 +49,7 @@ export default function AddMemoryForm() {
 
   const displayErrorPopup = (message: string) => {
     setErrorMessage(message);
-    setIsErrorVisible(true);
-
-    setTimeout(() => {
-      closeErrorPopup();
-    }, 20000); // Hide after 20 seconds
+    setShowPopup(true);
   };
 
   const handleInputChange = (
@@ -212,9 +200,6 @@ export default function AddMemoryForm() {
           message: 'הזיכרון שלך נשלח בהצלחה! הזיכרון כעת ממתין לאישור.',
         },
       });
-    } else {
-      setPopupMessage('הבקשה נכשלה, אנא נסה שוב.');
-      setShowPopup(true);
     }
   };
 
@@ -359,15 +344,9 @@ export default function AddMemoryForm() {
         {showPopup && (
           <Popup
             title={'הבקשה נכשלה'}
-            message={popupMessage}
+            message={errorMessage}
             success={false}
             closePopup={closePopup}
-          />
-        )}
-        {isErrorVisible && (
-          <ErrorPopup
-            message={errorMessage}
-            closeErrorPopup={closeErrorPopup}
           />
         )}
       </form>

@@ -1,10 +1,11 @@
 .add-memory-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+
   width: 80vw;
   height: 100%;
   margin-block: 2rem;
-  align-items: center;
   gap: 1rem;
 
   .add-memory-form {
@@ -121,11 +122,13 @@
     .add-memory-form-pictures-upload-container {
       border: 2px dashed #aaa;
       background-color: darken($mainBgColor, 4);
-      padding: 20px;
+      padding-block: 20px;
       text-align: center;
       cursor: pointer;
       transition: background-color 0.3s ease;
       justify-content: center;
+
+      width: 100%;
 
       &.dragging {
         background-color: darken($mainBgColor, 8);

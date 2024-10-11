@@ -59,6 +59,12 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
     setIsLoading(false);
   }, []);
 
+  const closePopup = () => {
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 500);
+  };
+
   if (isLoading) {
     return <div className="memories-content-container">Loading...</div>;
   }
@@ -105,6 +111,7 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
           title="הבקשה נשלחה בהצלחה"
           message={popupMessage}
           success={true}
+          closePopup={closePopup}
         />
       )}
     </div>

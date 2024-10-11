@@ -49,6 +49,12 @@ export default function AddMemoryForm() {
     setIsErrorVisible(false);
   };
 
+  const closePopup = () => {
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 500);
+  };
+
   const displayErrorPopup = (message: string) => {
     setErrorMessage(message);
     setIsErrorVisible(true);
@@ -351,7 +357,12 @@ export default function AddMemoryForm() {
         </div>
 
         {showPopup && (
-          <Popup title={'הבקשה נכשלה'} message={popupMessage} success={false} />
+          <Popup
+            title={'הבקשה נכשלה'}
+            message={popupMessage}
+            success={false}
+            closePopup={closePopup}
+          />
         )}
         {isErrorVisible && (
           <ErrorPopup

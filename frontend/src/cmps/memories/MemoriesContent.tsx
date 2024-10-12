@@ -19,11 +19,14 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
   const isMainContent = location.pathname !== '/memories';
 
   const [memories, setMemories] = useState<MemoryItemData[]>([]);
-  const [errorMessage, setErrorMessage] = useState<string>();
-  const [isLoading, setIsLoading] = useState(true);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
+  const [showContent, setShowContent] = useState(false);
 
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState<string>();
 
   useEffect(() => {
     if (location.state?.success) {
@@ -31,6 +34,19 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
       setShowPopup(true);
     }
   }, [location.state]);
+
+  useEffect(() => {
+    // Delay the loader display
+    const loaderTimer = setTimeout(() => {
+      if (isLoading) {
+        setShowLoader(true);
+      }
+    }, 100);
+
+    return () => {
+      clearTimeout(loaderTimer);
+    };
+  }, [isLoading]);
 
   useEffect(() => {
     updateMemories();
@@ -57,6 +73,8 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
       }
     }
     setIsLoading(false);
+    setShowLoader(false);
+    setShowContent(true);
   }, []);
 
   const closePopup = () => {
@@ -64,10 +82,6 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
       setShowPopup(false);
     }, 500);
   };
-
-  if (isLoading) {
-    return <div className="memories-content-container">Loading...</div>;
-  }
 
   if (errorMessage) {
     return <div className="memories-content-container">{errorMessage}</div>;
@@ -77,34 +91,42 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
     <div className="memories-content-container">
       <h2>הקדשות וזכרונות</h2>
 
-      <div className="memories-content-items">
-        {/* Need to limit the number of memory items, according to a props variable (which will be optional) */}
-        {memories.map((memory) => {
-          const name =
-            memory.nickname ||
-            `${memory.first_name} ${memory.last_name}`.trim();
-          const relation = memory.relation ?? 'No relation provided';
-          const message = memory.message ?? 'No message available';
+      {showLoader ? (
+        <span className="loader"></span>
+      ) : showContent ? (
+        <>
+          <div className="memories-content-items">
+            {/* Need to limit the number of memory items, according to a props variable (which will be optional) */}
+            {memories.map((memory) => {
+              const name =
+                memory.nickname ||
+                `${memory.first_name} ${memory.last_name}`.trim();
+              const relation = memory.relation ?? 'No relation provided';
+              const message = memory.message ?? 'No message available';
 
-          return (
-            <MemoryItem
-              key={memory.id}
-              id={memory.id}
-              name={name !== '' ? name : 'No name available'}
-              relation={relation}
-              message={message}
-            />
-          );
-        })}
-      </div>
+              return (
+                <MemoryItem
+                  key={memory.id}
+                  id={memory.id}
+                  name={name !== '' ? name : 'No name available'}
+                  relation={relation}
+                  message={message}
+                />
+              );
+            })}
+          </div>
 
-      <div className="memories-content-add-memory-container">
-        <button
-          onClick={isMainContent ? goToMemoriesContent : goToAddMemoryForm}
-        >
-          {isMainContent ? 'ראה עוד זכרונות והקדשות' : 'הוסף הקדשה / זיכרון'}
-        </button>
-      </div>
+          <div className="memories-content-add-memory-container">
+            <button
+              onClick={isMainContent ? goToMemoriesContent : goToAddMemoryForm}
+            >
+              {isMainContent
+                ? 'ראה עוד זכרונות והקדשות'
+                : 'הוסף הקדשה / זיכרון'}
+            </button>
+          </div>
+        </>
+      ) : null}
 
       {showPopup && (
         <Popup

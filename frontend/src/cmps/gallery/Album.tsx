@@ -1,4 +1,4 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import LightGallery from 'lightgallery/react';
 
 import 'lightgallery/scss/lightgallery.scss';
@@ -9,6 +9,8 @@ import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
 import { useCallback, useEffect, useState } from 'react';
 import { fetchCloudinaryImage as fetchCloudinaryImages } from '../../services/fetch.cloudinary.service';
+
+import GoBackButton from '../global/GoBackButton';
 
 interface Image {
   url: string;
@@ -23,7 +25,11 @@ export default function Album() {
   const { folderName } = useParams();
   const [images, setImages] = useState<Image[]>([]);
   const [title, setTitle] = useState<string>();
+
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const goBack = () => navigate('/gallery');
 
   useEffect(() => {
     if (location.state?.title) {
@@ -78,6 +84,7 @@ export default function Album() {
           ))}
         </LightGallery>
       </div>
+      <GoBackButton onGoBackClick={goBack} />
     </div>
   );
 }

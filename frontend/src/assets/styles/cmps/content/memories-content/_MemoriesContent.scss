@@ -22,8 +22,8 @@
   .loader {
     margin-top: 2rem;
     align-self: center;
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     position: relative;
     animation: rotate 1s linear infinite;
@@ -35,7 +35,7 @@
     inset: 0px;
     border-radius: 50%;
     border: 5px solid #000000;
-    animation: prixClipFix 2s linear infinite;
+    animation: prixClipFix 2s linear infinite alternate;
   }
 
   @keyframes rotate {

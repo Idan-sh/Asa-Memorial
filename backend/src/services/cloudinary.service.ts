@@ -6,6 +6,12 @@ interface CloudinaryResource {
     public_id: string;
     width: number;
     height: number;
+    context?: {
+      custom: {
+        alt?: string;
+        description?: string;
+      };
+    };
 }
 
 // Cloudinary API
@@ -33,6 +39,11 @@ export async function fetchCloudinaryImages(folder: string, res: Response) {
               username: CLOUDINARY_API_KEY,
               password: CLOUDINARY_API_SECRET,
             },
+            params: {
+              type: "upload",  
+              max_results: 100,       
+              context: true,          
+            },
           }
         );
     
@@ -41,6 +52,8 @@ export async function fetchCloudinaryImages(folder: string, res: Response) {
           public_id: resource.public_id,
           width: resource.width,
           height: resource.height,
+          description: resource.context?.custom?.description || "No description available",
+          alt: resource.context?.custom?.alt || "No alt text available",
         }));
     
         res.json(images); // Send the images as a JSON response.

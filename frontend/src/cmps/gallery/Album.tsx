@@ -15,6 +15,8 @@ interface Image {
   public_id: string;
   width: number;
   height: number;
+  alt?: string;
+  description?: string;
 }
 
 export default function Album() {
@@ -26,7 +28,6 @@ export default function Album() {
   }, []);
 
   const updateImages = useCallback(async () => {
-    // Fetch images from the backend API
     const result = await fetchCloudinaryImages('bike'); // TODO: Change to the read album name
 
     if (result.success) {
@@ -52,22 +53,11 @@ export default function Album() {
           <a
             key={image.public_id}
             data-src={image.url}
-            data-sub-html={`<h4>${image.public_id}</h4>`}
+            data-sub-html={`<h4>${image.description}</h4>`}
           >
-            <img
-              className="img-responsive"
-              src={image.url}
-              alt={image.public_id}
-              style={{ maxWidth: '300px', margin: '10px' }}
-            />
+            <img className="img-responsive" src={image.url} alt={image.alt} />
           </a>
         ))}
-        {/* <a href="/imgs/gallery/gallery-bike1.JPG" data-lg-size="1600-2400">
-          <img alt="img1" src="/imgs/gallery/gallery-bike1.JPG" />
-        </a>
-        <a href="/imgs/gallery/gallery-bike2.JPG">
-          <img alt="img2" src="/imgs/gallery/gallery-bike2.JPG" />
-        </a> */}
       </LightGallery>
     </div>
   );

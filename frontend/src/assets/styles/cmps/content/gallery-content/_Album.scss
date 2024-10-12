@@ -3,7 +3,46 @@
   margin-bottom: 4rem;
   padding-inline: 10%;
   height: 100%;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.album-container img {
+  max-width: 200px;
+  height: auto;
+  margin: 10px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.album-container a {
+  display: inline-block;
+}
+
+.lg-container {
+  direction: ltr;
+}
+
+.lg-backdrop,
+.lg-outer {
+  z-index: 1050; /* Ensure it overlays properly */
+}
+
+.lg-item {
+  display: none; /* Hide all items initially */
+}
+
+.lg-item.lg-current {
+  display: block; /* Display only the current image */
+}
+
+.lg-item {
+  visibility: hidden;
+}
+
+.lg-item.lg-current {
+  visibility: visible;
 }

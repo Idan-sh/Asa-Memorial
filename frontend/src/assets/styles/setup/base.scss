@@ -7,9 +7,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  align-items: center;
-  direction: rtl;
 }
 
 body {
@@ -19,6 +16,9 @@ body {
   font-size: $mainFontSize;
   line-height: 1.5em;
   height: 100%;
+
+  direction: rtl;
+  align-items: center;
 }
 
 @media only screen and (max-width: 768px) {

@@ -11,7 +11,7 @@ function App() {
         <Route path="/" element={<ContentPage content="main" />} />
         <Route path="/gallery" element={<ContentPage content="gallery" />} />
         <Route
-          path="/album/:albumId"
+          path="/album/:folderName"
           element={<ContentPage content="album" />}
         />
         <Route path="/memories" element={<ContentPage content="memories" />} />

@@ -4,14 +4,17 @@ import { useState } from 'react';
 
 interface GalleryAlbumProps {
   title: string;
-  id: string;
+  folderName: string;
 }
 
-export default function GalleryAlbum({ title, id }: GalleryAlbumProps) {
+export default function GalleryAlbum({ title, folderName }: GalleryAlbumProps) {
   const navigate = useNavigate();
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
-  const goToAlbum = () => navigate('/album/' + id);
+  const goToAlbum = () =>
+    navigate('/album/' + folderName, {
+      state: { success: true, title: title },
+    });
 
   const handleImageLoad = () => {
     setIsImageLoaded(true);

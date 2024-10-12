@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import LightGallery from 'lightgallery/react';
 
 import 'lightgallery/scss/lightgallery.scss';
@@ -20,15 +20,32 @@ interface Image {
 }
 
 export default function Album() {
-  const { albumId } = useParams();
+  const { folderName } = useParams();
   const [images, setImages] = useState<Image[]>([]);
+  const [title, setTitle] = useState<string>();
+  const location = useLocation();
 
   useEffect(() => {
-    updateImages();
-  }, []);
+    if (location.state?.title) {
+      setTitle(location.state.title);
+    } else {
+      console.warn('Could not receive album title from location...');
+    }
+  }, [location.state]);
+
+  useEffect(() => {
+    if (title) {
+      updateImages();
+    }
+  }, [title]);
 
   const updateImages = useCallback(async () => {
-    const result = await fetchCloudinaryImages('bike'); // TODO: Change to the read album name
+    if (!folderName) {
+      console.log('No folderName provided in the route params...');
+      return;
+    }
+
+    const result = await fetchCloudinaryImages(folderName);
 
     if (result.success) {
       setImages(result.images || []);
@@ -39,8 +56,8 @@ export default function Album() {
 
   return (
     <div className="album-container">
-      <h2>Album {albumId}</h2>
-      <div className='light-gallery-container'>
+      <h2>{title}</h2>
+      <div className="light-gallery-container">
         <LightGallery
           speed={500}
           plugins={[lgThumbnail, lgZoom]}

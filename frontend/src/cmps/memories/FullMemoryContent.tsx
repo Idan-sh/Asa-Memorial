@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { MemoryItemData } from '../../models/MemoryItem.model';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { fetchMemory } from '../../services/fetch.memories.service';
 import { Player } from '@lordicon/react';
 import CandleAnimated from '../../assets/animations/candle-animated.json';
+import GoBackButton from '../global/GoBackButton';
 
 export default function FullMemoryContent() {
   const { memoryId } = useParams();
@@ -11,6 +12,9 @@ export default function FullMemoryContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string>();
   const playerRef = useRef<Player>(null);
+
+  const navigate = useNavigate();
+  const goBack = () => navigate('/memories');
 
   useEffect(() => {
     updateMemory();
@@ -70,21 +74,25 @@ export default function FullMemoryContent() {
   const message = memory.message ?? 'No message available';
 
   return (
-    <div
-      className="full-memory-container"
-      onMouseOut={onMemoryItemMouseOut}
-      onMouseOver={onMemoryItemMouseOver}
-    >
-      <Player
-        size={120}
-        ref={playerRef}
-        icon={CandleAnimated}
-        onComplete={() => playerRef.current?.playFromBeginning()}
-      />
-      <div className="full-memory__name">{name}</div>
-      <div className="full-memory__relation">{relation}</div>
-      <div className="full-memory__message">{message}</div>
-      <div className="full-memory__pictures">some pictures here...</div>
+    <div className="full-memory-container">
+      <h2>זיכרון מאת {name}</h2>
+      <div
+        className="full-memory-item"
+        onMouseOut={onMemoryItemMouseOut}
+        onMouseOver={onMemoryItemMouseOver}
+      >
+        <Player
+          size={120}
+          ref={playerRef}
+          icon={CandleAnimated}
+          onComplete={() => playerRef.current?.playFromBeginning()}
+        />
+        <div className="full-memory__name">{name}</div>
+        <div className="full-memory__relation">{relation}</div>
+        <div className="full-memory__message">{message}</div>
+        <div className="full-memory__pictures">some pictures here...</div>
+      </div>
+      <GoBackButton onGoBackClick={goBack} />
     </div>
   );
 }

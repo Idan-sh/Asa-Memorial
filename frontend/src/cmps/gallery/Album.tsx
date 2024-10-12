@@ -53,7 +53,7 @@ export default function Album() {
           <a
             key={image.public_id}
             data-src={image.url}
-            data-sub-html={`<h4>${image.description}</h4>`}
+            data-sub-html={`<h3 class="sub-html-title">${image.description}</h3>`}
           >
             <img className="img-responsive" src={image.url} alt={image.alt} />
           </a>

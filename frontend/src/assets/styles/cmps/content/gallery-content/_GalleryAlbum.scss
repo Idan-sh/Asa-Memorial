@@ -9,7 +9,6 @@
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.2);
 
   text-align: center;
-
   width: fit-content;
   max-width: 100%;
   height: fit-content;
@@ -17,7 +16,6 @@
 
   padding: 0;
   margin: 0;
-
   cursor: pointer;
 
   &:hover {
@@ -30,16 +28,37 @@
     overflow-wrap: break-word;
     word-break: break-word;
     text-align: center;
-
     margin-block: 6px;
     margin-inline: 6px;
   }
 
   img {
-    width: 100%;
+    width: 1000px;
     max-width: 100%;
-    height: auto;
+    height: fit-content;
     object-fit: cover;
     aspect-ratio: 1;
+    transition: opacity 0.5s ease-in-out; /* Smooth transition when image loads */
+  }
+
+  /* Skeleton loader */
+  .image-placeholder {
+    width: 1000px;
+    max-width: 100%;
+    height: fit-content;
+    aspect-ratio: 1;
+
+    background: linear-gradient(90deg, #f0f0f0, #e0e0e0, #f0f0f0);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
   }
 }

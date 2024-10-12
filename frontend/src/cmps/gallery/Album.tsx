@@ -40,25 +40,27 @@ export default function Album() {
   return (
     <div className="album-container">
       <h2>Album {albumId}</h2>
-      <LightGallery
-        speed={500}
-        plugins={[lgThumbnail, lgZoom]}
-        mode="lg-fade"
-        zoomFromOrigin={false}
-        download={false}
-        thumbnail={false}
-        zoom={false}
-      >
-        {images.map((image) => (
-          <a
-            key={image.public_id}
-            data-src={image.url}
-            data-sub-html={`<h3 class="sub-html-title">${image.description}</h3>`}
-          >
-            <img className="img-responsive" src={image.url} alt={image.alt} />
-          </a>
-        ))}
-      </LightGallery>
+      <div className='light-gallery-container'>
+        <LightGallery
+          speed={500}
+          plugins={[lgThumbnail, lgZoom]}
+          mode="lg-fade"
+          zoomFromOrigin={false}
+          download={false}
+          thumbnail={false}
+          zoom={false}
+        >
+          {images.map((image) => (
+            <a
+              key={image.public_id}
+              data-src={image.url}
+              data-sub-html={`<h3 class="sub-html-title">${image.description}</h3>`}
+            >
+              <img className="img-responsive" src={image.url} alt={image.alt} />
+            </a>
+          ))}
+        </LightGallery>
+      </div>
     </div>
   );
 }

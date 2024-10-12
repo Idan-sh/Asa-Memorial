@@ -10,12 +10,24 @@
   align-items: center;
 }
 
-.album-container img {
-  max-width: 200px;
-  height: auto;
-  margin: 10px;
-  display: inline-block;
-  cursor: pointer;
+.light-gallery-container {
+  column-count: 3;
+  column-gap: 15px;
+  margin-bottom: 2rem;
+  padding-inline: 10%;
+  width: 90%;
+
+  @media (max-width: 768px) {
+    column-count: 2;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+    break-inside: avoid;
+  }
 }
 
 .sub-html-title {

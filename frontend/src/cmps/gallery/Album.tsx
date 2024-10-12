@@ -11,6 +11,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { fetchCloudinaryImage as fetchCloudinaryImages } from '../../services/fetch.cloudinary.service';
 
 import GoBackButton from '../global/GoBackButton';
+import Loader from '../global/Loader';
 
 interface Image {
   url: string;
@@ -26,10 +27,27 @@ export default function Album() {
   const [images, setImages] = useState<Image[]>([]);
   const [title, setTitle] = useState<string>();
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
+  const [showContent, setShowContent] = useState(false);
+
   const location = useLocation();
   const navigate = useNavigate();
 
   const goBack = () => navigate('/gallery');
+
+  useEffect(() => {
+    // Delay the loader display
+    const loaderTimer = setTimeout(() => {
+      if (isLoading) {
+        setShowLoader(true);
+      }
+    }, 100);
+
+    return () => {
+      clearTimeout(loaderTimer);
+    };
+  }, [isLoading]);
 
   useEffect(() => {
     if (location.state?.title) {
@@ -41,6 +59,7 @@ export default function Album() {
 
   useEffect(() => {
     if (title) {
+      setIsLoading(true);
       updateImages();
     }
   }, [title]);
@@ -58,33 +77,47 @@ export default function Album() {
     } else {
       console.error('Could not fetch Cloudinary images...');
     }
+
+    setIsLoading(false);
+    setShowLoader(false);
+    setShowContent(true);
   }, []);
 
   return (
     <div className="album-container">
       <h2>{title}</h2>
-      <div className="light-gallery-container">
-        <LightGallery
-          speed={500}
-          plugins={[lgThumbnail, lgZoom]}
-          mode="lg-fade"
-          zoomFromOrigin={false}
-          download={false}
-          thumbnail={false}
-          zoom={false}
-        >
-          {images.map((image) => (
-            <a
-              key={image.public_id}
-              data-src={image.url}
-              data-sub-html={`<h3 class="sub-html-title">${image.description}</h3>`}
+      {showLoader ? (
+        <Loader />
+      ) : showContent ? (
+        <>
+          <div className="light-gallery-container">
+            <LightGallery
+              speed={500}
+              plugins={[lgThumbnail, lgZoom]}
+              mode="lg-fade"
+              zoomFromOrigin={false}
+              download={false}
+              thumbnail={false}
+              zoom={false}
             >
-              <img className="img-responsive" src={image.url} alt={image.alt} />
-            </a>
-          ))}
-        </LightGallery>
-      </div>
-      <GoBackButton onGoBackClick={goBack} />
+              {images.map((image) => (
+                <a
+                  key={image.public_id}
+                  data-src={image.url}
+                  data-sub-html={`<h3 class="sub-html-title">${image.description}</h3>`}
+                >
+                  <img
+                    className="img-responsive"
+                    src={image.url}
+                    alt={image.alt}
+                  />
+                </a>
+              ))}
+            </LightGallery>
+          </div>
+          <GoBackButton onGoBackClick={goBack} />
+        </>
+      ) : null}
     </div>
   );
 }

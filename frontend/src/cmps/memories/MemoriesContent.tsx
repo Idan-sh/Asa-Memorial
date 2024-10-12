@@ -96,7 +96,6 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
       ) : showContent ? (
         <>
           <div className="memories-content-items">
-            {/* Need to limit the number of memory items, according to a props variable (which will be optional) */}
             {memories.map((memory) => {
               const name =
                 memory.nickname ||

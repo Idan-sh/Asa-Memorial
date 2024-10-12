@@ -1,6 +1,6 @@
 .album-container {
   margin-top: 1.5rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   padding-inline: 10%;
   height: 100%;
   width: 100%;
@@ -8,12 +8,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .loader {
+    margin-top: 6rem;
+  }
+
+  h2 {
+    margin-bottom: 2rem;
+  }
 }
 
 .light-gallery-container {
   column-count: 3;
   column-gap: 15px;
-  margin-bottom: 2rem;
+  margin-bottom: 8rem;
   padding-inline: 10%;
   width: 90%;
 

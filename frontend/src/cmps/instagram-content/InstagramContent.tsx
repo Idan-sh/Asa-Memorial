@@ -5,7 +5,6 @@ export default function InstagramContent() {
       <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
       <iframe
         src="//lightwidget.com/widgets/84377f181f38528da163a9039797e949.html"
-        allowTransparency
         className="lightwidget-widget"
         style={{
           width: '100%',

@@ -5,12 +5,15 @@ import { Pool } from 'pg';
 import { sendEmailToAdmins } from './services/email.service';
 import { generateHtmlResponse } from './services/html.service';
 import { checkAuthorization } from './services/authorize.service';
+import axios from 'axios';
+import { fetchCloudinaryImages } from './services/cloudinary.service';
 
 // Initialize environment variables
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
+
 const FRONTEND_PORT = process.env.FRONTEND_PORT;
 const SERVER_DOMAIN = process.env.SERVER_DOMAIN;
 const SECRET_KEY = process.env.SECRET_KEY;
@@ -143,6 +146,19 @@ app.get('/api/reject-memory/:id', async (req, res) => {
     res.send(generateHtmlResponse('Memory Rejected', 'The memory has been successfully rejected.', true));
   });
 });
+
+// Endpoint to get all images from a Cloudinary folder
+app.get('/api/images/:folder', async (req, res) => {
+  const { folder } = req.params;
+
+  if(!folder) {
+    console.log("Invalid Request: Could not get folder request param.");
+    return;
+  }
+  console.log(`Fetching images from folder: ${folder}`);
+  fetchCloudinaryImages(folder, res);
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

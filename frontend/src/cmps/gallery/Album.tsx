@@ -21,6 +21,7 @@ export default function Album() {
         zoomFromOrigin={false}
         download={false}
         thumbnail={false}
+        zoom={false}
       >
         <a href="/imgs/gallery/gallery-bike1.JPG" data-lg-size="1600-2400">
           <img alt="img1" src="/imgs/gallery/gallery-bike1.JPG" />

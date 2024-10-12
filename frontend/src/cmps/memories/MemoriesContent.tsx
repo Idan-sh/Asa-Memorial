@@ -82,12 +82,6 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
       setShowPopup(false);
     }, 500);
   };
-  return (
-    <div className="memories-content-container">
-      <h2>הקדשות וזכרונות</h2>
-      <span className="loader"></span>
-    </div>
-  );
 
   if (errorMessage) {
     return <div className="memories-content-container">{errorMessage}</div>;

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { MemoryItemData } from "../models/MemoryItem.model";
 import { AddMemoryItemData } from "../models/AddMemoryItemData.model";
+import * as EmailValidator from 'email-validator';
 
 interface SubmitResult {
     success: boolean;
@@ -41,6 +42,7 @@ function validateMemoryForm(formData: AddMemoryItemData): { isValid: boolean; er
     validateNames(formData, errors);
     validateRelation(formData.relation, errors);
     validateMessage(formData.message, errors);
+    validateEmail(formData.contactEmail, errors);
 
     return {
         isValid: errors.length === 0,
@@ -69,5 +71,11 @@ function validateMessage(message: string, errors: string[]) {
         errors.push("יש למלא תיאור.");
     } else if (message.length < 10) {
         errors.push("על התיאור להיות באורך של לפחות 10 תווים.");
+    }
+}
+
+function validateEmail(email: string, errors: string[]) {
+    if (!EmailValidator.validate(email)) {
+        errors.push("אימייל לא תקין.")
     }
 }

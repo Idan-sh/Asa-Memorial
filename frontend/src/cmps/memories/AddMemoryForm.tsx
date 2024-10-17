@@ -39,6 +39,7 @@ export default function AddMemoryForm() {
     nickname: '',
     relation: '',
     message: '',
+    contactEmail: '',
   });
 
   const closePopup = () => {
@@ -294,6 +295,17 @@ export default function AddMemoryForm() {
           <div className="add-memory-form-message-textarea-counter">
             {maxMessageCharacters - messageCharCount}
           </div>
+        </div>
+
+        {/* Contact Email input */}
+        <div className="add-memory-form-contact-email-input">
+          <input
+            className=""
+            type="text"
+            placeholder="אימייל ליצירת קשר"
+            name="contactEmail"
+            onChange={handleInputChange}
+          />
         </div>
 
         {/* Image Upload Box */}

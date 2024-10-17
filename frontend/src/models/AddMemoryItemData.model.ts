@@ -4,4 +4,5 @@ export interface AddMemoryItemData {
     nickname: string;
     relation: string;
     message: string;
+    contactEmail: string;
 }

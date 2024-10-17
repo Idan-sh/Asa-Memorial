@@ -2,21 +2,22 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { Pool } from 'pg';
-import { sendEmailToAdmins } from './services/email.service';
+import { sendEmailToAdmins, sendMemoryUpprovedEmail } from './services/email.service';
 import { generateHtmlResponse } from './services/html.service';
 import { checkAuthorization } from './services/authorize.service';
-import axios from 'axios';
 import { fetchCloudinaryImages } from './services/cloudinary.service';
 
 // Initialize environment variables
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT;
+const BACKEND_DOMAIN = process.env.BACKEND_DOMAIN;
+const BACKEND_PORT = process.env.BACKEND_PORT;
 
+const FRONTEND_DOMAIN = process.env.FRONTEND_DOMAIN;
 const FRONTEND_PORT = process.env.FRONTEND_PORT;
-const SERVER_DOMAIN = process.env.SERVER_DOMAIN;
-const SECRET_KEY = process.env.SECRET_KEY;
+
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 // PostgreSQL client setup
 const pool = new Pool({
@@ -33,7 +34,7 @@ pool.connect((err) => {
 
 // Enable CORS and JSON parsing
 app.use(cors({
-  origin: `${SERVER_DOMAIN}:${FRONTEND_PORT}`, // Allow the frontend origin
+  origin: `${FRONTEND_DOMAIN}:${FRONTEND_PORT}`, // Allow the frontend origin
 }));
 app.use(express.json());
 
@@ -107,7 +108,7 @@ app.get('/api/memories/:id', async (req, res) => {
 });
 
 app.get('/api/approve-memory/:id', async (req, res) => {
-  const memoryId = await checkAuthorization(req, res, SECRET_KEY, pool);
+  const memoryId = await checkAuthorization(req, res, JWT_SECRET_KEY, pool);
   if (!memoryId) return; // Stop execution if authorization failed
 
   // Move memory from pending_memories to memories
@@ -126,12 +127,13 @@ app.get('/api/approve-memory/:id', async (req, res) => {
       return res.status(500).send(generateHtmlResponse('Error', 'Failed to approve memory.', false));
     }
 
+    sendMemoryUpprovedEmail(result.rows[0]);
     res.send(generateHtmlResponse('Memory Approved', 'The memory has been successfully approved.', true));
   });
 });
 
 app.get('/api/reject-memory/:id', async (req, res) => {
-  const memoryId =  await checkAuthorization(req, res, SECRET_KEY, pool);
+  const memoryId =  await checkAuthorization(req, res, JWT_SECRET_KEY, pool);
   if (!memoryId) return; // Stop execution if authorization failed
 
   // Delete the memory from pending_memories
@@ -160,6 +162,6 @@ app.get('/api/images/:folder', async (req, res) => {
 });
 
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(BACKEND_PORT, () => {
+  console.log(`Server is running on port ${BACKEND_PORT}`);
 });

@@ -59,7 +59,7 @@ export function generateHtmlEmail(memoryItemData: MemoryItemData, approveUrl: st
 
           <table style="width: 100%; border-collapse: collapse; margin-top: 10px; table-layout: fixed;">
             <colgroup>
-              <col style="width: 150px;"> <!-- Adjust this width as necessary -->
+              <col style="width: 150px;">
               <col style="width: auto;">
             </colgroup>
             <tr>
@@ -87,6 +87,53 @@ export function generateHtmlEmail(memoryItemData: MemoryItemData, approveUrl: st
           <div style="text-align: center; margin-top: 30px; margin-bottom: 10px;">
             <a href="${approveUrl}" style="padding: 12px 24px; background-color: #28a745; color: white; text-decoration: none; font-weight: bold; border-radius: 5px; margin-left: 10px;">אשר</a>
             <a href="${rejectUrl}" style="padding: 12px 24px; background-color: #dc3545; color: white; text-decoration: none; font-weight: bold; border-radius: 5px; margin-right: 10px;">דחה</a>
+          </div>
+        </div>
+        <div style="background-color: #f7f7f7; padding: 10px; text-align: center; font-size: 12px; color: #777;">
+          <p>הודעה זו נשלח אוטומטית על ידי מערכת הודעות אוטומטית, אין להשיב להודעה זו.</p>
+        </div>
+      </div>
+    `;
+}
+
+export function generateHtmlMemoryUpprovedEmail(memoryItemData: MemoryItemData, memoryUrl: string) {
+  return `
+      <div style="font-family: Arial, sans-serif; border: 1px solid #dddddd; border-radius: 6px; overflow: hidden; direction: rtl;">
+        <div style="background-color: #f7f7f7; padding: 20px; text-align: center;">
+          <h1 style="margin: 0; color: #333;">הזיכרון שהעלת לזכרו של אסא אושר!</h1>
+        </div>
+        <div style="padding: 20px;">
+          <p style="font-size: 16px; color: #555;">הבקשה להעלת זיכרון אושרה, פרטי הזיכרון הינם:</p>
+
+          <table style="width: 100%; border-collapse: collapse; margin-top: 10px; table-layout: fixed;">
+            <colgroup>
+              <col style="width: 150px;">
+              <col style="width: auto;">
+            </colgroup>
+            <tr>
+              <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #dddddd;">שם פרטי:</td>
+              <td style="padding: 8px; border-bottom: 1px solid #dddddd;">${memoryItemData.first_name}</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #dddddd;">שם משפחה:</td>
+              <td style="padding: 8px; border-bottom: 1px solid #dddddd;">${memoryItemData.last_name}</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #dddddd;">כינוי:</td>
+              <td style="padding: 8px; border-bottom: 1px solid #dddddd;">${memoryItemData.nickname}</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #dddddd;">מערכת יחסים:</td>
+              <td style="padding: 8px; border-bottom: 1px solid #dddddd;">${memoryItemData.relation}</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #dddddd;">תיאור:</td>
+              <td style="padding: 8px; border-bottom: 1px solid #dddddd;">${memoryItemData.message}</td>
+            </tr>
+          </table>
+
+          <div style="text-align: center; margin-top: 30px; margin-bottom: 10px;">
+            <a href="${memoryUrl}" style="padding: 12px 24px; background-color: #28a745; color: white; text-decoration: none; font-weight: bold; border-radius: 5px; margin-left: 10px;">פתח את הזיכרון</a>
           </div>
         </div>
         <div style="background-color: #f7f7f7; padding: 10px; text-align: center; font-size: 12px; color: #777;">

@@ -38,12 +38,11 @@
     background-color: darken($mainBgColor, 6);
     color: $mainFontColor;
     align-items: center;
-    justify-content: center;
     box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.2);
     z-index: 1;
 
     &.open {
-      max-height: 200px;
+      max-height: 265px;
     }
 
     h3 {

@@ -56,7 +56,7 @@ export async function sendMemoryUpprovedEmail(memoryItemData: MemoryItemData) {
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: process.env.ADMIN_EMAILS,
+    to: memoryItemData.contactEmail,
     subject: 'זיכרון חדש לבדיקה לזכרו של אסא',
     html: generateHtmlMemoryUpprovedEmail(memoryItemData, memoryUrl)
   };

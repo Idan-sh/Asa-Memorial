@@ -11,6 +11,7 @@ import Album from '../cmps/content/gallery-content/Album';
 import FullMemoryContent from '../cmps/content/memories-content/FullMemoryContent';
 import MemoriesContent from '../cmps/content/memories-content/MemoriesContent';
 import AddMemoryForm from '../cmps/content/memories-content/AddMemoryForm';
+import EulogiesContent from '../cmps/content/eulogies-content/EulogiesContent';
 
 interface ContentPageProps {
   content:
@@ -20,7 +21,8 @@ interface ContentPageProps {
     | 'add-memory'
     | 'memory'
     | 'not-found'
-    | 'album';
+    | 'album'
+    | 'eulogies';
 }
 export default function ContentPage({ content }: ContentPageProps) {
   return (
@@ -40,6 +42,7 @@ export default function ContentPage({ content }: ContentPageProps) {
         {content === 'memory' && <FullMemoryContent />}
         {content === 'not-found' && <ContentNotFound />}
         {content === 'album' && <Album />}
+        {content === 'eulogies' && <EulogiesContent />}
       </div>
       <Footer />
     </div>

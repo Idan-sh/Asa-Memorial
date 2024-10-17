@@ -12,6 +12,7 @@ export default function Menu({ onOptionClick, isMenuVisible }: MenuProps) {
   const goToMainPage = () => navigate('/');
   const goToGaleryPage = () => navigate('/gallery');
   const goToMemoriesPage = () => navigate('/memories');
+  const goToEulogiesPage = () => navigate('/eulogies');
 
   return (
     <div className={'menu-container'}>
@@ -21,6 +22,7 @@ export default function Menu({ onOptionClick, isMenuVisible }: MenuProps) {
       >
         <h3 onClick={goToMainPage}>דף הבית</h3>
         <h3 onClick={goToGaleryPage}>גלריה</h3>
+        <h3 onClick={goToEulogiesPage}>הספדים</h3>
         <h3 onClick={goToMemoriesPage}>הקדשות וזכרונות</h3>
       </div>
     </div>

@@ -23,6 +23,7 @@ function App() {
           path="/memories/:memoryId"
           element={<ContentPage content="memory" />}
         />
+        <Route path="/eulogies" element={<ContentPage content="eulogies" />} />
       </Routes>
       <ScrollToTop />
     </BrowserRouter>

@@ -5,4 +5,5 @@ export interface MemoryItemData {
     nickname: string;
     relation: string;
     message: string;
+    contactEmail: string;
 }

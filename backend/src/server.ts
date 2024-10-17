@@ -44,16 +44,16 @@ app.get('/api', (req, res) => {
 
 // Add memory form submission route
 app.post('/api/add-memory', async (req, res) => {
-  const { firstName, nickname, lastName, relation, message } = req.body;
+  const { firstName, nickname, lastName, relation, message, contactEmail } = req.body;
 
   try {
     const query = `
-      INSERT INTO pending_memories (first_name, nickname, last_name, relation, message)
-      VALUES ($1, $2, $3, $4, $5)
+      INSERT INTO pending_memories (first_name, nickname, last_name, relation, message, contact_email)
+      VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING *;
     `;
 
-    const values = [firstName, nickname, lastName, relation, message];
+    const values = [firstName, nickname, lastName, relation, message, contactEmail];
     const result = await pool.query(query, values);
 
     // Send an email to admins to review the memory

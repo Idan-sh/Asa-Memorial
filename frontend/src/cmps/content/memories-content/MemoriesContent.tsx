@@ -1,9 +1,9 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
-import { MemoryItemData } from '../../models/MemoryItem.model';
-import { fetchMemories } from '../../services/fetch.memories.service';
+import { MemoryItemData } from '../../../models/MemoryItem.model';
+import { fetchMemories } from '../../../services/fetch.memories.service';
 import MemoryItem from './MemoryItem';
-import Popup from '../popup/Popup';
+import Popup from '../../popup/Popup';
 
 interface MemoriesContentProps {
   limit?: number;

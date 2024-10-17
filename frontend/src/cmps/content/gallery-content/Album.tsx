@@ -8,10 +8,10 @@ import 'lightgallery/scss/lg-video.scss';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
 import { useCallback, useEffect, useState } from 'react';
-import { fetchCloudinaryImage as fetchCloudinaryImages } from '../../services/fetch.cloudinary.service';
+import { fetchCloudinaryImage as fetchCloudinaryImages } from '../../../services/fetch.cloudinary.service';
 
-import GoBackButton from '../global/GoBackButton';
-import Loader from '../global/Loader';
+import GoBackButton from '../../global/GoBackButton';
+import Loader from '../../global/Loader';
 
 interface Image {
   url: string;

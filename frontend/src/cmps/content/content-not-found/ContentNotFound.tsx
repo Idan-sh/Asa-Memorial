@@ -1,5 +1,5 @@
 import { Player } from '@lordicon/react';
-import searchAnimated from '../../assets/animations/search-animated.json';
+import searchAnimated from '../../../assets/animations/search-animated.json';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AnimationDirection } from 'lottie-web';

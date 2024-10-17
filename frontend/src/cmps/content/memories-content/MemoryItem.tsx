@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Player } from '@lordicon/react';
-import CandleAnimated from '../../assets/animations/candle-animated.json';
+import CandleAnimated from '../../../assets/animations/candle-animated.json';
 import { useRef } from 'react';
 
 interface MemoryItemProps {

@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { MemoryItemData } from '../../models/MemoryItem.model';
+import { MemoryItemData } from '../../../models/MemoryItem.model';
 import { useNavigate, useParams } from 'react-router-dom';
-import { fetchMemory } from '../../services/fetch.memories.service';
+import { fetchMemory } from '../../../services/fetch.memories.service';
 import { Player } from '@lordicon/react';
-import CandleAnimated from '../../assets/animations/candle-animated.json';
-import GoBackButton from '../global/GoBackButton';
+import CandleAnimated from '../../../assets/animations/candle-animated.json';
+import GoBackButton from '../../global/GoBackButton';
 
 export default function FullMemoryContent() {
   const { memoryId } = useParams();

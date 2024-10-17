@@ -1,13 +1,16 @@
 import Header from '../cmps/header/Header';
-import MainContent from '../cmps/main-content/MainContent';
 import Footer from '../cmps/footer/Footer';
-import Gallery from '../cmps/gallery/Gallery';
-import Memories from '../cmps/memories/MemoriesContent';
-import AddMemoryForm from '../cmps/memories/AddMemoryForm';
-import FullMemoryContent from '../cmps/memories/FullMemoryContent';
-import ContentNotFound from '../cmps/content-not-found/ContentNotFound';
-import Album from '../cmps/gallery/Album';
-import InstagramContent from '../cmps/instagram-content/InstagramContent';
+
+import MainContent from '../cmps/content/main-content/MainContent';
+import InstagramContent from '../cmps/content/instagram-content/InstagramContent';
+import ContentNotFound from '../cmps/content/content-not-found/ContentNotFound';
+
+import GalleryContent from '../cmps/content/gallery-content/GalleryContent';
+import Album from '../cmps/content/gallery-content/Album';
+
+import FullMemoryContent from '../cmps/content/memories-content/FullMemoryContent';
+import MemoriesContent from '../cmps/content/memories-content/MemoriesContent';
+import AddMemoryForm from '../cmps/content/memories-content/AddMemoryForm';
 
 interface ContentPageProps {
   content:
@@ -27,12 +30,12 @@ export default function ContentPage({ content }: ContentPageProps) {
         {content === 'main' && (
           <>
             <MainContent />
-            <Memories limit={6} />
+            <MemoriesContent limit={6} />
             <InstagramContent />
           </>
         )}
-        {content === 'gallery' && <Gallery />}
-        {content === 'memories' && <Memories />}
+        {content === 'gallery' && <GalleryContent />}
+        {content === 'memories' && <MemoriesContent />}
         {content === 'add-memory' && <AddMemoryForm />}
         {content === 'memory' && <FullMemoryContent />}
         {content === 'not-found' && <ContentNotFound />}

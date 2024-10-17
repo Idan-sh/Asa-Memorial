@@ -1,4 +1,4 @@
-import IMAGES from '../../assets/images/index';
+import IMAGES from '../../../assets/images/index';
 import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 

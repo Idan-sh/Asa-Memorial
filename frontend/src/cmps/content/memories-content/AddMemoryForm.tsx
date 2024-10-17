@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { useScreenSize } from '../../context/ScreenSizeProvider';
+import { useScreenSize } from '../../../context/ScreenSizeProvider';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AddMemoryItemData } from '../../models/AddMemoryItemData.model';
-import { RelationCategory, relationOptions } from '../../models/Relation.model';
-import { handleSubmit } from '../../services/add.memory.service';
-import Popup from '../popup/Popup';
+import { AddMemoryItemData } from '../../../models/AddMemoryItemData.model';
+import { RelationCategory, relationOptions } from '../../../models/Relation.model';
+import { handleSubmit } from '../../../services/add.memory.service';
+import Popup from '../../popup/Popup';
 
 export default function AddMemoryForm() {
   const navigate = useNavigate();

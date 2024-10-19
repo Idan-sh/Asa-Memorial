@@ -1,3 +1,4 @@
+import { eulogiesData } from './Eulogies';
 import EulogyItem from './EulogyItem';
 
 export default function EulogiesContent() {
@@ -5,8 +6,15 @@ export default function EulogiesContent() {
     <div className="eulogies-content-container">
       <h2>הספדים</h2>
       <div className="eulogies-content-items">
-        <EulogyItem name="שמעון" relation="חבר" message="הודעה" />
-        <EulogyItem name="שמעון" relation="חבר" message="הודעה" />
+        {eulogiesData.map((eulogy) => {
+          return (
+            <EulogyItem
+              name={eulogy.name}
+              relation={eulogy.relation}
+              message={eulogy.message}
+            />
+          );
+        })}
       </div>
     </div>
   );

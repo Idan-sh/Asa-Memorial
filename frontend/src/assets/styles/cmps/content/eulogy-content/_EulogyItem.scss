@@ -7,7 +7,7 @@
   background-color: darken($mainBgColor, 1);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
 
-  padding-block: 1rem;
+  padding-block: 2rem;
   padding-inline: 1.5rem;
   border-radius: 8px;
   text-align: center;
@@ -30,14 +30,16 @@
   &__message {
     margin: 0;
     margin-block: 0.5rem;
-    height: 200px;
+    height: fit-content;
     font-size: 14px;
 
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 8;
-    line-clamp: 8;
+    -webkit-line-clamp: 12;
+    line-clamp: 12;
     -webkit-box-orient: vertical;
+
+    white-space: pre-line;
   }
 }
 

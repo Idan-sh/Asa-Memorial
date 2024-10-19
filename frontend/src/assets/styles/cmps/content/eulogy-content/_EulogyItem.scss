@@ -1,4 +1,4 @@
-.memory-item-container {
+.eulogy-item-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,21 +7,16 @@
   background-color: darken($mainBgColor, 1);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
 
-  padding-block: 10px;
-  padding-inline: 30px;
+  padding-block: 1rem;
+  padding-inline: 1.5rem;
   border-radius: 8px;
   text-align: center;
 }
 
-.memory-item {
-  &__icon {
-    display: block;
-    height: 60px;
-  }
-
+.eulogy-item {
   &__name {
     margin: 0;
-    font-size: 100%;
+    font-size: 140%;
     font-weight: 400;
   }
 
@@ -34,7 +29,7 @@
 
   &__message {
     margin: 0;
-    margin-block: 1rem;
+    margin-block: 0.5rem;
     height: 200px;
     font-size: 14px;
 
@@ -46,7 +41,7 @@
   }
 }
 
-.memory-item-container button {
+.eulogy-item-container button {
   cursor: pointer;
   padding-inline: 20px;
   padding-block: 6px;

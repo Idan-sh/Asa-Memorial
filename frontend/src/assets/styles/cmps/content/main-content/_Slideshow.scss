@@ -1,8 +1,17 @@
 .slideshow-container {
   width: 100%;
-  height: auto;
+  height: 500px;
   overflow: hidden;
   border-radius: 5px;
+  position: relative;
+
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    margin-left: -20px;
+  }
 
   .each-slide {
     display: flex;

@@ -3,7 +3,7 @@ import axios from "axios";
 const fetchCloudinaryImagesUrl = import.meta.env
   .VITE_FETCH_CLOUDINARY_IMAGES_URL;
 
-export async function fetchCloudinaryImage(folderName: string) {
+export async function fetchCloudinaryImages(folderName: string) {
     try {
         const response = await axios.get(fetchCloudinaryImagesUrl + `/${folderName}`, {
             headers: {

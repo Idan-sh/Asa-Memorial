@@ -8,23 +8,15 @@ import 'lightgallery/scss/lg-video.scss';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
 import { useCallback, useEffect, useState } from 'react';
-import { fetchCloudinaryImage as fetchCloudinaryImages } from '../../../services/fetch.cloudinary.service';
+import { CloudinaryImage } from '../../../models/CloudinaryImage.model';
+import { fetchCloudinaryImages } from '../../../services/fetch.cloudinary.service';
 
 import GoBackButton from '../../global/GoBackButton';
 import Loader from '../../global/Loader';
 
-interface Image {
-  url: string;
-  public_id: string;
-  width: number;
-  height: number;
-  alt?: string;
-  description?: string;
-}
-
 export default function Album() {
   const { folderName } = useParams();
-  const [images, setImages] = useState<Image[]>([]);
+  const [images, setImages] = useState<CloudinaryImage[]>([]);
   const [title, setTitle] = useState<string>();
 
   const [isLoading, setIsLoading] = useState(false);

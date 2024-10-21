@@ -3,7 +3,10 @@ import { useScreenSize } from '../../../context/ScreenSizeProvider';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AddMemoryItemData } from '../../../models/AddMemoryItemData.model';
-import { RelationCategory, relationOptions } from '../../../models/Relation.model';
+import {
+  RelationCategory,
+  relationOptions,
+} from '../../../models/Relation.model';
 import { handleSubmit } from '../../../services/add.memory.service';
 import Popup from '../../popup/Popup';
 
@@ -170,7 +173,7 @@ export default function AddMemoryForm() {
     const totalImages = uploadedImages.length + newFiles.length;
 
     if (totalImages > maxImageUploads) {
-      alert(`ניתן להעלות לכל היותר ${maxImageUploads} תמונות`);
+      displayErrorPopup(`ניתן להעלות לכל היותר ${maxImageUploads} תמונות`);
     } else {
       setUploadedImages((prevImages) => [...prevImages, ...newFiles]);
     }

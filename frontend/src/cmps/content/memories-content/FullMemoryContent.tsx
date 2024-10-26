@@ -5,6 +5,7 @@ import { fetchMemory } from '../../../services/fetch.memories.service';
 import { Player } from '@lordicon/react';
 import CandleAnimated from '../../../assets/animations/candle-animated.json';
 import GoBackButton from '../../global/GoBackButton';
+import { Buffer } from 'buffer/';
 
 export default function FullMemoryContent() {
   const { memoryId } = useParams();
@@ -73,6 +74,11 @@ export default function FullMemoryContent() {
   const relation = memory.relation ?? 'No relation provided';
   const message = memory.message ?? 'No message available';
 
+  const imagesBase64 = memory.images.map(
+    (buffer) =>
+      `data:image/jpeg;base64,${Buffer.from(buffer).toString('base64')}`
+  );
+
   return (
     <div className="full-memory-container">
       <h2>זיכרון מאת {name}</h2>
@@ -90,7 +96,16 @@ export default function FullMemoryContent() {
         <div className="full-memory__name">{name}</div>
         <div className="full-memory__relation">{relation}</div>
         <div className="full-memory__message">{message}</div>
-        <div className="full-memory__pictures">some pictures here...</div>
+        <div className="full-memory__pictures">
+          {imagesBase64.map((src, index) => (
+            <img
+              key={index}
+              src={src}
+              alt="Memory Image"
+              style={{ maxWidth: '100%', height: 'auto', margin: '10px 0' }}
+            />
+          ))}
+        </div>
       </div>
       <GoBackButton onGoBackClick={goBack} />
     </div>

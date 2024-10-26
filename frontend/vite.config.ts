@@ -9,4 +9,9 @@ export default defineConfig({
       '/api': 'http://localhost:5000',  // Proxy API requests to backend
     },
   },
+  resolve: {
+    alias: {
+      process: "process/browser"
+    }
+  }
 })

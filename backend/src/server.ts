@@ -124,8 +124,8 @@ app.get('/api/approve-memory/:id', async (req, res) => {
     WITH moved_memory AS (
       DELETE FROM pending_memories WHERE id = $1 RETURNING *
     )
-    INSERT INTO memories (id, first_name, nickname, last_name, relation, message)
-    SELECT id, first_name, nickname, last_name, relation, message FROM moved_memory
+    INSERT INTO memories (id, first_name, nickname, last_name, relation, message, contact_email, images)
+    SELECT id, first_name, nickname, last_name, relation, message, contact_email, images FROM moved_memory
     RETURNING *;
   `;
 

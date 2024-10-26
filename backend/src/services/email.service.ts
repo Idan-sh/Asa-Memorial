@@ -37,7 +37,7 @@ export async function sendEmailToAdmins(memoryItemData: MemoryItemData) {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: process.env.ADMIN_EMAILS,
-    subject: 'זיכרון חדש לבדיקה לזכרו של אסא',
+    subject: 'הועלה זיכרון חדש לבדיקה לזכרו של אסא',
     html: generateHtmlEmail(memoryItemData, approveUrl, rejectUrl)
   };
 
@@ -52,12 +52,18 @@ function validateJwtSecretKey() {
 }
 
 export async function sendMemoryUpprovedEmail(memoryItemData: MemoryItemData) {
+  if(!memoryItemData.contact_email) {
+    console.log("No contact email provided for memory item '" + memoryItemData.id + "'.");
+    return;
+  }
+  console.log("Sending upproved email to contact email '" + memoryItemData.contact_email + "' for memory item '" + memoryItemData.id + "'.");
+
   const memoryUrl = `${FRONTEND_DOMAIN}:${FRONTEND_PORT}/memories/${memoryItemData.id}`;
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: memoryItemData.contactEmail,
-    subject: 'זיכרון חדש לבדיקה לזכרו של אסא',
+    to: memoryItemData.contact_email,
+    subject: 'הזיכרון שהעלת לזכרו של אסא אושר',
     html: generateHtmlMemoryUpprovedEmail(memoryItemData, memoryUrl)
   };
 

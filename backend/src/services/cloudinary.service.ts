@@ -52,8 +52,8 @@ export async function fetchCloudinaryImages(folder: string, res: Response) {
           public_id: resource.public_id,
           width: resource.width,
           height: resource.height,
-          description: resource.context?.custom?.description || "No description available",
-          alt: resource.context?.custom?.alt || "No alt text available",
+          description: resource.context?.custom?.description || "",
+          alt: resource.context?.custom?.alt || "Image " + resource.public_id,
         }));
     
         res.json(images); // Send the images as a JSON response.

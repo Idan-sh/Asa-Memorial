@@ -195,7 +195,25 @@ export default function AddMemoryForm() {
   const handleOnSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    const result = await handleSubmit(formData, displayErrorPopup);
+    // Create a FormData instance
+    const uploadFormData = new FormData();
+    uploadFormData.append('firstName', formData.firstName);
+    uploadFormData.append('lastName', formData.lastName);
+    uploadFormData.append('nickname', formData.nickname);
+    uploadFormData.append('relation', formData.relation);
+    uploadFormData.append('message', formData.message);
+    uploadFormData.append('contactEmail', formData.contactEmail);
+
+    // Append each image file
+    uploadedImages.forEach((file) => {
+      uploadFormData.append('images', file); // 'images' should match the field name expected by multer
+    });
+
+    const result = await handleSubmit(
+      formData,
+      uploadFormData,
+      displayErrorPopup
+    );
 
     if (result.success) {
       navigate('/memories', {

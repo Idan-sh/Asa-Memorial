@@ -49,6 +49,14 @@ export function generateHtmlResponse(title: string, message: string, success: bo
 }
 
 export function generateHtmlEmail(memoryItemData: MemoryItemData, approveUrl: string, rejectUrl: string) {
+  // Convert each buffer to a Base64-encoded image string
+  const imagesBase64 = memoryItemData.images.map((buffer) => `data:image/jpeg;base64,${buffer.toString('base64')}`);
+
+  // Convert the images to HTML elements
+  const imagesHtml = imagesBase64
+  .map((src) => `<img src="${src}" alt="Memory Image" style="max-width: 100%; height: auto; margin: 10px 0;" />`)
+  .join('');
+  
   return `
       <div style="font-family: Arial, sans-serif; border: 1px solid #dddddd; border-radius: 6px; overflow: hidden; direction: rtl;">
         <div style="background-color: #f7f7f7; padding: 20px; text-align: center;">
@@ -81,6 +89,10 @@ export function generateHtmlEmail(memoryItemData: MemoryItemData, approveUrl: st
             <tr>
               <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #dddddd;">תיאור:</td>
               <td style="padding: 8px; border-bottom: 1px solid #dddddd;">${memoryItemData.message}</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold; padding: 8px; border-bottom: 1px solid #dddddd;">תמונות:</td>
+              <td style="padding: 8px; border-bottom: 1px solid #dddddd;">${imagesHtml}</td>
             </tr>
           </table>
 

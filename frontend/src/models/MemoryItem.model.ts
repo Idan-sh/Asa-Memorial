@@ -6,4 +6,5 @@ export interface MemoryItemData {
     relation: string;
     message: string;
     contactEmail: string;
+    images: Buffer[];
 }

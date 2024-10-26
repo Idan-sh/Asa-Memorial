@@ -12,7 +12,11 @@ interface SubmitResult {
 const addMemoryUrl =
   import.meta.env.VITE_ADD_MEMORY_ITEM_URL;
 
-export async function handleSubmit(formData: AddMemoryItemData, displayErrorMessage: (message: string) => void) : Promise<SubmitResult> {
+export async function handleSubmit(
+        formData: AddMemoryItemData, 
+        uploadFormData: FormData,
+        displayErrorMessage: (message: string) => void
+    ) : Promise<SubmitResult> {
     const { isValid, errors } = validateMemoryForm(formData);
 
     if (!isValid) {
@@ -21,9 +25,9 @@ export async function handleSubmit(formData: AddMemoryItemData, displayErrorMess
     }
 
     try {
-        const response = await axios.post<MemoryItemData>(addMemoryUrl, formData, {
+        const response = await axios.post<MemoryItemData>(addMemoryUrl, uploadFormData, {
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "multipart/form-data",
             },});
         return {success: true, memoryItemData: response.data};
     } catch (err) {

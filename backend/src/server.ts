@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { Pool } from 'pg';
+import multer from 'multer';
 import { sendEmailToAdmins, sendMemoryUpprovedEmail } from './services/email.service';
 import { generateHtmlResponse } from './services/html.service';
 import { checkAuthorization } from './services/authorize.service';
@@ -24,6 +25,10 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
+// Multer image upload setup
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
 pool.connect((err) => {
   if (err) {
     console.error('Database connection error', err.stack);
@@ -44,17 +49,20 @@ app.get('/api', (req, res) => {
 });
 
 // Add memory form submission route
-app.post('/api/add-memory', async (req, res) => {
+app.post('/api/add-memory', upload.array('images', 5), async (req, res) => {
   const { firstName, nickname, lastName, relation, message, contactEmail } = req.body;
+  const files = req.files as Express.Multer.File[];
 
   try {
     const query = `
-      INSERT INTO pending_memories (first_name, nickname, last_name, relation, message, contact_email)
-      VALUES ($1, $2, $3, $4, $5, $6)
+      INSERT INTO pending_memories (first_name, nickname, last_name, relation, message, contact_email, images)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
       RETURNING *;
     `;
+    
+    const imageBuffers = files.map((file) => file.buffer);
 
-    const values = [firstName, nickname, lastName, relation, message, contactEmail];
+    const values = [firstName, nickname, lastName, relation, message, contactEmail, imageBuffers];
     const result = await pool.query(query, values);
 
     // Send an email to admins to review the memory

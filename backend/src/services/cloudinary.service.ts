@@ -78,7 +78,7 @@ export async function fetchCloudinaryCoverImage(folderName: string, res: Respons
 
     res.json(response.resources);
   } catch (err) {
-    console.error("Error fetching cloudinary image with tag. " + err);
+    console.error("Error fetching cloudinary image with tag. ", err);
     res.status(500).send("Error fetching image with tag.")
   }
 }

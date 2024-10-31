@@ -33,8 +33,9 @@ export async function fetchAlbumCoverImage(folderName: string) {
             console.log(`No cover image available for album ${folderName}. `);
             return;
         }
-        return response.data[0].secure_url;
+        return response.data;
     } catch (err) {
         console.error(`Error fetching cover image of album ${folderName}. ` + err);
+        return;
     }
 }

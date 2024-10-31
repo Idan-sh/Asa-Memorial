@@ -35,14 +35,18 @@ const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET;
  */
 export async function fetchCloudinaryImages(folderName: string, pool: Pool, res: Response) {
   try {
+    console.log(`Fetching images from folder: ${folderName}`);
+
     const query = 'SELECT images FROM album_images WHERE folder_name = $1';
     const values = [folderName];
     const result = await pool.query(query, values);
 
     if (result.rows.length === 0) {
+      console.log(`Album ${folderName} has no images availabe.`)
       return res.status(404).json({ success: false, message: `Album ${folderName} has no images availabe.` });
     }
 
+    console.log(`Successfully fetched images of album ${folderName}.`)
     res.json({ success: true, images: result.rows[0].images });
   } catch (err) {
     console.error('Error fetching album images from the database.', err);

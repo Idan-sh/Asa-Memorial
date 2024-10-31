@@ -36,7 +36,7 @@ export default function Slideshow() {
   const updateImages = useCallback(async () => {
     const result = await fetchAlbumImages(slideshowCloudinaryFolderName);
 
-    if (result.success) {
+    if (result) {
       setImages(result.images || []);
     } else {
       console.error('Could not fetch Cloudinary images...');

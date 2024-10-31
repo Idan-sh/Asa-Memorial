@@ -1,4 +1,5 @@
 export const FOLDER_NAMES = [
+    'slideshow',
     'childhood',
     'GrowingUpInJerusalem',
     'Army',

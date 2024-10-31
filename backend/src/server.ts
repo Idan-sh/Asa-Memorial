@@ -165,7 +165,6 @@ app.get('/api/album/:folder', async (req, res) => {
     console.log("Invalid Request: Could not get folder request param.");
     return;
   }
-  console.log(`Fetching images from folder: ${folder}`);
   fetchCloudinaryImages(folder, pool, res);
 });
 

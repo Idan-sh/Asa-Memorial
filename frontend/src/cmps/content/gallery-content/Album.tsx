@@ -9,7 +9,7 @@ import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
 import { useCallback, useEffect, useState } from 'react';
 import { CloudinaryImage } from '../../../models/CloudinaryImage.model';
-import { fetchCloudinaryImages } from '../../../services/fetch.cloudinary.service';
+import { fetchAlbumImages } from '../../../services/fetch.album.service';
 
 import GoBackButton from '../../global/GoBackButton';
 import Loader from '../../global/Loader';
@@ -62,12 +62,12 @@ export default function Album() {
       return;
     }
 
-    const result = await fetchCloudinaryImages(folderName);
+    const result = await fetchAlbumImages(folderName);
 
-    if (result.success) {
-      setImages(result.images || []);
+    if (result) {
+      setImages(result.images);
     } else {
-      console.error('Could not fetch Cloudinary images...');
+      setImages([]);
     }
 
     setIsLoading(false);

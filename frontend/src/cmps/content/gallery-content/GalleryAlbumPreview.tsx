@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import defaultImg from '/imgs/defaultAlbumImg.jpeg';
 import { useCallback, useEffect, useState } from 'react';
-import { fetchCloudinaryCoverImage } from '../../../services/fetch.cloudinary.service';
+import { fetchAlbumCoverImage } from '../../../services/fetch.album.service';
 
 interface GalleryAlbumProps {
   title: string;
@@ -44,9 +44,9 @@ export default function GalleryAlbum({ title, folderName }: GalleryAlbumProps) {
     } else {
       // Fetch cover image from cloudinary and cache it if exists
       console.log('Cache expired or not found, fetching from API...');
-      const result = await fetchCloudinaryCoverImage(folderName);
+      const result = await fetchAlbumCoverImage(folderName);
 
-      if (result.success) {
+      if (result) {
         console.log('API fetch successful, updating cache.');
         setCoverImage(result.image);
         localStorage.setItem(`coverImage_${folderName}`, result.image);

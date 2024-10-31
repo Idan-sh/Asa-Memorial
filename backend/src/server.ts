@@ -6,7 +6,7 @@ import multer from 'multer';
 import { sendEmailToAdmins, sendMemoryUpprovedEmail } from './services/email.service';
 import { generateHtmlResponse } from './services/html.service';
 import { checkAuthorization } from './services/authorize.service';
-import { fetchCloudinaryCoverImage, fetchCloudinaryImages } from './services/cloudinary.service';
+import { updateCloudinaryAlbums, fetchCloudinaryCoverImage, fetchCloudinaryImages } from './services/cloudinary.service';
 
 // Initialize environment variables
 dotenv.config();
@@ -158,7 +158,7 @@ app.get('/api/reject-memory/:id', async (req, res) => {
 });
 
 // Endpoint to get all images from a Cloudinary folder
-app.get('/api/images/:folder', async (req, res) => {
+app.get('/api/album/:folder', async (req, res) => {
   const { folder } = req.params;
 
   if(!folder) {
@@ -166,10 +166,10 @@ app.get('/api/images/:folder', async (req, res) => {
     return;
   }
   console.log(`Fetching images from folder: ${folder}`);
-  fetchCloudinaryImages(folder, res);
+  fetchCloudinaryImages(folder, pool, res);
 });
 
-app.get('/api/images/cover/:folder', async (req, res) => {
+app.get('/api/album/cover/:folder', async (req, res) => {
   const { folder } = req.params;
 
   if(!folder) {
@@ -180,6 +180,9 @@ app.get('/api/images/cover/:folder', async (req, res) => {
   fetchCloudinaryCoverImage(folder, res);
 });
 
+app.get('/api/update-albums', async (req, res) => {
+  updateCloudinaryAlbums(pool, res);
+});
 
 app.listen(BACKEND_PORT, () => {
   console.log(`Server is running on port ${BACKEND_PORT}`);

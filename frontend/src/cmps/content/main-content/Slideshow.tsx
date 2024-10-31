@@ -2,7 +2,7 @@ import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import { CloudinaryImage } from '../../../models/CloudinaryImage.model';
 import { useCallback, useEffect, useState } from 'react';
-import { fetchCloudinaryImages } from '../../../services/fetch.cloudinary.service';
+import { fetchAlbumImages } from '../../../services/fetch.album.service';
 import Loader from '../../global/Loader';
 
 const slideshowCloudinaryFolderName = import.meta.env
@@ -34,7 +34,7 @@ export default function Slideshow() {
   }, [isLoading]);
 
   const updateImages = useCallback(async () => {
-    const result = await fetchCloudinaryImages(slideshowCloudinaryFolderName);
+    const result = await fetchAlbumImages(slideshowCloudinaryFolderName);
 
     if (result.success) {
       setImages(result.images || []);

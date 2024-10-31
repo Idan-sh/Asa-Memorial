@@ -9,6 +9,7 @@ export default function EulogiesContent() {
         {eulogiesData.map((eulogy) => {
           return (
             <EulogyItem
+              key={eulogy.name}
               name={eulogy.name}
               relation={eulogy.relation}
               message={eulogy.message}

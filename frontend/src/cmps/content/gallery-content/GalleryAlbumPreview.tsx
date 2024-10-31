@@ -27,12 +27,37 @@ export default function GalleryAlbum({ title, folderName }: GalleryAlbumProps) {
   }, []);
 
   const updateCoverImage = useCallback(async () => {
-    const result = await fetchCloudinaryCoverImage(folderName);
+    const cachedImage = localStorage.getItem(`coverImage_${folderName}`);
+    const cachedTimestamp = localStorage.getItem(
+      `coverImageTimestamp_${folderName}`
+    );
 
-    if (result.success) {
-      setCoverImage(result.image);
+    const cachedExpiration = 24 * 60 * 60 * 1000; // Set the cache expiration to 24 hours
+    const isCacheValid =
+      cachedTimestamp &&
+      Date.now() - Number(cachedTimestamp) < cachedExpiration;
+
+    console.log(`Checking cache for folder: ${folderName}`);
+    if (cachedImage && isCacheValid) {
+      console.log('Using cached image:', cachedImage);
+      setCoverImage(cachedImage);
     } else {
-      setCoverImage(defaultImg);
+      // Fetch cover image from cloudinary and cache it if exists
+      console.log('Cache expired or not found, fetching from API...');
+      const result = await fetchCloudinaryCoverImage(folderName);
+
+      if (result.success) {
+        console.log('API fetch successful, updating cache.');
+        setCoverImage(result.image);
+        localStorage.setItem(`coverImage_${folderName}`, result.image);
+        localStorage.setItem(
+          `coverImageTimestamp_${folderName}`,
+          Date.now().toString()
+        );
+      } else {
+        console.log('API fetch failed, using default image.');
+        setCoverImage(defaultImg);
+      }
     }
   }, []);
 

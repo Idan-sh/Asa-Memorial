@@ -6,7 +6,7 @@ import multer from 'multer';
 import { sendEmailToAdmins, sendMemoryUpprovedEmail } from './services/email.service';
 import { generateHtmlResponse } from './services/html.service';
 import { checkAuthorization } from './services/authorize.service';
-import { fetchCloudinaryImages } from './services/cloudinary.service';
+import { fetchCloudinaryCoverImage, fetchCloudinaryImages } from './services/cloudinary.service';
 
 // Initialize environment variables
 dotenv.config();
@@ -167,6 +167,17 @@ app.get('/api/images/:folder', async (req, res) => {
   }
   console.log(`Fetching images from folder: ${folder}`);
   fetchCloudinaryImages(folder, res);
+});
+
+app.get('/api/images/cover/:folder', async (req, res) => {
+  const { folder } = req.params;
+
+  if(!folder) {
+    console.log("Invalid Request: Could not get folder request param.");
+    return;
+  }
+  console.log(`Fetching cover image from folder: ${folder}`);
+  fetchCloudinaryCoverImage(folder, res);
 });
 
 

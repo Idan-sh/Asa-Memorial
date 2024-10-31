@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Response } from "express"; 
+import { v2 as cloudinary } from 'cloudinary';
 
 interface CloudinaryResource {
     secure_url: string;
@@ -14,8 +15,14 @@ interface CloudinaryResource {
     };
 }
 
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
 // Cloudinary API
-const CLOUD_NAME = process.env.CLOUD_NAME;
+const CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME;
 const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY;
 const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET;
 
@@ -59,7 +66,20 @@ export async function fetchCloudinaryImages(folder: string, res: Response) {
         res.json(images); // Send the images as a JSON response.
       } catch (error) {
         console.error('Error fetching images:', error);
-        res.status(500).send('Error fetching images');
+        res.status(500).send('Error fetching images.');
       }
+}
+
+export async function fetchCloudinaryCoverImage(folderName: string, res: Response) {
+  try {
+    const response = await cloudinary.search
+      .expression(`folder:${folderName} AND tags:cover`)
+      .execute();
+
+    res.json(response.resources);
+  } catch (err) {
+    console.error("Error fetching cloudinary image with tag. " + err);
+    res.status(500).send("Error fetching image with tag.")
+  }
 }
 

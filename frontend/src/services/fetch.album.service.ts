@@ -30,7 +30,7 @@ export async function fetchAlbumCoverImage(folderName: string) {
             }
         });
         if (response.data.length == 0) {
-            console.error(`No cover image available for album ${folderName}. `);
+            console.log(`No cover image available for album ${folderName}. `);
             return;
         }
         return response.data[0].secure_url;

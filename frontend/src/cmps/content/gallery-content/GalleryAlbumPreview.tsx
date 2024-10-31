@@ -32,7 +32,7 @@ export default function GalleryAlbum({ title, folderName }: GalleryAlbumProps) {
     if (result.success) {
       setCoverImage(result.image);
     } else {
-      console.error('Could not fetch Cloudinary images...');
+      setCoverImage(defaultImg);
     }
   }, []);
 
@@ -40,7 +40,7 @@ export default function GalleryAlbum({ title, folderName }: GalleryAlbumProps) {
     <div className="gallery-album-container" onClick={goToAlbum}>
       {!isImageLoaded && <div className="image-placeholder"></div>}
       <img
-        src={coverImage || defaultImg}
+        src={coverImage}
         onLoad={handleImageLoad}
         alt={title}
         style={{ display: isImageLoaded ? 'block' : 'none' }}

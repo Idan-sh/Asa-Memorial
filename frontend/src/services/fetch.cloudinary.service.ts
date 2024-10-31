@@ -31,9 +31,12 @@ export async function fetchCloudinaryCoverImage(folderName: string) {
                 "Content-Type": "application/json",
             }
         });
-        return { success:true, image: response.data[0].secure_url };
+        if (response.data.length == 0) {
+            return { success: false };
+        }
+        return { success: true, image: response.data[0].secure_url };
     } catch (err) {
         console.error("Error fetching cover image. " + err);
-        return { success: false }
+        return { success: false };
     }
 }

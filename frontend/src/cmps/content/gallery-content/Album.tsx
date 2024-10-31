@@ -13,6 +13,7 @@ import { fetchAlbumImages } from '../../../services/fetch.album.service';
 
 import GoBackButton from '../../global/GoBackButton';
 import Loader from '../../global/Loader';
+import ContentNotFound from '../content-not-found/ContentNotFound';
 
 export default function Album() {
   const { folderName } = useParams();
@@ -22,6 +23,8 @@ export default function Album() {
   const [isLoading, setIsLoading] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
   const [showContent, setShowContent] = useState(false);
+
+  const [isNotFound, setIsNotFound] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -46,6 +49,7 @@ export default function Album() {
       setTitle(location.state.title);
     } else {
       console.warn('Could not receive album title from location...');
+      setIsNotFound(true);
     }
   }, [location.state]);
 
@@ -59,6 +63,7 @@ export default function Album() {
   const updateImages = useCallback(async () => {
     if (!folderName) {
       console.log('No folderName provided in the route params...');
+      setIsNotFound(true);
       return;
     }
 
@@ -74,6 +79,10 @@ export default function Album() {
     setShowLoader(false);
     setShowContent(true);
   }, []);
+
+  if (isNotFound) {
+    return <ContentNotFound message="אלבום זה אינו קיים..." />;
+  }
 
   return (
     <div className="album-container">

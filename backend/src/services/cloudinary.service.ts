@@ -40,7 +40,7 @@ export async function fetchCloudinaryImages(folderName: string, pool: Pool, res:
     const result = await pool.query(query, values);
 
     if (result.rows.length === 0) {
-      return res.status(404).json({ success: false, message: `Album ${folderName} not found.` });
+      return res.status(404).json({ success: false, message: `Album ${folderName} has no images availabe.` });
     }
 
     res.json({ success: true, images: result.rows[0].images });

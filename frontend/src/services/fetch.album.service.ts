@@ -18,7 +18,7 @@ export async function fetchAlbumImages(folderName: string) {
         const errorMessage = axios.isAxiosError(err) && err.response
         ? `Error: ${err.response.data.message}`
         : 'An unknown error occurred.';
-        console.error(`Error fetching Cloudinary images for folder: ${folderName}... \n`, errorMessage);
+        console.error(`Error fetching images for album: ${folderName}. \n`, errorMessage);
     };
 }
 
@@ -35,7 +35,9 @@ export async function fetchAlbumCoverImage(folderName: string) {
         }
         return response.data;
     } catch (err) {
-        console.error(`Error fetching cover image of album ${folderName}. ` + err);
-        return;
+        const errorMessage = axios.isAxiosError(err) && err.response
+        ? `Error: ${err.response.data.message}`
+        : 'An unknown error occurred.';
+        console.error(`Error fetching cover image of album ${folderName}. \n`, errorMessage);
     }
 }

@@ -9,6 +9,7 @@ import {
 } from '../../../models/Relation.model';
 import { handleSubmit } from '../../../services/add.memory.service';
 import Popup from '../../popup/Popup';
+import GoBackButton from '../../global/GoBackButton';
 
 export default function AddMemoryForm() {
   const navigate = useNavigate();
@@ -44,6 +45,8 @@ export default function AddMemoryForm() {
     message: '',
     contactEmail: '',
   });
+
+  const onGoBackClick = () => navigate('/memories');
 
   const closePopup = () => {
     setTimeout(() => {
@@ -372,6 +375,7 @@ export default function AddMemoryForm() {
 
         <div className="add-memory-form-submit-container">
           <button type="submit">שלח בקשה</button>
+          <GoBackButton onGoBackClick={onGoBackClick} />
         </div>
 
         {showPopup && (

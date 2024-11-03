@@ -190,10 +190,17 @@
       gap: 1rem;
 
       button {
-        cursor: pointer;
         width: 12rem;
         font-size: $mainFontSize;
         padding-block: 0.6rem;
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+
+      #goBackButton {
+        background-color: rgb(217, 39, 39);
       }
     }
 

@@ -21,6 +21,12 @@ body {
   align-items: center;
 }
 
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
 @media only screen and (max-width: 768px) {
   $mainFontSize: 14px;
 

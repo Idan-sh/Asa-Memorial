@@ -10,6 +10,18 @@
   h2 {
     margin: 0;
   }
+
+  button {
+    font-size: 100%;
+    padding-inline: 20px;
+    padding-block: 6px;
+    width: 6rem;
+    height: 2rem;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
 }
 
 .full-memory-item {
@@ -59,10 +71,4 @@
   &__pictures {
     margin: 0;
   }
-}
-
-.memory-item-container button {
-  cursor: pointer;
-  padding-inline: 20px;
-  padding-block: 6px;
 }

@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { fetchMemory } from '../../../services/fetch.memories.service';
 import { Player } from '@lordicon/react';
 import CandleAnimated from '../../../assets/animations/candle-animated.json';
-import GoBackButton from '../../global/GoBackButton';
 import { Buffer } from 'buffer/';
 
 export default function FullMemoryContent() {
@@ -107,7 +106,7 @@ export default function FullMemoryContent() {
           ))}
         </div>
       </div>
-      <GoBackButton onGoBackClick={goBack} />
+      <button onClick={goBack}>חזור</button>
     </div>
   );
 }

@@ -1,5 +1,10 @@
 .back-button-container {
   height: fit-content;
   width: fit-content;
-  direction: ltr;
+
+  button {
+    font-size: 110%;
+    width: 6rem;
+    height: 2.2rem;
+  }
 }

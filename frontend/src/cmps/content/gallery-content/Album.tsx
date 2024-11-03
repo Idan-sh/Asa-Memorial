@@ -11,7 +11,6 @@ import { useCallback, useEffect, useState } from 'react';
 import { CloudinaryImage } from '../../../models/CloudinaryImage.model';
 import { fetchAlbumImages } from '../../../services/fetch.album.service';
 
-import GoBackButton from '../../global/GoBackButton';
 import Loader from '../../global/Loader';
 import ContentNotFound from '../content-not-found/ContentNotFound';
 
@@ -116,7 +115,7 @@ export default function Album() {
               ))}
             </LightGallery>
           </div>
-          <GoBackButton onGoBackClick={goBack} />
+          <button onClick={goBack}> חזור </button>
         </>
       ) : null}
     </div>

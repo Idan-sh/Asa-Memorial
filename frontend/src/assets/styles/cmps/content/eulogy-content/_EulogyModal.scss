@@ -1,0 +1,127 @@
+.eulogy-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+
+  &.closing {
+    animation: fadeOut 0.3s forwards;
+  }
+}
+
+.eulogy-modal-content {
+  display: flex;
+  flex-direction: column;
+
+  background-color: darken($color: $mainBgColor, $amount: 0);
+  border-radius: 8px;
+  text-align: center;
+
+  transform: scale(0.9);
+  animation: scaleIn 0.3s forwards;
+
+  padding: 2rem;
+
+  width: 90%;
+  max-width: min(80%, 40rem);
+  max-height: min(80%, 600px);
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+
+  &.closing {
+    animation: scaleOut 0.3s forwards;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  p {
+    margin: 0.5rem 0;
+  }
+
+  button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: $greenBtnColor;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+}
+
+.eulogy-modal-message {
+  flex-grow: 1;
+  overflow-y: scroll;
+
+  padding-block: 1rem;
+  padding-inline: 3rem;
+
+  border: 2px solid darken(white, 6);
+  background-color: darken($color: $mainBgColor, $amount: 2);
+  border-radius: 6px;
+
+  @media (max-width: 768px) {
+    padding-inline: 2rem;
+  }
+
+  // Forcing scrollbar visibility on WebKit browsers
+  &::-webkit-scrollbar {
+    width: 8px; // Adjust the width as needed
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); // Customize scrollbar color
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); // Customize track color (optional)
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.8);
+  }
+}

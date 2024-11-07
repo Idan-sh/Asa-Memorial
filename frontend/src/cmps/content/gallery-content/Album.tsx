@@ -1,12 +1,13 @@
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+
 import LightGallery from 'lightgallery/react';
+import lgThumbnail from 'lightgallery/plugins/thumbnail';
+import lgZoom from 'lightgallery/plugins/zoom';
 
 import 'lightgallery/scss/lightgallery.scss';
 import 'lightgallery/scss/lg-zoom.scss';
 import 'lightgallery/scss/lg-video.scss';
 
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
 import { useCallback, useEffect, useState } from 'react';
 import { CloudinaryImage } from '../../../models/CloudinaryImage.model';
 import { fetchAlbumImages } from '../../../services/fetch.album.service';

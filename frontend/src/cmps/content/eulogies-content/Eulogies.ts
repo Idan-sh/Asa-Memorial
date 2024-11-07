@@ -1,6 +1,12 @@
+import gabiImageUrls from './images-index/gabi.index';
+import gioraImageUrls from './images-index/giora.index';
+import nettaImageUrls from './images-index/netta.index';
+import shiriImageUrls from './images-index/shiri.index';
+
 export const eulogiesData = [{
     name: "גבריאלה רוזן-ברמן",
     relation: "חברה טובה",
+    imageUrls: gabiImageUrls,
     message: `לזכרו של החבר הכי יקר והכי קרוב שלי - אסא גיל-עד.
 
     ניסיתי להגדיר את מערכת היחסים בינינו וזיקקתי אותה לשתי מילים "חבר אמת". חבר הוא 'עסק' לכל החיים. 
@@ -26,6 +32,7 @@ export const eulogiesData = [{
 {
     name: "גיורא גיל-עד",
     relation: "אחיו הגדול",
+    imageUrls: gioraImageUrls,
     message: `מאוד קשה לי לעמוד כאן ולהספיד את אחי הקטן.
     
     כל אחד כאן הכיר את אסא בזוית קצת שונה: 
@@ -48,6 +55,7 @@ export const eulogiesData = [{
 {
     name: "נטע לרנר גיל-עד",
     relation: "אלמנתו",
+    imageUrls: nettaImageUrls,
     message: `אהוב שלי, אהבת חיי גיבור שלי.
     
     זכינו, היינו המתנה הכי טובה שלנו זה לזה. 
@@ -69,6 +77,7 @@ export const eulogiesData = [{
 {
     name: "שירי גיל-עד",
     relation: "בת",
+    imageUrls: shiriImageUrls,
     message: `אבא יקר שלי
 
     נפטרת מהסבל הרב שעברת בא׳ באדר, חודש המסמל שמחה וצחוק. 

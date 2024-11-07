@@ -31,8 +31,8 @@
   padding: 2rem;
 
   width: 90%;
-  max-width: min(80%, 40rem);
-  max-height: min(80%, 600px);
+  max-width: min(70%, 50rem);
+  max-height: min(80%, 900px);
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -75,6 +75,17 @@
   &::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.1); // Customize track color (optional)
   }
+
+  .light-gallery-container {
+    justify-items: center;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    column-count: 2;
+  }
 }
 
 .eulogy-modal-message {
@@ -82,11 +93,13 @@
 
   margin: 0;
   padding-block: 1rem;
-  padding-inline: 3rem;
+  padding-inline: 5rem;
 
   border: 2px solid darken(white, 6);
   background-color: darken($color: $mainBgColor, $amount: 2);
   border-radius: 6px;
+
+  font-size: 110%;
 
   @media (max-width: 768px) {
     padding-inline: 2rem;

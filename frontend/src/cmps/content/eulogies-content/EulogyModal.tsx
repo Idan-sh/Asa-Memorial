@@ -1,3 +1,7 @@
+import LightGallery from 'lightgallery/react';
+import lgThumbnail from 'lightgallery/plugins/thumbnail';
+import lgZoom from 'lightgallery/plugins/zoom';
+
 import { EulogyItemModel } from '../../../models/EulogyItem.model';
 
 interface EulogyModalProps {
@@ -25,6 +29,31 @@ export default function EulogyModal({
         </p>
         <div className="eulogy-modal-message-wrapper">
           <p className="eulogy-modal-message">{eulogy.message}</p>
+          <div className="light-gallery-container">
+            <LightGallery
+              speed={500}
+              plugins={[lgThumbnail, lgZoom]}
+              mode="lg-fade"
+              zoomFromOrigin={false}
+              download={false}
+              thumbnail={false}
+              zoom={false}
+            >
+              {eulogy.imageUrls.map((url, index) => (
+                <a
+                  key={index}
+                  data-src={url}
+                  data-sub-html={`<h3 class="sub-html-title"></h3>`}
+                >
+                  <img
+                    className="img-responsive"
+                    src={url}
+                    alt={`Image ${index + 1}`}
+                  />
+                </a>
+              ))}
+            </LightGallery>
+          </div>
         </div>
         <button onClick={onClose}>סגור</button>
       </div>

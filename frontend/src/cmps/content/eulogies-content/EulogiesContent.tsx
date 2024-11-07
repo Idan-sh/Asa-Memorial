@@ -4,6 +4,7 @@ import EulogyItem from './EulogyItem';
 import EulogyModal from './EulogyModal';
 import { EulogyItemModel } from '../../../models/EulogyItem.model';
 
+
 export default function EulogiesContent() {
   const [selectedEulogy, setSelectedEulogy] = useState<EulogyItemModel | null>(
     null

@@ -1,0 +1,15 @@
+name: Send HTTP Request to Update Albums Daily
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # Runs once a day at 3:00 AM UTC
+
+jobs:
+  send-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send HTTP Request
+      # Change URL to the hosted URL:
+        run: |
+          curl -X GET http://localhost:5001/api/update-albums

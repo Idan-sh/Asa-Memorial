@@ -12,3 +12,28 @@
     margin-bottom: 2rem;
   }
 }
+
+.instagram-content-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+
+  gap: 10px;
+
+  border-radius: 50%;
+  background-color: darken(white, 10);
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken(white, 15);
+    cursor: pointer;
+  }
+
+  p {
+    font-size: 150%;
+    font-family: $secondaryFont;
+    margin: 0;
+  }
+}

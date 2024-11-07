@@ -23,7 +23,9 @@ export default function EulogyModal({
         <p>
           <strong>{eulogy.relation}</strong>
         </p>
-        <p className="eulogy-modal-message">{eulogy.message}</p>
+        <div className="eulogy-modal-message-wrapper">
+          <p className="eulogy-modal-message">{eulogy.message}</p>
+        </div>
         <button onClick={onClose}>סגור</button>
       </div>
     </div>

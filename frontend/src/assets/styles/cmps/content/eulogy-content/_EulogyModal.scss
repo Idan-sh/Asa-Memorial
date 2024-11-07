@@ -47,10 +47,6 @@
     font-size: 1.5rem;
   }
 
-  p {
-    margin: 0.5rem 0;
-  }
-
   button {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
@@ -62,20 +58,9 @@
   }
 }
 
-.eulogy-modal-message {
-  flex-grow: 1;
+.eulogy-modal-message-wrapper {
+  direction: ltr; /* Force scrollbar to appear on the right */
   overflow-y: scroll;
-
-  padding-block: 1rem;
-  padding-inline: 3rem;
-
-  border: 2px solid darken(white, 6);
-  background-color: darken($color: $mainBgColor, $amount: 2);
-  border-radius: 6px;
-
-  @media (max-width: 768px) {
-    padding-inline: 2rem;
-  }
 
   // Forcing scrollbar visibility on WebKit browsers
   &::-webkit-scrollbar {
@@ -89,6 +74,22 @@
 
   &::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.1); // Customize track color (optional)
+  }
+}
+
+.eulogy-modal-message {
+  direction: rtl;
+
+  margin: 0;
+  padding-block: 1rem;
+  padding-inline: 3rem;
+
+  border: 2px solid darken(white, 6);
+  background-color: darken($color: $mainBgColor, $amount: 2);
+  border-radius: 6px;
+
+  @media (max-width: 768px) {
+    padding-inline: 2rem;
   }
 }
 

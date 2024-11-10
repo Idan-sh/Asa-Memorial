@@ -5,17 +5,21 @@
   z-index: 100;
 
   .scroll-to-top-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+
     background-color: darken($btnColor, 10);
     color: #fff;
+
     font-size: 2rem;
     border: none;
     border-radius: 50%;
-    width: 40px;
     height: 40px;
+    aspect-ratio: 1;
+
     cursor: pointer;
+
     transition:
       opacity 0.3s ease,
       background-color 0.3s ease;

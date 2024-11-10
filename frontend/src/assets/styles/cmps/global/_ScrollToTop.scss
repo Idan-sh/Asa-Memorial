@@ -16,7 +16,9 @@
     border: none;
     border-radius: 50%;
     height: 40px;
-    aspect-ratio: 1;
+    width: 40px;
+    min-height: 40px;
+    min-width: 40px;
 
     cursor: pointer;
 

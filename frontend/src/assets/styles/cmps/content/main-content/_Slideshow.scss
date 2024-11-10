@@ -30,6 +30,21 @@
   }
 }
 
+.slideshow-error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 200px;
+
+  background-color: darken($mainBgColor, 4);
+  border-radius: 5px;
+}
+
+.react-slideshow-container {
+  min-height: 500px;
+}
+
 .react-slideshow-container .default-nav:focus {
   background: rgba(255, 255, 255, 0.6) !important;
 }

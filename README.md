@@ -3,17 +3,45 @@ A Voluntary Freelance Project - a memorial website that tells the story of Asa G
    
 Link to the deployed website: <a href="https://asagilad.vercel.app">`https://asagilad.vercel.app`</a>
 
+<br />   
+
 ### The Project's Structure:
 #### 1. Frontend
-  The frontend uses `React`, `TypeScript` and `SCSS`, with libraries including axios, lightgallery, react-facebook, @cloudinary/react, email-validator, react-slideshow-image and more...
+  The frontend is built with `React`, `TypeScript` and `SCSS`,   
+  using libraries including `axios`, `lightgallery`, `react-facebook`, `@cloudinary/react`, `email-validator` and `react-slideshow-image`.   
+       
+  * `axios`   
+    Handles communication with the backend, including requests to retrieve memories from the database, fetch albums from Cloudinary, and upload new memories.
+    
+  * `lightgallery`   
+    Organizes album images into a grid, allowing users to view them in a slideshow when clicked.
+
+   * `react-facebook`   
+     Displays Facebook posts, including images, likes, caption, and link to the post.
+
+> The frontend is deployed on Vercel at: <a href="https://asagilad.vercel.app">`https://asagilad.vercel.app`</a>
+
+<br />   
 
 #### 2. Backend
-  The backend of the website was written in Express.js, and TypeScript.  
-  Some of the frameworks used are cloudinary, jsonwebtoken, nodemailer, pg (PostgreSQL), multer and more...
-  * `cloudinary` is used to as a media host, where dynamic image albums are hosted at. Each album can be edited through the Cloudinary's interface. The website's media is updated periodically once a day with a GitHub Actions automation.
-  * `nodemailer` is used to send confimation emails to specified admins' emails. These confirmation emails contain info of users' newly uploaded memories. The admins then have the option to validate the details, check that the info has no harmful or offensive messages, and approve/deny the request.
-  * `jsonwebtoken` is used to authenticate the email confirmations for new memories uploaded by users. By this method, only the admins which received the confirmation email will obtain a secret key that withh then be used to authenticate their approval/deny of the memory request.
-  * `pg (PostgreSQL)` is the Database of choice. In the database, all pending for approval memories will be hosted in a table, alongside the already approved memories table. Denied memories will be deleted from the pending memories table automatically.
-  * `multer` is used to upload images to new memories requests.
+  The backend is built with `Express.js`, and `TypeScript`,   
+  using frameworks including `cloudinary`, `jsonwebtoken`, `nodemailer`, `pg (PostgreSQL)` and `multer`.   
+  
+  * `cloudinary`   
+    Hosts dynamic image albums that can be managed directly via the Cloudinary interface. GitHub Actions automate daily media updates.
+    
+  * `nodemailer`   
+    Sends confirmation emails to admins, notifying them of newly uploaded memories. Admins can review, approve, or deny these requests.
+    
+  * `jsonwebtoken`   
+    Secures email confirmations for memory approvals. Admins receive a secret key in the email link, allowing only them to authenticate approvals or denials.
+    
+  * `pg (PostgreSQL)`   
+    Stores pending memory approvals and approved memories in separate tables; denied requests are automatically removed from the pending table.
+    
+  * `multer`   
+    Handles image uploads for memory submissions, enabling users to attach photos to memories.
+
+<br />   
 
 ![asa-memorial](https://github.com/user-attachments/assets/b1cc5be3-7629-4467-b201-d4ae9788a2c3)

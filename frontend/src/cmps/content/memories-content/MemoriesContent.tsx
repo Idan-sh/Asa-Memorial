@@ -84,7 +84,14 @@ export default function MemoriesContent({ limit }: MemoriesContentProps) {
   };
 
   if (errorMessage) {
-    return <div className="memories-content-container">{errorMessage}</div>;
+    return (
+      <div className="memories-content-container">
+        <div className="memories-content__error-message-container">
+          <h3>טעינת זכרונות נכשלה:</h3>
+          <div className="memories-content__error-message">{errorMessage}</div>
+        </div>
+      </div>
+    );
   }
 
   return (

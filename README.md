@@ -1,9 +1,10 @@
 # Asa Memorial
 A Voluntary Freelance Project - a memorial website that tells the story of Asa Gil-Ad, a fallen police officer, that passed away in 2021 after a hard battle with Cancer.   
-   
-Link to the deployed website: <a href="https://asagilad.vercel.app">`https://asagilad.vercel.app`</a>
-
-<br />   
+<br />
+<p align="center">
+   <span>Website Link: <a href="https://asagilad.vercel.app">https://asagilad.vercel.app</a></span><br>
+   <img src="https://github.com/user-attachments/assets/b1cc5be3-7629-4467-b201-d4ae9788a2c3" alt="memorial-website-page" width="70%"/>
+</p>
 
 ### The Project's Structure:
 #### 1. Frontend
@@ -41,7 +42,3 @@ Link to the deployed website: <a href="https://asagilad.vercel.app">`https://asa
     
   * `multer`   
     Handles image uploads for memory submissions, enabling users to attach photos to memories.
-
-<br />   
-
-![asa-memorial](https://github.com/user-attachments/assets/b1cc5be3-7629-4467-b201-d4ae9788a2c3)

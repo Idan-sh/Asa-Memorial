@@ -30,12 +30,12 @@
 
   padding: 2rem;
 
-  width: 90%;
-  max-width: min(70%, 50rem);
+  width: min(70%, 50rem);
   max-height: min(80%, 900px);
 
   @media (max-width: 768px) {
     padding: 1rem;
+    width: 85%;
   }
 
   &.closing {

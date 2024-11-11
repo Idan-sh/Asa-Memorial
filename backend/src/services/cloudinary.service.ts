@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Response } from "express"; 
 import { v2 as cloudinary } from 'cloudinary';
 import { Pool } from "pg";

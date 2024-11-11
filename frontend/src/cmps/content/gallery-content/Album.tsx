@@ -80,12 +80,18 @@ export default function Album() {
     setShowContent(true);
   }, []);
 
-  if (images.length === 0) {
-    return <ContentNotFound message="אלבום זה ריק או נכשל להיטען..." />;
-  }
-
   if (isNotFound) {
     return <ContentNotFound message="אלבום זה אינו קיים..." />;
+  }
+
+  if (showContent && images.length === 0) {
+    return (
+      <ContentNotFound
+        message="אלבום זה ריק או נכשל להיטען..."
+        goBackMessage="חזור לגלריה"
+        goBack={() => navigate('/gallery')}
+      />
+    );
   }
 
   return (

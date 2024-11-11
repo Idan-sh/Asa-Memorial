@@ -6,9 +6,15 @@ import { AnimationDirection } from 'lottie-web';
 
 interface ContentNotFoundProps {
   message?: string;
+  goBack?: () => void;
+  goBackMessage?: string;
 }
 
-export default function ContentNotFound({ message }: ContentNotFoundProps) {
+export default function ContentNotFound({
+  message,
+  goBack,
+  goBackMessage,
+}: ContentNotFoundProps) {
   const playerRef = useRef<Player>(null);
   const [animationDirection, setAnimationDirection] =
     useState<AnimationDirection>(-1);
@@ -38,7 +44,9 @@ export default function ContentNotFound({ message }: ContentNotFoundProps) {
         onComplete={flipAnimationDirection}
       />
       <p>{message ?? 'הדף שחיפשת לא נמצא...'}</p>
-      <button onClick={goToMainContent}>חזור לדף הבית</button>
+      <button onClick={goBack ?? goToMainContent}>
+        {goBackMessage ?? 'חזור לדף הבית'}
+      </button>
     </div>
   );
 }

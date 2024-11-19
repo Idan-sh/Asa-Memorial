@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { Pool } from 'pg';
@@ -29,7 +29,7 @@ const pool = new Pool({
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-pool.connect((err) => {
+pool.connect((err: any) => {
   if (err) {
     console.error('Database connection error', err.stack);
   } else {
@@ -44,12 +44,12 @@ app.use(cors({
 app.use(express.json());
 
 // Test route
-app.get('/api', (req, res) => {
+app.get('/api', (req: Request, res: Response) => {
   res.send({ message: 'Backend is running' });
 });
 
 // Add memory form submission route
-app.post('/api/add-memory', upload.array('images', 5), async (req, res) => {
+app.post('/api/add-memory', upload.array('images', 5), async (req: Request, res: Response) => {
   const { firstName, nickname, lastName, relation, message, contactEmail } = req.body;
   const files = req.files as Express.Multer.File[];
 
@@ -75,7 +75,7 @@ app.post('/api/add-memory', upload.array('images', 5), async (req, res) => {
   }
 });
 
-app.get('/api/memories', async (req, res) => {
+app.get('/api/memories', async (req: Request, res: Response) => {
   const {limit} = req.query;
 
   try {
@@ -96,7 +96,7 @@ app.get('/api/memories', async (req, res) => {
   }
 });
 
-app.get('/api/memories/:id', async (req, res) => {
+app.get('/api/memories/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
@@ -115,7 +115,7 @@ app.get('/api/memories/:id', async (req, res) => {
   }
 });
 
-app.get('/api/approve-memory/:id', async (req, res) => {
+app.get('/api/approve-memory/:id', async (req: Request, res: Response) => {
   const memoryId = await checkAuthorization(req, res, JWT_SECRET_KEY, pool);
   if (!memoryId) return; // Stop execution if authorization failed
 
@@ -129,7 +129,7 @@ app.get('/api/approve-memory/:id', async (req, res) => {
     RETURNING *;
   `;
 
-  pool.query(query, [memoryId], (err, result) => {
+  pool.query(query, [memoryId], (err: any, result) => {
     if (err) {
       console.error('Error approving memory', err);
       return res.status(500).send(generateHtmlResponse('Error', 'Failed to approve memory.', false));
@@ -140,14 +140,14 @@ app.get('/api/approve-memory/:id', async (req, res) => {
   });
 });
 
-app.get('/api/reject-memory/:id', async (req, res) => {
+app.get('/api/reject-memory/:id', async (req: Request, res: Response) => {
   const memoryId =  await checkAuthorization(req, res, JWT_SECRET_KEY, pool);
   if (!memoryId) return; // Stop execution if authorization failed
 
   // Delete the memory from pending_memories
   const query = 'DELETE FROM pending_memories WHERE id = $1';
 
-  pool.query(query, [memoryId], (err) => {
+  pool.query(query, [memoryId], (err: any) => {
     if (err) {
       console.error('Error rejecting memory', err);
       return res.status(500).send(generateHtmlResponse('Error', 'Failed to reject memory.', false));
@@ -158,7 +158,7 @@ app.get('/api/reject-memory/:id', async (req, res) => {
 });
 
 // Endpoint to get all images from a Cloudinary folder
-app.get('/api/album/:folder', async (req, res) => {
+app.get('/api/album/:folder', async (req: Request, res: Response) => {
   const { folder } = req.params;
 
   if(!folder) {
@@ -168,7 +168,7 @@ app.get('/api/album/:folder', async (req, res) => {
   fetchCloudinaryImages(folder, pool, res);
 });
 
-app.get('/api/album/cover/:folder', async (req, res) => {
+app.get('/api/album/cover/:folder', async (req: Request, res: Response) => {
   const { folder } = req.params;
 
   if(!folder) {

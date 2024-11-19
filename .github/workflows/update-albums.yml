@@ -12,4 +12,4 @@ jobs:
       - name: Send HTTP Request
       # Change URL to the hosted URL:
         run: |
-          curl -X GET https://https://asa-memorial.onrender.com/api/update-albums
+          curl -X GET https://https://asa-memorial.onrender.com:10000/api/update-albums

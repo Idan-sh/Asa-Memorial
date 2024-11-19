@@ -12,7 +12,6 @@ import { updateCloudinaryAlbums, fetchCloudinaryCoverImage, fetchCloudinaryImage
 dotenv.config();
 
 const app = express();
-const BACKEND_DOMAIN = process.env.BACKEND_DOMAIN;
 const BACKEND_PORT = process.env.PORT || 3000;
 
 const FRONTEND_DOMAIN = process.env.FRONTEND_DOMAIN;

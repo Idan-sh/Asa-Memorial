@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'http://localhost:5000',  // Proxy API requests to backend
+      '/api': 'https://asa-memorial.onrender.com:10000',  // Proxy API requests to backend
     },
   },
   resolve: {

@@ -15,7 +15,6 @@ const app = express();
 const BACKEND_PORT = process.env.PORT || 3000;
 
 const FRONTEND_DOMAIN = process.env.FRONTEND_DOMAIN;
-const FRONTEND_PORT = process.env.FRONTEND_PORT;
 
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
@@ -38,7 +37,8 @@ pool.connect((err: any) => {
 
 // Enable CORS and JSON parsing
 app.use(cors({
-  origin: `${FRONTEND_DOMAIN}:${FRONTEND_PORT}`, // Allow the frontend origin
+  origin: `${FRONTEND_DOMAIN}`, // Allow the frontend origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 app.use(express.json());
 

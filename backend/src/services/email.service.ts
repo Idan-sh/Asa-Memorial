@@ -10,10 +10,7 @@ dotenv.config();
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 const BACKEND_DOMAIN = process.env.BACKEND_DOMAIN;
-const BACKEND_PORT = process.env.BACKEND_PORT;
-
 const FRONTEND_DOMAIN = process.env.FRONTEND_DOMAIN;
-const FRONTEND_PORT = process.env.FRONTEND_PORT;
 
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
@@ -31,8 +28,8 @@ export async function sendEmailToAdmins(memoryItemData: MemoryItemData) {
   const secretKey = validateJwtSecretKey();
   const token = jwt.sign({ memoryId: memoryItemData.id }, secretKey, { expiresIn: '24h' });
 
-  const approveUrl = `${BACKEND_DOMAIN}:${BACKEND_PORT}/api/approve-memory/${memoryItemData.id}?token=${token}`;
-  const rejectUrl = `${BACKEND_DOMAIN}:${BACKEND_PORT}/api/reject-memory/${memoryItemData.id}?token=${token}`;
+  const approveUrl = `${BACKEND_DOMAIN}/api/approve-memory/${memoryItemData.id}?token=${token}`;
+  const rejectUrl = `${BACKEND_DOMAIN}/api/reject-memory/${memoryItemData.id}?token=${token}`;
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
@@ -58,7 +55,7 @@ export async function sendMemoryUpprovedEmail(memoryItemData: MemoryItemData) {
   }
   console.log("Sending upproved email to contact email '" + memoryItemData.contact_email + "' for memory item '" + memoryItemData.id + "'.");
 
-  const memoryUrl = `${FRONTEND_DOMAIN}:${FRONTEND_PORT}/memories/${memoryItemData.id}`;
+  const memoryUrl = `${FRONTEND_DOMAIN}/memories/${memoryItemData.id}`;
 
   const mailOptions = {
     from: process.env.EMAIL_USER,

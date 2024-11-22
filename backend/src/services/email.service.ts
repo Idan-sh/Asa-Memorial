@@ -28,8 +28,8 @@ export async function sendEmailToAdmins(memoryItemData: MemoryItemData) {
   const secretKey = validateJwtSecretKey();
   const token = jwt.sign({ memoryId: memoryItemData.id }, secretKey, { expiresIn: '24h' });
 
-  const approveUrl = `${BACKEND_DOMAIN}/api/approve-memory/${memoryItemData.id}?token=${token}`;
-  const rejectUrl = `${BACKEND_DOMAIN}/api/reject-memory/${memoryItemData.id}?token=${token}`;
+  const approveUrl = `${BACKEND_DOMAIN}/api/approve-memory/${memoryItemData.id}?token=${encodeURIComponent(token)}`;
+  const rejectUrl = `${BACKEND_DOMAIN}/api/reject-memory/${memoryItemData.id}?token=${encodeURIComponent(token)}`;
 
   const mailOptions = {
     from: process.env.EMAIL_USER,

@@ -27,9 +27,11 @@ const transporter = nodemailer.createTransport({
 export async function sendEmailToAdmins(memoryItemData: MemoryItemData) {
   const secretKey = validateJwtSecretKey();
   const token = jwt.sign({ memoryId: memoryItemData.id }, secretKey, { expiresIn: '24h' });
+  console.log("Sending email to admins using secret key of: " + secretKey);
+  console.log("encoding:", memoryItemData.id);
 
-  const approveUrl = `${BACKEND_DOMAIN}/api/approve-memory/${memoryItemData.id}?token=${encodeURIComponent(token)}`;
-  const rejectUrl = `${BACKEND_DOMAIN}/api/reject-memory/${memoryItemData.id}?token=${encodeURIComponent(token)}`;
+  const approveUrl = `${BACKEND_DOMAIN}/api/approve-memory/${memoryItemData.id}?token=${token}`;
+  const rejectUrl = `${BACKEND_DOMAIN}/api/reject-memory/${memoryItemData.id}?token=${token}`;
 
   const mailOptions = {
     from: process.env.EMAIL_USER,

@@ -36,7 +36,9 @@ export async function checkAuthorization(
   }
 
   try {
-    const decoded = jwt.verify(decodeURIComponent(token), SECRET_KEY) as DecodedToken;
+    console.log("Checking autorization using secret key of " + SECRET_KEY)
+    const decoded = jwt.verify(token, SECRET_KEY) as DecodedToken;
+    console.log("Decoded:", decoded);
 
     // Check if the token is valid and contains memoryId
     if (typeof decoded === 'string' || !decoded.memoryId) {

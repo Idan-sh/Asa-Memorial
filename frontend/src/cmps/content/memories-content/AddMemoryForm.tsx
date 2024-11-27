@@ -9,6 +9,7 @@ import {
 } from '../../../models/Relation.model';
 import { handleSubmit } from '../../../services/add.memory.service';
 import Popup from '../../popup/Popup';
+import Loader from '../../global/Loader';
 
 export default function AddMemoryForm() {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ export default function AddMemoryForm() {
   const maxImageUploads = 5;
 
   const { isMobile } = useScreenSize();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [messageCharCount, setMessageCharCount] = useState(0);
 
@@ -196,6 +198,7 @@ export default function AddMemoryForm() {
 
   const handleOnSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    setIsLoading(true);
 
     // Create a FormData instance
     const uploadFormData = new FormData();
@@ -224,6 +227,8 @@ export default function AddMemoryForm() {
           message: 'הזיכרון שלך נשלח בהצלחה! הזיכרון כעת ממתין לאישור.',
         },
       });
+    } else {
+      setIsLoading(false);
     }
   };
 
@@ -373,7 +378,11 @@ export default function AddMemoryForm() {
         </div>
 
         <div className="add-memory-form-submit-container">
-          <button type="submit">שלח בקשה</button>
+          {isLoading ? (
+            <Loader size="37.6875px" />
+          ) : (
+            <button type="submit">שלח בקשה</button>
+          )}
           <button id="goBackButton" onClick={onGoBackClick}>
             חזור
           </button>

@@ -63,7 +63,7 @@ export default function Slideshow() {
         <Fade duration={2000}>
           {images.map((image) => (
             <div className="each-slide" key={image.public_id}>
-              <img src={image.url} alt={image.alt} />
+              <img src={image.url} alt={image.alt ?? 'slide image'} />
             </div>
           ))}
         </Fade>

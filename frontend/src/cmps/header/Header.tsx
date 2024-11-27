@@ -20,11 +20,15 @@ export default function Header() {
       <div className="header-bar-container">
         {isMobile && (
           <div className="header-menu-container" onClick={toggleMenu}>
-            <img className="header-menu-icon" src={menuIcon} />
+            <img
+              className="header-menu-icon"
+              src={menuIcon}
+              alt="header icon"
+            />
           </div>
         )}
         <div className="header-title-container" onClick={() => navigate('/')}>
-          <img className="header-icon" src={flameIcon} />
+          <img className="header-icon" src={flameIcon} alt="header icon" />
           <div className="header-title">אסא גיל-עד ז״ל</div>
         </div>
       </div>

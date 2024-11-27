@@ -33,7 +33,7 @@ export default function ScrollToTop() {
         className={`scroll-to-top-btn ${isVisible ? 'visible' : ''}`}
         onClick={scrollToTop}
       >
-        <img src={upArrowIcon} />
+        <img src={upArrowIcon} alt="up arrow icon" />
       </button>
     </div>
   );

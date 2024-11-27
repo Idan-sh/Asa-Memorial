@@ -372,7 +372,10 @@ export default function AddMemoryForm() {
               >
                 ×
               </button>
-              <img src={URL.createObjectURL(file)} alt={`Uploaded ${index}`} />
+              <img
+                src={URL.createObjectURL(file)}
+                alt={`Uploaded image number #${index + 1}`}
+              />
             </div>
           ))}
         </div>

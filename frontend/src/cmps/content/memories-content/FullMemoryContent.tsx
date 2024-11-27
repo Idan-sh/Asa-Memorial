@@ -100,7 +100,7 @@ export default function FullMemoryContent() {
             <img
               key={index}
               src={src}
-              alt="Memory Image"
+              alt={`Memory Image number #${index + 1}`}
               style={{ maxWidth: '100%', height: 'auto', margin: '10px 0' }}
             />
           ))}

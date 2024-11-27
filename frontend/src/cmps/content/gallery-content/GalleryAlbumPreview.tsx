@@ -62,7 +62,7 @@ export default function GalleryAlbum({ title, folderName }: GalleryAlbumProps) {
       <img
         src={coverImage}
         onLoad={handleImageLoad}
-        alt={title}
+        alt={'gallery album ' + title}
         style={{ display: isImageLoaded ? 'block' : 'none' }}
       />
       <h1>{title}</h1>

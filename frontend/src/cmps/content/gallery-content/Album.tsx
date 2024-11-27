@@ -120,7 +120,7 @@ export default function Album() {
                   <img
                     className="img-responsive"
                     src={image.url}
-                    alt={image.alt}
+                    alt={image.alt ?? 'album image'}
                   />
                 </a>
               ))}

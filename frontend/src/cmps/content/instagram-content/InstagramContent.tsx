@@ -7,7 +7,7 @@ export default function InstagramContent() {
     <div className="instagram-content-container">
       <h2>רגעים של אסא</h2>
       <div className="instagram-content-link" onClick={onInstagramClick}>
-        <img src="/icons/instagram.png" width="50px" alt="Instagram Icon" />
+        <img src="/icons/instagram.png" width="50px" alt="Instagram icon" />
         <p>asagilad</p>
       </div>
     </div>

@@ -48,7 +48,7 @@ export default function EulogyModal({
                   <img
                     className="img-responsive"
                     src={url}
-                    alt={`Image ${index + 1}`}
+                    alt={`Eulogy image number #${index + 1}`}
                   />
                 </a>
               ))}

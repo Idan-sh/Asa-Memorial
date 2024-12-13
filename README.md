@@ -43,7 +43,7 @@ A Voluntary Freelance Project - a memorial website that tells the story of Asa G
   * `multer`   
     Handles image uploads for memory submissions, enabling users to attach photos to memories.
 
-  The backend and database are deployed on Render.
+  The backend and PostgreSQL database are deployed on Render.   
   Using a defined API, the frontend communicates with the backend, which in turn communicates with the PostgreSQL database within a local network on Render, ensuring fast and reliable queries.
 
 > The Backend is hosted at: https://asa-memorial.onrender.com

@@ -20,7 +20,7 @@ A Voluntary Freelance Project - a memorial website that tells the story of Asa G
    * `react-facebook`   
      Displays Facebook posts, including images, likes, caption, and link to the post.
 
-> The frontend is deployed on Vercel at: <a href="https://asagilad.vercel.app">`https://asagilad.vercel.app`</a>
+> The frontend is deployed on Vercel at: <a href="https://asagilad.com">`https://asagilad.com`</a>
 
 <br />   
 
@@ -42,3 +42,9 @@ A Voluntary Freelance Project - a memorial website that tells the story of Asa G
     
   * `multer`   
     Handles image uploads for memory submissions, enabling users to attach photos to memories.
+
+  The backend and database are deployed on Render.
+  Using a defined API, the frontend communicates with the backend, which in turn communicates with the PostgreSQL database within a local network on Render, ensuring fast and reliable queries.
+
+> The Backend is hosted at: https://asa-memorial.onrender.com
+

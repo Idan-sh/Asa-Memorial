@@ -2,7 +2,7 @@
 A Voluntary Freelance Project - a memorial website that tells the story of Asa Gil-Ad, a fallen police officer, that passed away in 2021 after a hard battle with Cancer.   
 <br />
 <p align="center">
-   <span>Website Link: <a href="https://asagilad.vercel.app">https://asagilad.vercel.app</a></span><br>
+   <span>Website Link: <a href="https://asagilad.com">https://asagilad.com</a></span><br>
    <img src="https://github.com/user-attachments/assets/b1cc5be3-7629-4467-b201-d4ae9788a2c3" alt="memorial-website-page" width="70%"/>
 </p>
 

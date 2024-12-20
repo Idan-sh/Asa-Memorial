@@ -47,6 +47,12 @@
     gap: 2rem;
     justify-content: center;
     margin-bottom: 6rem;
+
+    div,
+    iframe,
+    span {
+      max-width: 100%;
+    }
   }
 
   @media (max-width: 768px) {

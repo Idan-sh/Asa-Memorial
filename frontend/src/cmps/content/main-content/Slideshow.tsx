@@ -40,6 +40,11 @@ export default function Slideshow() {
       setImages(result.images || []);
     } else {
       console.error('Could not fetch Cloudinary images...');
+      return (
+        <div className="slideshow-error-container">
+          <p>טעינת ה-slideshow נכשלה...</p>
+        </div>
+      );
     }
 
     setIsLoading(false);
@@ -47,10 +52,10 @@ export default function Slideshow() {
     setShowContent(true);
   }, []);
 
-  if (images.length === 0) {
+  if (!isLoading && images.length === 0) {
     return (
       <div className="slideshow-error-container">
-        <p>טעינת ה-slideshow נכשלה...</p>
+        <p>אין תמונות להציג</p>
       </div>
     );
   }

@@ -11,12 +11,11 @@ const slideshowCloudinaryFolderName = import.meta.env
 export default function Slideshow() {
   const [images, setImages] = useState<CloudinaryImage[]>([]);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [showLoader, setShowLoader] = useState(false);
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
     updateImages();
   }, []);
 
@@ -47,6 +46,14 @@ export default function Slideshow() {
     setShowContent(true);
   }, []);
 
+  if (!showLoader && !isLoading) {
+    return (
+      <div className="slideshow-error-container">
+        <p>טעינת ה-slideshow נכשלה...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="slideshow-container">
       {showLoader ? (
@@ -59,11 +66,7 @@ export default function Slideshow() {
             </div>
           ))}
         </Fade>
-      ) : (
-        <div className="slideshow-error-container">
-          <p>טעינת ה-slideshow נכשלה...</p>
-        </div>
-      )}
+      ) : null}
     </div>
   );
 }

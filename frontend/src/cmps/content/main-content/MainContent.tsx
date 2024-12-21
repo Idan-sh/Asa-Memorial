@@ -1,6 +1,5 @@
 import LifeStory from './LifeStory';
 import RememberingSection from './RememberingSection';
-import Slideshow from './Slideshow';
 import { FacebookProvider, EmbeddedPost } from 'react-facebook';
 
 export default function MainContent() {
@@ -9,7 +8,7 @@ export default function MainContent() {
       <h2 className="main-content-sentence-title">
         "כל עוד מישהו זוכר אותי, אני חי"
       </h2>
-      <Slideshow />
+      {/* <Slideshow /> */}
       <h2 className="main-content-years-title">1964-2021</h2>
       <RememberingSection />
 

@@ -46,7 +46,7 @@ export default function Slideshow() {
     setShowContent(true);
   }, []);
 
-  if (!showLoader && !isLoading) {
+  if (!showLoader && !isLoading && images.length === 0) {
     return (
       <div className="slideshow-error-container">
         <p>טעינת ה-slideshow נכשלה...</p>

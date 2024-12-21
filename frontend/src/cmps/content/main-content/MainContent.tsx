@@ -1,3 +1,4 @@
+import FacebookContent from '../facebook-content/FacebookContent';
 import LifeStory from './LifeStory';
 import RememberingSection from './RememberingSection';
 import Slideshow from './Slideshow';
@@ -18,7 +19,7 @@ export default function MainContent() {
       </div>
 
       <div className="main-content-facebook-container">
-
+        <FacebookContent />
       </div>
     </div>
   );

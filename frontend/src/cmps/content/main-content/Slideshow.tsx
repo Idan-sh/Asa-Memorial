@@ -57,14 +57,16 @@ export default function Slideshow() {
       {showLoader ? (
         <Loader />
       ) : showContent && images.length > 0 ? (
-        <Fade duration={2000}>
+        <div>
           {images.map((image) => (
             <div className="each-slide" key={image.public_id}>
               <img src={image.url} alt={image.alt ?? 'slide image'} />
             </div>
           ))}
-        </Fade>
-      ) : null}
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

@@ -52,14 +52,6 @@ export default function Slideshow() {
     setShowContent(true);
   }, []);
 
-  if (!isLoading && images.length === 0) {
-    return (
-      <div className="slideshow-error-container">
-        <p>אין תמונות להציג</p>
-      </div>
-    );
-  }
-
   return (
     <div className="slideshow-container">
       {showLoader ? (

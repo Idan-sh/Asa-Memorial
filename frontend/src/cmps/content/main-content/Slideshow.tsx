@@ -1,3 +1,4 @@
+import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import { CloudinaryImage } from '../../../models/CloudinaryImage.model';
 import { useCallback, useEffect, useState } from 'react';
@@ -39,11 +40,6 @@ export default function Slideshow() {
       setImages(result.images || []);
     } else {
       console.error('Could not fetch Cloudinary images...');
-      return (
-        <div className="slideshow-error-container">
-          <p>טעינת ה-slideshow נכשלה...</p>
-        </div>
-      );
     }
 
     setIsLoading(false);
@@ -56,15 +52,17 @@ export default function Slideshow() {
       {showLoader ? (
         <Loader />
       ) : showContent && images.length > 0 ? (
-        <div>
+        <Fade duration={2000}>
           {images.map((image) => (
             <div className="each-slide" key={image.public_id}>
               <img src={image.url} alt={image.alt ?? 'slide image'} />
             </div>
           ))}
-        </div>
+        </Fade>
       ) : (
-        <></>
+        <div className="slideshow-error-container">
+          <p>טעינת ה-slideshow נכשלה...</p>
+        </div>
       )}
     </div>
   );

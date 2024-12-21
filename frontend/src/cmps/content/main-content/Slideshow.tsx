@@ -64,7 +64,7 @@ export default function Slideshow() {
     <div className="slideshow-container">
       {showLoader ? (
         <Loader />
-      ) : showContent ? (
+      ) : showContent && images.length > 0 ? (
         <Fade duration={2000}>
           {images.map((image) => (
             <div className="each-slide" key={image.public_id}>

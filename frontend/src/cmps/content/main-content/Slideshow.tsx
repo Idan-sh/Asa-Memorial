@@ -1,4 +1,3 @@
-import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import { CloudinaryImage } from '../../../models/CloudinaryImage.model';
 import { useCallback, useEffect, useState } from 'react';

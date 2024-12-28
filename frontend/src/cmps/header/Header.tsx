@@ -16,7 +16,7 @@ export default function Header() {
   };
 
   return (
-    <div className="header-container">
+    <header className="header-container">
       <div className="header-bar-container">
         {isMobile && (
           <div className="header-menu-container" onClick={toggleMenu}>
@@ -33,6 +33,6 @@ export default function Header() {
         </div>
       </div>
       <Menu onOptionClick={toggleMenu} isMenuVisible={isMenuVisible} />
-    </div>
+    </header>
   );
 }

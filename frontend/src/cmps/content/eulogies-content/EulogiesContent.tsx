@@ -4,7 +4,6 @@ import EulogyItem from './EulogyItem';
 import EulogyModal from './EulogyModal';
 import { EulogyItemModel } from '../../../models/EulogyItem.model';
 
-
 export default function EulogiesContent() {
   const [selectedEulogy, setSelectedEulogy] = useState<EulogyItemModel | null>(
     null
@@ -40,7 +39,7 @@ export default function EulogiesContent() {
 
   return (
     <div className="eulogies-content-container">
-      <h2>הספדים</h2>
+      <h1>הספדים</h1>
       <div className="eulogies-content-items">
         {eulogiesData.map((eulogy) => {
           return (

@@ -3,7 +3,7 @@ import GalleryAlbumPreview from './GalleryAlbumPreview';
 export default function GalleryContent() {
   return (
     <div className="gallery-content-container">
-      <h2>גלריה</h2>
+      <h1>גלריה</h1>
       <div className="gallery-content-albums-container">
         <GalleryAlbumPreview title="ילדות ונעורים" folderName="childhood" />
         <GalleryAlbumPreview

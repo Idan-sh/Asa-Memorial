@@ -65,7 +65,7 @@ export default function GalleryAlbum({ title, folderName }: GalleryAlbumProps) {
         alt={'gallery album ' + title}
         style={{ display: isImageLoaded ? 'block' : 'none' }}
       />
-      <h1>{title}</h1>
+      <footer>{title}</footer>
     </div>
   );
 }

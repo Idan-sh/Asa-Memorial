@@ -28,7 +28,7 @@ export default function ContentPage({ content }: ContentPageProps) {
   return (
     <div className="content-page-container">
       <Header />
-      <div className="content-container">
+      <main className="content-container">
         {content === 'main' && (
           <>
             <MainContent />
@@ -43,7 +43,7 @@ export default function ContentPage({ content }: ContentPageProps) {
         {content === 'not-found' && <ContentNotFound />}
         {content === 'album' && <Album />}
         {content === 'eulogies' && <EulogiesContent />}
-      </div>
+      </main>
       <Footer />
     </div>
   );

@@ -15,16 +15,16 @@ export default function Menu({ onOptionClick, isMenuVisible }: MenuProps) {
   const goToEulogiesPage = () => navigate('/eulogies');
 
   return (
-    <div className={'menu-container'}>
-      <div
+    <nav className={'menu-container'}>
+      <ul
         className={`menu-options-container ${isMobile ? 'mobile' : 'desktop'} ${isMenuVisible ? 'open' : ''}`}
         onClick={onOptionClick}
       >
-        <h3 onClick={goToMainPage}>דף הבית</h3>
-        <h3 onClick={goToGaleryPage}>גלריה</h3>
-        <h3 onClick={goToEulogiesPage}>הספדים</h3>
-        <h3 onClick={goToMemoriesPage}>הקדשות וזכרונות</h3>
-      </div>
-    </div>
+        <li onClick={goToMainPage}>דף הבית</li>
+        <li onClick={goToGaleryPage}>גלריה</li>
+        <li onClick={goToEulogiesPage}>הספדים</li>
+        <li onClick={goToMemoriesPage}>הקדשות וזכרונות</li>
+      </ul>
+    </nav>
   );
 }

@@ -28,13 +28,13 @@ export default function ScrollToTop() {
   }, []);
 
   return (
-    <div className="scroll-to-top-container">
+    <aside className="scroll-to-top-container">
       <button
         className={`scroll-to-top-btn ${isVisible ? 'visible' : ''}`}
         onClick={scrollToTop}
       >
         <img src={upArrowIcon} alt="up arrow icon" />
       </button>
-    </div>
+    </aside>
   );
 }

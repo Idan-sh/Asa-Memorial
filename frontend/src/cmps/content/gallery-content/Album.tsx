@@ -67,18 +67,26 @@ export default function Album() {
       return;
     }
 
-    const result = await fetchAlbumImages(folderName);
+    setIsLoading(true);
+    setShowLoader(true);
 
-    if (result) {
-      setImages(result.images);
-    } else {
-      setImages([]);
+    try {
+      const result = await fetchAlbumImages(folderName);
+
+      if (result) {
+        setImages(result.images);
+      } else {
+        setImages([]);
+      }
+    } catch (err) {
+      console.error('Failed to fetch album images:', err);
+      setIsNotFound(true);
+    } finally {
+      setIsLoading(false);
+      setShowLoader(false);
+      setShowContent(true);
     }
-
-    setIsLoading(false);
-    setShowLoader(false);
-    setShowContent(true);
-  }, []);
+  }, [folderName]);
 
   if (isNotFound) {
     return <ContentNotFound message="אלבום זה אינו קיים..." />;

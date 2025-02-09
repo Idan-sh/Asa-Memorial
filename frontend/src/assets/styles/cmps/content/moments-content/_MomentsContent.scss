@@ -39,8 +39,6 @@
 }
 
 .moments-content-container .light-gallery-container {
-  display: grid;
-  gap: 10px;
   max-width: 900px;
   margin: auto;
 }
@@ -49,6 +47,7 @@
   display: block;
   width: 100%;
   aspect-ratio: 1 / 1;
+  margin-bottom: 10px;
 }
 
 .moments-content-container .light-gallery-container img {

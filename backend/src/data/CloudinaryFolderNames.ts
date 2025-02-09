@@ -7,5 +7,6 @@ export const FOLDER_NAMES = [
     'family',
     'bike',
     'aroundTheWorld',
-    'art'
+    'art',
+    'moments'
 ]

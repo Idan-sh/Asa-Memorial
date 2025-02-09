@@ -37,3 +37,25 @@
     margin: 0;
   }
 }
+
+.moments-content-container > .light-gallery-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.moments-content-container > .light-gallery-container a {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.moments-content-container > .light-gallery-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+}

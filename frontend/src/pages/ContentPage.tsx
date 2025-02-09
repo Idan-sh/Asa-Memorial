@@ -2,7 +2,6 @@ import Header from '../cmps/header/Header';
 import Footer from '../cmps/footer/Footer';
 
 import MainContent from '../cmps/content/main-content/MainContent';
-import InstagramContent from '../cmps/content/instagram-content/InstagramContent';
 import ContentNotFound from '../cmps/content/content-not-found/ContentNotFound';
 
 import GalleryContent from '../cmps/content/gallery-content/GalleryContent';
@@ -12,6 +11,7 @@ import FullMemoryContent from '../cmps/content/memories-content/FullMemoryConten
 import MemoriesContent from '../cmps/content/memories-content/MemoriesContent';
 import AddMemoryForm from '../cmps/content/memories-content/AddMemoryForm';
 import EulogiesContent from '../cmps/content/eulogies-content/EulogiesContent';
+import MomentsContent from '../cmps/content/moments-content/MomentsContent';
 
 interface ContentPageProps {
   content:
@@ -33,7 +33,7 @@ export default function ContentPage({ content }: ContentPageProps) {
           <>
             <MainContent />
             <MemoriesContent limit={6} />
-            <InstagramContent />
+            <MomentsContent />
           </>
         )}
         {content === 'gallery' && <GalleryContent />}

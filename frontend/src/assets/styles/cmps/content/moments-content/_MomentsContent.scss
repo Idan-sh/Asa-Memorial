@@ -39,6 +39,7 @@
 }
 
 .moments-content-container .light-gallery-container {
+  display: grid;
   gap: 10px;
   max-width: 900px;
   margin: auto;
@@ -54,6 +55,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
 }

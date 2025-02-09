@@ -13,7 +13,7 @@ import lgZoom from 'lightgallery/plugins/zoom';
 import { CloudinaryImage } from '../../../models/CloudinaryImage.model';
 
 export default function MomentsContent() {
-  const momentsAlbumName = 'Moments';
+  const momentsAlbumName = 'moments';
 
   const [momentsImages, setMomentsImages] = useState<CloudinaryImage[]>([]);
 

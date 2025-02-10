@@ -35,7 +35,9 @@
     flex-direction: row-reverse;
 
     .header-icon {
-      height: 30px;
+      height: 34px;
+      margin-bottom: 0;
+      margin-inline-start: 10px;
     }
   }
 }

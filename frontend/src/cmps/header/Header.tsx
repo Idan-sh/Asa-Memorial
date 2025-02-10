@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import flameIcon from '/icons/flame-icon.png';
+import bikeIcon from '/icons/bicycle.png';
 import menuIcon from '/icons/menu-bar.png';
 import { useScreenSize } from '../../context/ScreenSizeProvider';
 import Menu from '../menu/Menu';
@@ -28,7 +28,7 @@ export default function Header() {
           </div>
         )}
         <div className="header-title-container" onClick={() => navigate('/')}>
-          <img className="header-icon" src={flameIcon} alt="header icon" />
+          <img className="header-icon" src={bikeIcon} alt="header icon" />
           <div className="header-title">אסא גיל-עד ז״ל</div>
         </div>
       </div>

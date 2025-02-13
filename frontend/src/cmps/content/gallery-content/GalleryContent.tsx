@@ -8,7 +8,7 @@ export default function GalleryContent() {
         <GalleryAlbumPreview title="ילדות ונעורים" folderName="childhood" />
         <GalleryAlbumPreview
           title="נעורים בירושלים: עלייה והתבגרות"
-          folderName="growingUpInJerusalem"
+          folderName="GrowingUpInJerusalem"
         />
         <GalleryAlbumPreview title="שירות בצה״ל" folderName="Army" />
         <GalleryAlbumPreview title="שירות ביס״מ ירושלים" folderName="Police" />

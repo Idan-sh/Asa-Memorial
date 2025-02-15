@@ -24,6 +24,8 @@ export default function AddMemoryForm() {
   const maxMessageCharacters = 4000;
   const maxImageUploads = 20;
 
+  const allowedImageTypes = new Set(['image/png', 'image/jpeg', 'image/jpg']);
+
   const { isMobile } = useScreenSize();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -174,6 +176,14 @@ export default function AddMemoryForm() {
   };
 
   const addImages = (newFiles: File[]) => {
+    const validFiles = newFiles.filter((file) =>
+      allowedImageTypes.has(file.type)
+    );
+
+    if (validFiles.length !== newFiles.length) {
+      displayErrorPopup('ניתן להעלות רק תמונות בפורמט PNG, JPEG, JPG.');
+    }
+
     const totalImages = uploadedImages.length + newFiles.length;
 
     if (totalImages > maxImageUploads) {
@@ -355,7 +365,7 @@ export default function AddMemoryForm() {
             ref={fileInputRef}
             type="file"
             multiple
-            accept="image/*"
+            accept="image/png, image/jpeg, image/jpg"
             onChange={handleFileChange}
             style={{ display: 'none' }}
           />

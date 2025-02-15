@@ -189,7 +189,7 @@ export default function AddMemoryForm() {
     if (totalImages > maxImageUploads) {
       displayErrorPopup(`ניתן להעלות לכל היותר ${maxImageUploads} תמונות`);
     } else {
-      setUploadedImages((prevImages) => [...prevImages, ...newFiles]);
+      setUploadedImages((prevImages) => [...prevImages, ...validFiles]);
     }
   };
 

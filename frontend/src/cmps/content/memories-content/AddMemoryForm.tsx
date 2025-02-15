@@ -22,7 +22,7 @@ export default function AddMemoryForm() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const maxMessageCharacters = 4000;
-  const maxImageUploads = 5;
+  const maxImageUploads = 20;
 
   const { isMobile } = useScreenSize();
   const [isLoading, setIsLoading] = useState(false);
